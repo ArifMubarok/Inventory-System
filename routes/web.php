@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KategoriBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard', [
         "title" => "SIM Inventaris : msInventaris",
-        "judul" => "msInventaris"
+        "judul" => "Dashboard"
     ]);
 });
+
+Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
