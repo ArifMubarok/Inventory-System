@@ -29,23 +29,16 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7">
-
-                    @if (session()->has('loginError'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ session('loginError') }}
-                        </div>
-                    @endif
                     <h3><strong>Login System</strong></h3>
                     <p class="mb-4">Sistem Informasi Manajemen Inventaris</p>
-                    <form action="/" method="post">
-                        @csrf
+                    <form action="#" method="post">
                     <div class="form-group first">
                         <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" id="username" autofocus required value="{{ old('username') }}">
+                        <input type="text" class="form-control" placeholder="Username" id="username">
                     </div>
                     <div class="form-group last mb-3">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
+                        <input type="password" class="form-control" placeholder="Password" id="password">
                     </div>
                     
 

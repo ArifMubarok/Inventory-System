@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KategoriBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,5 @@ Route::get('/dashboard', function () {
         "judul" => "msInventaris"
     ]);
 });
+
+Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
