@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index', [
-        "title" => "SIM Inventaris : msInventaris"
+        "title" => "SIM Inventaris : msInventaris | Login"
+    ]);
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard', [
+        "title" => "SIM Inventaris : msInventaris",
+        "judul" => "msInventaris"
     ]);
 });
