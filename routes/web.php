@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KategoriBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        "title" => "SIM Inventaris : msInventaris | Login"
-    ]);
-});
+
+Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
@@ -25,3 +25,5 @@ Route::get('/dashboard', function () {
         "judul" => "msInventaris"
     ]);
 });
+
+Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);

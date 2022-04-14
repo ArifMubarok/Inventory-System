@@ -13,6 +13,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="index3.html" class="nav-link">Home</a>
         </li>
+    </ul>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
         </li>
@@ -137,17 +138,21 @@
             <i class="fas fa-th-large"></i>
             </a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                Username (Admin)
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Ubah Profil</a>
-                <a class="dropdown-item" href="#">Ubah Password</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
-            </div>
-        </li>
+        <form action="/logout" method="POST">
+            @csrf
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Username (Admin)
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Ubah Profil</a>
+                    <a class="dropdown-item" href="#">Ubah Password</a>
+                    <div class="dropdown-divider"></div>
+                    <button type="submit" class="dropdown-item">Logout</button>
+                </div>
+            </li>
+
+        </form>
     </ul>
 </nav>
 <!-- /.navbar -->
