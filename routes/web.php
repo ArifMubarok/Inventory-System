@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KategoriBarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::get('/dashboard', function () {
         "judul" => "msInventaris"
     ]);
 });
+
+Route::get('KategoriBarang', [KategoriBarangController::class, "index"]);
