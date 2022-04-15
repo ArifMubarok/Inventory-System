@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriBarangController;
+use App\Http\Controllers\SatuanBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,5 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
+
+Route::resource('/dashboard/satuan-barang', SatuanBarangController::class);
