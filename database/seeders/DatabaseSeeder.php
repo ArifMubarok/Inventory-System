@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\SatuanBarang;
+use App\Models\KategoriBarang;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -18,17 +18,17 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         User::create([
-            'username' => 'zahwa',
-            'email' => 'zahwa@gmail.com',
-            'password' => bcrypt('123')
+            'username' => 'tes',
+            'email' => 'tes@gmail.com',
+            'password' => bcrypt('tes')
         ]);
 
-        SatuanBarang::create([
-            'nama_satuan' => 'Rim'
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori1'
         ]);
-
-        SatuanBarang::create([
-            'nama_satuan' => 'Lembar'
+        
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori2'
         ]);
     }
 }

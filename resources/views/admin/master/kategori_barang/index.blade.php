@@ -1,74 +1,50 @@
 @extends('layouts.main')
 
 @section('halaman')
+
+@if (session()->has('success'))
+<div class="alert alert-success" role="alert">
+  {{ session('success') }}
+</div>
+@endif
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+</div>
+<a href="/kategori-barang/create" class="btn btn-primary mb-3">Tambah Kategori</a>
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Bordered Table</h3>
+        <h3 class="card-title">Data Kategori</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="width: 10px">#</th>
-                <th>Task</th>
-                <th>Progress</th>
-                <th style="width: 40px">Label</th>
+                <th style="width: 10px">No.</th>
+                <th>Kategori</th>
+                <th style="width: 10px">Aksi</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1.</td>
-                <td>Update software</td>
+                @foreach ($kategori as $item)
+
+            <tr>                    
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->nama_kategori }}</td>
                 <td>
-                <div class="progress progress-xs">
-                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
+                    <a href="/kategori-barang/{{ $item->id_kategori }}/edit" class="badge bg-warning"><span data-feather="edit">Edit</span></a>
+                    <form action="/kategori-barang/{{ $item->id_kategori }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                      </form>
                 </td>
-                <td><span class="badge bg-danger">55%</span></td>
             </tr>
-            <tr>
-                <td>2.</td>
-                <td>Clean database</td>
-                <td>
-                <div class="progress progress-xs">
-                    <div class="progress-bar bg-warning" style="width: 70%"></div>
-                </div>
-                </td>
-                <td><span class="badge bg-warning">70%</span></td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>Cron job running</td>
-                <td>
-                <div class="progress progress-xs progress-striped active">
-                    <div class="progress-bar bg-primary" style="width: 30%"></div>
-                </div>
-                </td>
-                <td><span class="badge bg-primary">30%</span></td>
-            </tr>
-            <tr>
-                <td>4.</td>
-                <td>Fix and squish bugs</td>
-                <td>
-                <div class="progress progress-xs progress-striped active">
-                    <div class="progress-bar bg-success" style="width: 90%"></div>
-                </div>
-                </td>
-                <td><span class="badge bg-success">90%</span></td>
-            </tr>
+            
+            @endforeach
             </tbody>
         </table>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer clearfix">
-        <ul class="pagination pagination-sm m-0 float-right">
-            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>
         </div>
     </div>
     <!-- /.card -->

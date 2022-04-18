@@ -3,7 +3,6 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriBarangController;
-use App\Http\Controllers\SatuanBarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,17 +15,12 @@ use App\Http\Controllers\SatuanBarangController;
 */
 
 
-Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        "title" => "SIM Inventaris : msInventaris",
-        "judul" => "msInventaris"
-    ]);
-});
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
 
-Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
+Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 
-Route::resource('/dashboard/satuan-barang', SatuanBarangController::class);
+// Route::resource('/data-merk', []);

@@ -15,6 +15,13 @@ class LoginController extends Controller
         ]);
     }
 
+    public function dashboard(){
+        return view('dashboard', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "msInventaris"
+        ]);
+    }
+
     public function login(Request $request)
     {
         $credentials= $request->validate([
