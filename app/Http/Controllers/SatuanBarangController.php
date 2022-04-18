@@ -30,7 +30,10 @@ class SatuanBarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.master.satuan_barang.create', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Satuan Barang"
+        ]) ;
     }
 
     /**
@@ -41,7 +44,13 @@ class SatuanBarangController extends Controller
      */
     public function store(StoreSatuanBarangRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_satuan' => 'required'
+        ]);
+
+        SatuanBarang::create($validatedData);
+
+        return redirect('/satuan-barang')->with('success', 'New category has been added');
     }
 
     /**

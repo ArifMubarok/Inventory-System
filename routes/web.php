@@ -29,4 +29,4 @@ Route::get('/dashboard', function () {
 
 Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
 
-Route::resource('/dashboard/satuan-barang', SatuanBarangController::class);
+Route::resource('/satuan-barang', SatuanBarangController::class);

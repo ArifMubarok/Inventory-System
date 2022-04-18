@@ -3,7 +3,8 @@
 @section('halaman')
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Bordered Table</h3>
+        <h3 class="card-title">Data Satuan Barang</h3>
+        <a href="satuan-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -12,7 +13,7 @@
             <tr>
                 <th style="width: 10px">#</th>
                 <th>Satuan</th>
-                <th style="width: 40px">Action</th>
+                <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -22,11 +23,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $satuanBarang->nama_satuan }}</td>
                 <td>
-                    <a href="#" class="badge bg-warning"><span data-feather="edit"></span></a>
+                    <a href="#" class="badge badge-pill badge-warning">Edit</a>
                     <form action="#" class="d-inline">
                       @method('delete')
                       @csrf
-                      <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+                      <a class="badge badge-pill badge-danger" onclick="return confirm('Are you sure?')">Hapus</a>
                     </form>
                 </td>
               </tr>
