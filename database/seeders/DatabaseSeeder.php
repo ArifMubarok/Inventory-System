@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataMerk;
 use App\Models\KategoriBarang;
 use App\Models\SatuanBarang;
 use App\Models\User;
@@ -39,5 +40,15 @@ class DatabaseSeeder extends Seeder
         KategoriBarang::create([
             'nama_kategori' => 'kategori2'
         ]);
+
+        DataMerk::create([
+            'nama_merk' => 'merk1'
+        ]);
+
+        DataMerk::create([
+            'nama_merk' => 'merk2'
+        ]);
+
+
     }
 }
