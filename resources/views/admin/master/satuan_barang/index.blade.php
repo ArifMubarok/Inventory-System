@@ -23,12 +23,12 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $satuanBarang->nama_satuan }}</td>
                 <td>
-                    <a href="#" class="badge badge-pill badge-warning">Edit</a>
-                    <form action="#" class="d-inline">
-                      @method('delete')
-                      @csrf
-                      <a class="badge badge-pill badge-danger" onclick="return confirm('Are you sure?')">Hapus</a>
-                    </form>
+                    <a href="/satuan-barang/{{ $satuanBarang->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/satuan-barang/{{ $satuanBarang->id }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                      </form>
                 </td>
               </tr>
 

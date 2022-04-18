@@ -13,14 +13,15 @@
             <!-- /.card-header -->
             <!-- form start -->
             <form class="needs-validation" novalidate method="POST" 
-                action="/satuan-barang">
+                action="/satuan-barang/{{ $satuan->id }}">
                 @csrf
+                @method('put')  
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_satuan">Satuan</label>
-                        <input type="text" class="form-control" id="nama_satuan" name="nama_satuan"
-                            placeholder="Nama Satuan" value="" require autofocus>
-                            @error('nama_kategori')
+                        <input type="text" class="form-control @error('nama_satuan') is-invalid @enderror" placeholder="Nama Satuan" require autofocus value="{{ old('nama_satuan', $satuan->nama_satuan) }}" id="nama_satuan" name="nama_satuan"
+                            placeholder="satuan" value="">
+                            @error('nama_satuan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                     </div>

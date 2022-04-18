@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SatuanBarang;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSatuanBarangRequest;
-use App\Http\Requests\UpdateSatuanBarangRequest;
+use Illuminate\Http\Request;
 
 class SatuanBarangController extends Controller
 {
@@ -42,7 +41,7 @@ class SatuanBarangController extends Controller
      * @param  \App\Http\Requests\StoreSatuanBarangRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSatuanBarangRequest $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'nama_satuan' => 'required'
@@ -50,7 +49,7 @@ class SatuanBarangController extends Controller
 
         SatuanBarang::create($validatedData);
 
-        return redirect('/satuan-barang')->with('success', 'New category has been added');
+        return redirect('/satuan-barang')->with('success', 'satuan barang has been added');
     }
 
     /**
@@ -72,7 +71,11 @@ class SatuanBarangController extends Controller
      */
     public function edit(SatuanBarang $satuanBarang)
     {
-        //
+        return view('admin.master.satuan_barang.edit', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Satuan Barang",
+            'satuan' => $satuanBarang
+        ]) ;
     }
 
     /**
@@ -82,9 +85,15 @@ class SatuanBarangController extends Controller
      * @param  \App\Models\SatuanBarang  $satuanBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSatuanBarangRequest $request, SatuanBarang $satuanBarang)
+    public function update(Request $request, SatuanBarang $satuanBarang)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_satuan' => 'required'
+        ]);
+
+        SatuanBarang::where('id', $satuanBarang->id)->update($validatedData);
+
+        return redirect('/satuan-barang')->with('success', 'satuan barang has been added');
     }
 
     /**
@@ -95,6 +104,8 @@ class SatuanBarangController extends Controller
      */
     public function destroy(SatuanBarang $satuanBarang)
     {
-        //
+        SatuanBarang::where('id', $satuanBarang->id)->delete();
+
+        return redirect('/satuan-barang')->with('success', ' telah dihapus!');
     }
 }

@@ -24,4 +24,4 @@ Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('aut
 
 Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 
-Route::resource('/satuan-barang', SatuanBarangController::class);
+Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
