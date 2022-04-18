@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\KategoriBarang;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,14 @@ class DatabaseSeeder extends Seeder
             'username' => 'tes',
             'email' => 'tes@gmail.com',
             'password' => bcrypt('tes')
+        ]);
+
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori1'
+        ]);
+        
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori2'
         ]);
     }
 }

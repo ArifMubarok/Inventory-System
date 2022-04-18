@@ -21,6 +21,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
 
-Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
+Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 
-Route::resource('/data-merk', []);
+// Route::resource('/data-merk', []);
