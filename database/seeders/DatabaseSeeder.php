@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\KategoriBarang;
 use App\Models\SatuanBarang;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,14 @@ class DatabaseSeeder extends Seeder
 
         SatuanBarang::create([
             'nama_satuan' => 'Lembar'
+        ]);
+
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori1'
+        ]);
+        
+        KategoriBarang::create([
+            'nama_kategori' => 'kategori2'
         ]);
     }
 }

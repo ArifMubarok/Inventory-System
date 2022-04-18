@@ -17,7 +17,8 @@ class KategoriBarangController extends Controller
     {
         return view('admin.master.kategori_barang.index', [
             "title" => "SIM Inventaris : msInventaris",
-            "judul" => "Kategori Barang"
+            "judul" => "Kategori Barang",
+            "kategori" => KategoriBarang::latest()->get()
         ]);
     }
 
@@ -28,7 +29,10 @@ class KategoriBarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.master.kategori_barang.create', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Kategori Barang"
+        ]);
     }
 
     /**
@@ -39,7 +43,13 @@ class KategoriBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_kategori' => 'required|unique:kategori_barangs|max:255'
+        ]);
+
+        KategoriBarang::create($validatedData);
+
+        return redirect('/kategori-barang')->with('success', 'Kategori telah ditambahkan!');
     }
 
     /**
@@ -61,7 +71,11 @@ class KategoriBarangController extends Controller
      */
     public function edit(KategoriBarang $kategoriBarang)
     {
-        //
+        return view('admin.master.kategori_barang.edit', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Kategori Barang",
+            'kategori' => $kategoriBarang,
+        ]);
     }
 
     /**
@@ -73,7 +87,15 @@ class KategoriBarangController extends Controller
      */
     public function update(Request $request, KategoriBarang $kategoriBarang)
     {
-        //
+
+        $rules['nama_kategori'] = 'required|unique:kategori_barangs|max:255';    
+        if ($request->nama_kategori != $kategoriBarang->nama_kategori) {
+        }
+        $validatedData = $request->validate($rules);
+
+        KategoriBarang::where('id_kategori', $kategoriBarang->id_kategori)->update($validatedData);
+
+        return redirect('/kategori-barang')->with('success', 'Kategori telah dirubah!');
     }
 
     /**
@@ -84,6 +106,8 @@ class KategoriBarangController extends Controller
      */
     public function destroy(KategoriBarang $kategoriBarang)
     {
-        //
+        KategoriBarang::where('id_kategori', $kategoriBarang->id_kategori)->delete();
+
+        return redirect('/kategori-barang')->with('success', 'Kategori telah dihapus!');
     }
 }
