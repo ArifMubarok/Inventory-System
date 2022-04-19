@@ -1,19 +1,27 @@
 @extends('layouts.main')
 
 @section('halaman')
+
+@if (session()->has('success'))
+<div class="alert alert-success" role="alert">
+  {{ session('success') }}
+</div>
+@endif
+
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Bordered Table</h3>
+        <h3 class="card-title">Supplier</h3>
+        <a href="supplier/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="width: 10px">#</th>
+                <th style="width: 10px">No</th>
                 <th>Supplier</th>
                 <th>Alamat</th>
-                <th style="width: 40px">Action</th>
+                <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -24,12 +32,12 @@
                 <td>{{ $supplier->nama_supplier }}</td>
                 <td>{{ $supplier->alamat }}</td>
                 <td>
-                    <a href="#" class="badge bg-warning"><span data-feather="edit"></span></a>
-                    <form action="#" class="d-inline">
-                      @method('delete')
-                      @csrf
-                      <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
-                    </form>
+                    <a href="/supplier/{{ $supplier->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/supplier/{{ $supplier->id }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                      </form>
                 </td>
               </tr>
 
@@ -48,7 +56,5 @@
         </ul>
         </div>
     </div>
-    
-    <a href="/tambah-supplier" class="btn btn-primary">Tambah Data</a>
     <!-- /.card -->
 @endsection

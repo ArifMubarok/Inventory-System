@@ -17,6 +17,12 @@ class CreateSuppliersTable extends Migration
             $table->id();
             $table->string('nama_supplier');
             $table->text('alamat');
+            $table->string('kota');
+            $table->text('telepon');
+            $table->text('fax');
+            $table->string('email');
+            $table->text('cp');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

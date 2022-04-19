@@ -5,7 +5,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
-use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\DataMerkController;
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +34,6 @@ Route::resource('/kategori-barang', KategoriBarangController::class)->middleware
 Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
 
 Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
+
+
+Route::resource('/supplier', SupplierController::class)->middleware('auth');
