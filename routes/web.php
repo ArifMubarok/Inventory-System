@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
+use App\Http\Controllers\SatuanBarangController;
+use App\Http\Controllers\DataMerkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +30,8 @@ Route::get('/dashboard', function () {
     ]);
 });
 
-Route::get('/kategori-barang', [KategoriBarangController::class, 'index']);
+Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 
-Route::resource('/satuan-barang', SatuanBarangController::class);
+Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
 
-Route::get('/supplier', [SupplierController::class, 'index']);
+Route::resource('/data-merk', DataMerkController::class)->middleware('auth');

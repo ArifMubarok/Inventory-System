@@ -3,8 +3,8 @@
 @section('halaman')
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Data Satuan Barang</h3>
-        <a href="satuan-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
+        <h3 class="card-title">Data Merk</h3>
+        <a href="data-merk/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -12,19 +12,19 @@
             <thead>
             <tr>
                 <th style="width: 10px">#</th>
-                <th>Satuan</th>
+                <th>Merk</th>
                 <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($satuanBarangs as $satuanBarang)
+                @foreach ($dataMerks as $dataMerk)
                   
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $satuanBarang->nama_satuan }}</td>
+                <td>{{ $dataMerk->nama_merk }}</td>
                 <td>
-                    <a href="/satuan-barang/{{ $satuanBarang->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
-                    <form action="/satuan-barang/{{ $satuanBarang->id }}" method="POST" class="d-inline">
+                    <a href="/data-merk/{{ $dataMerk->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/data-merk/{{ $dataMerk->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
