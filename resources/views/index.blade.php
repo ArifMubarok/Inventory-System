@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="bg order-2 order-md-1" style="background-image: url('img/bg_login.png')">
+    <div class="bg order-2 order-md-1" style="background-image: url('img/bg_hotel1.jpg')">
         <div class="position-relative">
             <div class="position-absolute bottom-0 end-0 py-2 px-3 text-white">
                 <h1>msInventaris</h1>

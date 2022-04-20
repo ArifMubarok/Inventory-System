@@ -18,16 +18,10 @@ use App\Http\Controllers\DataMerkController;
 */
 
 
-Route::get('/', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        "title" => "SIM Inventaris : msInventaris",
-        "judul" => "msInventaris"
-    ]);
-});
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
 
 Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 

@@ -8,6 +8,11 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            @if (session()->has('success'))
+            <div class="alert alert-success p-2" role="alert">
+            {{ session('success') }}
+            </div>
+            @endif
         <table class="table table-bordered">
             <thead>
             <tr>

@@ -28,6 +28,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
+                    <a href="/data-merk" class="btn btn-secondary">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
