@@ -3,6 +3,8 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriBarangController;
+use App\Http\Controllers\SatuanBarangController;
+use App\Http\Controllers\DataMerkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,4 +25,6 @@ Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('aut
 
 Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
 
-// Route::resource('/data-merk', []);
+Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
+
+Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
