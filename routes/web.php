@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\KategoriBarangController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\SatuanBarangController;
+use App\Http\Controllers\KategoriBarangController;
+use App\Http\Controllers\DataMerkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,17 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        "title" => "SIM Inventaris : msInventaris | Login"
-    ]);
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        "title" => "SIM Inventaris : msInventaris",
-        "judul" => "msInventaris"
-    ]);
-});
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
 
-Route::get('KategoriBarang', [KategoriBarangController::class, "index"]);
+Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
+
+Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
+
+Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
+
+
+Route::resource('/supplier', SupplierController::class)->middleware('auth');
