@@ -78,13 +78,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/dashboard/satuan-barang" class="nav-link">
+                <a href="/satuan-barang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Satuan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="/data-merk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Merk</p>
                 </a>
@@ -96,7 +96,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+                <a href="/supplier" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Supplier</p>
                 </a>

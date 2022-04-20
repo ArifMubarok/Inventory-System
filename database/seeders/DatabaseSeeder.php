@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\DataMerk;
 use App\Models\KategoriBarang;
 use App\Models\SatuanBarang;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,8 +21,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         User::create([
-            'username' => 'zahwa',
-            'email' => 'zahwa@gmail.com',
+            'username' => 'nisa',
+            'email' => 'nisa@gmail.com',
             'password' => bcrypt('123')
         ]);
 
@@ -47,6 +48,17 @@ class DatabaseSeeder extends Seeder
 
         DataMerk::create([
             'nama_merk' => 'merk2'
+        ]);
+
+        Supplier::create([
+            'nama_supplier' => 'supplier1',
+            'alamat' => 'alamat1',
+            'kota' => 'kota1',
+            'telepon' => '081222333155',
+            'fax' => '081222333155',
+            'email' => 'supplier1@mail.com',
+            'cp' => '081222333155',
+            'keterangan' => 'ket1'
         ]);
 
 
