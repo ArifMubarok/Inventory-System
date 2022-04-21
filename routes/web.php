@@ -9,6 +9,7 @@ use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\DepartemenController;
+use App\Http\Controllers\BagianController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,10 +31,12 @@ Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
     Route::resource('/kategori-barang', KategoriBarangController::class);
     Route::resource('/satuan-barang', SatuanBarangController::class);
     Route::resource('/data-merk', DataMerkController::class);
+    Route::resource('/data-barang', DataBarangController::class);
     Route::resource('/supplier', SupplierController::class);
+    Route::resource('/bagian', BagianController::class);
+    Route::resource('/departemen', DepartemenController::class);
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {
     Route::get('/dashboard', [LoginController::class, 'dashboard']);
 });
-Route::resource('/data-barang', DataBarangController::class)->middleware('auth');

@@ -520,6 +520,7 @@ class ComposerStaticInit6c8340cc192f0fbdb1ac5edfc2d8df1c
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DataMerkController' => __DIR__ . '/../..' . '/app/Http/Controllers/DataMerkController.php',
+        'App\\Http\\Controllers\\DepartemenController' => __DIR__ . '/../..' . '/app/Http/Controllers/DepartemenController.php',
         'App\\Http\\Controllers\\KategoriBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriBarangController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\SatuanBarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/SatuanBarangController.php',

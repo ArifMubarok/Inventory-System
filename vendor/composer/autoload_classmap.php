@@ -10,6 +10,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DataMerkController' => $baseDir . '/app/Http/Controllers/DataMerkController.php',
+    'App\\Http\\Controllers\\DepartemenController' => $baseDir . '/app/Http/Controllers/DepartemenController.php',
     'App\\Http\\Controllers\\KategoriBarangController' => $baseDir . '/app/Http/Controllers/KategoriBarangController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\SatuanBarangController' => $baseDir . '/app/Http/Controllers/SatuanBarangController.php',
