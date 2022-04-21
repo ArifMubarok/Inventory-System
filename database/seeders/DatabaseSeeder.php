@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bagian;
 use App\Models\DataMerk;
 use App\Models\Departemen;
 use App\Models\KategoriBarang;
@@ -108,6 +109,20 @@ class DatabaseSeeder extends Seeder
             'nama_departemen' => 'departemen2',
             'keterangan' => 'keterangan departemen2',
             'status' => 0
+        ]);
+
+        Bagian::create([
+            'departemen_id' => 1,
+            'nama_bagian' => 'bagian1',
+            'keterangan' => 'keterangan bagian1',
+            'status' => 0
+        ]);
+
+        Bagian::create([
+            'departemen_id' => 2,
+            'nama_bagian' => 'bagian2',
+            'keterangan' => 'keterangan bagian2',
+            'status' => 1
         ]);
 
     }

@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BagianController;
+use App\Http\Controllers\DataMerkController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
-use App\Http\Controllers\DataMerkController;
-use App\Http\Controllers\DepartemenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +34,5 @@ Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
 Route::resource('/supplier', SupplierController::class)->middleware('auth');
 
 Route::resource('/departemen', DepartemenController::class)->middleware('auth');
+
+Route::resource('/bagian', BagianController::class)->middleware('auth');
