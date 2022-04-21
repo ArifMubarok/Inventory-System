@@ -6,6 +6,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\DataMerkController;
+use App\Http\Controllers\DepartemenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +30,6 @@ Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('au
 
 Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
 
-
 Route::resource('/supplier', SupplierController::class)->middleware('auth');
+
+Route::resource('/departemen', DepartemenController::class)->middleware('auth');
