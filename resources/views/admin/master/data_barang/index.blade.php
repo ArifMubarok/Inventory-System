@@ -13,6 +13,11 @@
             {{ session('success') }}
             </div>
             @endif
+            @if (session()->has('fail'))
+            <div class="alert alert-danger p-2" role="alert">
+            {{ session('fail') }}
+            </div>
+            @endif
         <table class="table table-bordered">
             <thead>
             <tr>
