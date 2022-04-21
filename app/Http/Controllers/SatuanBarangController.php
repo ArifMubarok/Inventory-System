@@ -44,12 +44,12 @@ class SatuanBarangController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_satuan' => 'required'
+            'nama_satuan' => 'required|unique:satuan_barangs|max:255'
         ]);
 
         SatuanBarang::create($validatedData);
 
-        return redirect('/satuan-barang')->with('success', 'satuan barang has been added');
+        return redirect('/satuan-barang')->with('success', 'satuan barang berhasil ditambahkan');
     }
 
     /**
@@ -87,13 +87,15 @@ class SatuanBarangController extends Controller
      */
     public function update(Request $request, SatuanBarang $satuanBarang)
     {
-        $validatedData = $request->validate([
-            'nama_satuan' => 'required'
-        ]);
+
+        $rules['nama_satuan'] = 'required|unique:satuan_barangs|max:255';    
+        if ($request->nama_satuan != $satuanBarang->nama_satuan) {
+        }
+        $validatedData = $request->validate($rules);
 
         SatuanBarang::where('id', $satuanBarang->id)->update($validatedData);
 
-        return redirect('/satuan-barang')->with('success', 'satuan barang telah dirubah');
+        return redirect('/satuan-barang')->with('success', 'satuan barang berhasil diedit');
     }
 
     /**
@@ -106,6 +108,6 @@ class SatuanBarangController extends Controller
     {
         SatuanBarang::where('id', $satuanBarang->id)->delete();
 
-        return redirect('/satuan-barang')->with('success', 'Satuan Barang telah dihapus!');
+        return redirect('/satuan-barang')->with('success', 'satuan barang telah dihapus!');
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\DataMerk;
+use App\Models\Departemen;
 use App\Models\KategoriBarang;
 use App\Models\SatuanBarang;
 use App\Models\Supplier;
@@ -118,6 +119,17 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'ket1'
         ]);
 
+        Departemen::create([
+            'nama_departemen' => 'departemen1',
+            'keterangan' => 'keterangan departemen1',
+            'status' => 1
+        ]);
+
+        Departemen::create([
+            'nama_departemen' => 'departemen2',
+            'keterangan' => 'keterangan departemen2',
+            'status' => 0
+        ]);
 
     }
 }

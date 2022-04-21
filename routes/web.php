@@ -6,6 +6,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\DataMerkController;
+use App\Http\Controllers\DepartemenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
