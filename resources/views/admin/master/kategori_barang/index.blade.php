@@ -36,7 +36,7 @@
             <tr>                    
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama_kategori }}</td>
-                <td>
+                <td> 
                     <a href="/kategori-barang/{{ $item->id_kategori }}/edit" class="badge bg-warning"><span data-feather="edit">Edit</span></a>
                     <form action="/kategori-barang/{{ $item->id_kategori }}" method="POST" class="d-inline">
                         @method('delete')

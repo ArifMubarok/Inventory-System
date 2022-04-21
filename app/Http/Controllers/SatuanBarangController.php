@@ -93,7 +93,7 @@ class SatuanBarangController extends Controller
 
         SatuanBarang::where('id', $satuanBarang->id)->update($validatedData);
 
-        return redirect('/satuan-barang')->with('success', 'satuan barang has been added');
+        return redirect('/satuan-barang')->with('success', 'satuan barang telah dirubah');
     }
 
     /**
@@ -106,6 +106,6 @@ class SatuanBarangController extends Controller
     {
         SatuanBarang::where('id', $satuanBarang->id)->delete();
 
-        return redirect('/satuan-barang')->with('success', ' telah dihapus!');
+        return redirect('/satuan-barang')->with('success', 'Satuan Barang telah dihapus!');
     }
 }
