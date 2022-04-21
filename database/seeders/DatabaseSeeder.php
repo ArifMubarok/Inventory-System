@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\DataMerk;
-use App\Models\KategoriBarang;
-use App\Models\SatuanBarang;
-use App\Models\Supplier;
 use App\Models\User;
+use App\Models\DataMerk;
+use App\Models\Supplier;
+use App\Models\DataBarang;
+use App\Models\SatuanBarang;
+use App\Models\KategoriBarang;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,39 +26,39 @@ class DatabaseSeeder extends Seeder
             'email' => 'tes@gmail.com',
             'password' => bcrypt('tes')
         ]);
-        
+
         User::create([
-        	'username' => 'nisa',
+            'username' => 'nisa',
             'email' => 'nisa@gmail.com',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'hasan',
+            'username' => 'hasan',
             'email' => 'hasan@gmail.com',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'arif',
+            'username' => 'arif',
             'email' => 'arif@gmail.com',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'zahwa',
+            'username' => 'zahwa',
             'email' => 'zahwa@gmail.com',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'sufian',
+            'username' => 'sufian',
             'email' => 'sufian@gmail.com',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'arik',
+            'username' => 'arik',
             'email' => 'arik@gmail.com',
             'password' => bcrypt('123')
         ]);
@@ -73,7 +74,7 @@ class DatabaseSeeder extends Seeder
         KategoriBarang::create([
             'nama_kategori' => 'kategori1'
         ]);
-        
+
         KategoriBarang::create([
             'nama_kategori' => 'kategori2'
         ]);
@@ -97,6 +98,25 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'ket1'
         ]);
 
+        DataBarang::create([
+            'id_satuan' => 1,
+            'id_kategori' => 1,
+            'id_merk' => 1,
+            'nama_barang' => 'tes barang',
+            'keterangan' => 'text',
+            'barcode' => 'E001',
+            'foto' => 'default.jpg'
+        ]);
 
+
+        DataBarang::create([
+            'id_satuan' => 2,
+            'id_kategori' => 2,
+            'id_merk' => 2,
+            'nama_barang' => 'tes barang 2',
+            'keterangan' => 'text 2',
+            'barcode' => 'E002',
+            'foto' => 'default.jpg'
+        ]);
     }
 }

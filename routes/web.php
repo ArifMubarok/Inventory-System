@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\KategoriBarangController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DataMerkController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
-use App\Http\Controllers\DataMerkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,5 @@ Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
 
 
 Route::resource('/supplier', SupplierController::class)->middleware('auth');
+
+Route::resource('/data-barang', DataBarangController::class)->middleware('auth');
