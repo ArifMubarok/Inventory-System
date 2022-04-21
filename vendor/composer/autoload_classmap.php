@@ -27,6 +27,7 @@ return array(
     'App\\Http\\Requests\\StoreSatuanBarangRequest' => $baseDir . '/app/Http/Requests/StoreSatuanBarangRequest.php',
     'App\\Http\\Requests\\UpdateDataMerkRequest' => $baseDir . '/app/Http/Requests/UpdateDataMerkRequest.php',
     'App\\Http\\Requests\\UpdateSatuanBarangRequest' => $baseDir . '/app/Http/Requests/UpdateSatuanBarangRequest.php',
+    'App\\Models\\DataBarang' => $baseDir . '/app/Models/DataBarang.php',
     'App\\Models\\DataMerk' => $baseDir . '/app/Models/DataMerk.php',
     'App\\Models\\Departemen' => $baseDir . '/app/Models/Departemen.php',
     'App\\Models\\KategoriBarang' => $baseDir . '/app/Models/KategoriBarang.php',

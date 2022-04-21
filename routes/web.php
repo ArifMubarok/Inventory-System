@@ -1,11 +1,13 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DataMerkController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DataBarangController;
 use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
-use App\Http\Controllers\DataMerkController;
 use App\Http\Controllers\DepartemenController;
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,4 @@ Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
 Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {
     Route::get('/dashboard', [LoginController::class, 'dashboard']);
 });
+Route::resource('/data-barang', DataBarangController::class)->middleware('auth');

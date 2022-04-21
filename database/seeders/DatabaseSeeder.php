@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\DataMerk;
 use App\Models\Departemen;
 use App\Models\KategoriBarang;
 use App\Models\SatuanBarang;
 use App\Models\Supplier;
-use App\Models\User;
+use App\Models\DataBarang;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,44 +28,44 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'password' => bcrypt('tes')
         ]);
-        
+
         User::create([
-        	'username' => 'nisa',
+            'username' => 'nisa',
             'email' => 'nisa@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'hasan',
+            'username' => 'hasan',
             'email' => 'hasan@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'arif',
+            'username' => 'arif',
             'email' => 'arif@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'zahwa',
+            'username' => 'zahwa',
             'email' => 'zahwa@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'sufian',
+            'username' => 'sufian',
             'email' => 'sufian@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
         ]);
-        
+
         User::create([
-        	'username' => 'arik',
+            'username' => 'arik',
             'email' => 'arik@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('123')
@@ -95,7 +96,7 @@ class DatabaseSeeder extends Seeder
         KategoriBarang::create([
             'nama_kategori' => 'kategori1'
         ]);
-        
+
         KategoriBarang::create([
             'nama_kategori' => 'kategori2'
         ]);
@@ -119,6 +120,16 @@ class DatabaseSeeder extends Seeder
             'keterangan' => 'ket1'
         ]);
 
+        DataBarang::create([
+            'id_satuan' => 1,
+            'id_merk' => 1,
+            'id_kategori' => 1,
+            'nama_barang' => 'tes barang',
+            'foto' => 'default.jpg',
+            'barcode' => 'E001',
+            'keterangan' => 'text',
+        ]);
+
         Departemen::create([
             'nama_departemen' => 'departemen1',
             'keterangan' => 'keterangan departemen1',
@@ -131,5 +142,14 @@ class DatabaseSeeder extends Seeder
             'status' => 0
         ]);
 
+        DataBarang::create([
+            'id_satuan' => 2,
+            'id_kategori' => 2,
+            'id_merk' => 2,
+            'nama_barang' => 'tes barang 2',
+            'keterangan' => 'text 2',
+            'barcode' => 'E002',
+            'foto' => 'default.jpg'
+        ]);
     }
 }
