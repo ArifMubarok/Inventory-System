@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username');
             $table->string('role');
-            $table->foreignId('id_departemen');
-            $table->int('nomor_hp');
-            $table->boolean('status');
+            // $table->foreignId('id_departemen');
+            // $table->int('nomor_hp');
+            // $table->boolean('status');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
