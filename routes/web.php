@@ -20,19 +20,19 @@ use App\Http\Controllers\KategoriBarangController;
 */
 
 
-Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/dashboard', [LoginController::class, 'dashboard'])->middleware('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::resource('/kategori-barang', KategoriBarangController::class)->middleware('auth');
+Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
+    Route::resource('/kategori-barang', KategoriBarangController::class);
+    Route::resource('/satuan-barang', SatuanBarangController::class);
+    Route::resource('/data-merk', DataMerkController::class);
+    Route::resource('/supplier', SupplierController::class);
+    Route::resource('/bagian', BagianController::class);
+});
 
-Route::resource('/satuan-barang', SatuanBarangController::class)->middleware('auth');
-
-Route::resource('/data-merk', DataMerkController::class)->middleware('auth');
-
-Route::resource('/supplier', SupplierController::class)->middleware('auth');
-
-Route::resource('/departemen', DepartemenController::class)->middleware('auth');
-
-Route::resource('/bagian', BagianController::class)->middleware('auth');
+Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {
+    Route::get('/dashboard', [LoginController::class, 'dashboard']);
+});
