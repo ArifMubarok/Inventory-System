@@ -39,11 +39,11 @@
                 <td>{{ $supplier->nama_supplier }}</td>
                 <td>{{ $supplier->alamat }}</td>
                 <td>
-                    <a href="/supplier/{{ $supplier->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <a href="/supplier/{{ $supplier->id }}/edit" class="badge badge-pill badge-warning"><i class="fas fa-edit"></i></a>
                     <form action="/supplier/{{ $supplier->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                        <button class="badge badge-pill bg-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"><i class="far fa-trash-alt"></i></span></button>
                       </form>
                 </td>
               </tr>
