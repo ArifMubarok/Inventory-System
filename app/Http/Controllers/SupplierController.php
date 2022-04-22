@@ -100,6 +100,7 @@ class SupplierController extends Controller
         $rules['telepon'] = 'required|unique:suppliers|max:255';    
         $rules['fax'] = 'required|unique:suppliers|max:255';    
         $rules['email'] = 'required';    
+        $rules['cp'] = 'required|unique:suppliers|max:255';    
         $rules['keterangan'] = 'required|unique:suppliers|max:255';
 
         if ($request->nama_supplier != $supplier->nama_supplier || $request->alamat != $supplier->alamat ||
