@@ -17,7 +17,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->username }}</a>
-          <p class="text-white">Admin</p>
+          <p class="text-white">{{ auth()->user()->role }}</p>
         </div>
       </div>
 
