@@ -1,24 +1,15 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/dashboard" class="brand-link">
+    <a href="index3.html" class="brand-link">
       <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">msInventaris</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-     
-
-      
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-                <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="background-image: url('img/bg_gunung.jpg')">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="background-image: url('img/bg_1.jpg')">
         <div class="image py-2">
           <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           {{-- <a href="#" class="d-block">Username</a>
@@ -29,6 +20,25 @@
           <p class="text-white">Admin</p>
         </div>
       </div>
+
+      {{-- <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div> --}}
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               
           <li class="nav-item">
             <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -53,6 +63,7 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->role=="admin")  
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-server"></i>
@@ -69,31 +80,34 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="/satuan-barang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Satuan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="/data-merk" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Merk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="/data-barang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Barang</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+                <a href="/supplier" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Supplier</p>
                 </a>
               </li>
             </ul>
           </li>
+          @endif
+
+          @if (auth()->user()->role=="admin" || auth()->user()->role=="sarpras" )
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
@@ -194,6 +208,10 @@
               </li>
             </ul>
           </li>
+          @endif
+
+          @if (auth()->user()->role=="admin")
+              
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -204,13 +222,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="/departemen" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Departemen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="/bagian" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bagian</p>
                 </a>
@@ -251,6 +269,15 @@
                 </a>
               </li>
             </ul>
+          </li>
+          @endif
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p>
+                Logout
+              </p>
+            </a>
           </li>
         </ul>
       </nav>

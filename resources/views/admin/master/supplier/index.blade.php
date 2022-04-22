@@ -2,16 +2,22 @@
 
 @section('halaman')
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 </div>
-    <div class="card">
-        <div class="card-header">
-        <h3 class="card-title">Data Satuan Barang</h3>
-        <a href="satuan-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            @if (session()->has('success'))
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Supplier</h3>
+    <a href="supplier/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+          @if (session()->has('success'))
+          <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+          </div>
+          @endif
+          @if (session()->has('success'))
             <div class="alert alert-success p-2" role="alert">
             {{ session('success') }}
             </div>
@@ -19,20 +25,22 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="width: 10px">#</th>
-                <th>Satuan</th>
+                <th style="width: 10px">No</th>
+                <th>Supplier</th>
+                <th>Alamat</th>
                 <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($satuanBarangs as $satuanBarang)
+                @foreach ($suppliers as $supplier)
                   
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $satuanBarang->nama_satuan }}</td>
+                <td>{{ $supplier->nama_supplier }}</td>
+                <td>{{ $supplier->alamat }}</td>
                 <td>
-                    <a href="/satuan-barang/{{ $satuanBarang->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
-                    <form action="/satuan-barang/{{ $satuanBarang->id }}" method="POST" class="d-inline">
+                    <a href="/supplier/{{ $supplier->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/supplier/{{ $supplier->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>

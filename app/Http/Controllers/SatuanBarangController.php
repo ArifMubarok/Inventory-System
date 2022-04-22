@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SatuanBarang;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSatuanBarangRequest;
-use App\Http\Requests\UpdateSatuanBarangRequest;
+use Illuminate\Http\Request;
 
 class SatuanBarangController extends Controller
 {
@@ -30,7 +29,10 @@ class SatuanBarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.master.satuan_barang.create', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Satuan Barang"
+        ]) ;
     }
 
     /**
@@ -39,9 +41,15 @@ class SatuanBarangController extends Controller
      * @param  \App\Http\Requests\StoreSatuanBarangRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSatuanBarangRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_satuan' => 'required|unique:satuan_barangs|max:255'
+        ]);
+
+        SatuanBarang::create($validatedData);
+
+        return redirect('/satuan-barang')->with('success', 'satuan barang berhasil ditambahkan');
     }
 
     /**
@@ -63,7 +71,11 @@ class SatuanBarangController extends Controller
      */
     public function edit(SatuanBarang $satuanBarang)
     {
-        //
+        return view('admin.master.satuan_barang.edit', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Satuan Barang",
+            'satuan' => $satuanBarang
+        ]) ;
     }
 
     /**
@@ -73,9 +85,17 @@ class SatuanBarangController extends Controller
      * @param  \App\Models\SatuanBarang  $satuanBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSatuanBarangRequest $request, SatuanBarang $satuanBarang)
+    public function update(Request $request, SatuanBarang $satuanBarang)
     {
-        //
+
+        $rules['nama_satuan'] = 'required|unique:satuan_barangs|max:255';    
+        if ($request->nama_satuan != $satuanBarang->nama_satuan) {
+        }
+        $validatedData = $request->validate($rules);
+
+        SatuanBarang::where('id', $satuanBarang->id)->update($validatedData);
+
+        return redirect('/satuan-barang')->with('success', 'satuan barang berhasil diedit');
     }
 
     /**
@@ -86,6 +106,8 @@ class SatuanBarangController extends Controller
      */
     public function destroy(SatuanBarang $satuanBarang)
     {
-        //
+        SatuanBarang::where('id', $satuanBarang->id)->delete();
+
+        return redirect('/satuan-barang')->with('success', 'satuan barang telah dihapus!');
     }
 }

@@ -6,8 +6,8 @@
 </div>
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Data Satuan Barang</h3>
-        <a href="satuan-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
+        <h3 class="card-title">Departemen</h3>
+        <a href="departemen/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -20,19 +20,25 @@
             <thead>
             <tr>
                 <th style="width: 10px">#</th>
-                <th>Satuan</th>
+                <th>Departemen</th>
+                <th>Status</th>
                 <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($satuanBarangs as $satuanBarang)
+                @foreach ($departemens as $departemen)
                   
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $satuanBarang->nama_satuan }}</td>
+                <td>{{ $departemen->nama_departemen }}</td>
+                <td>@if  ($departemen->status == 1)
+                    Aktif
+                @else
+                    Non Aktif
+                @endif </td>
                 <td>
-                    <a href="/satuan-barang/{{ $satuanBarang->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
-                    <form action="/satuan-barang/{{ $satuanBarang->id }}" method="POST" class="d-inline">
+                    <a href="/departemen/{{ $departemen->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/departemen/{{ $departemen->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
