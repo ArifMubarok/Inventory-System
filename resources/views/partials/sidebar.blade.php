@@ -92,7 +92,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="/data-barang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Barang</p>
                 </a>
@@ -222,13 +222,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="/departemen" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Departemen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="/bagian" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bagian</p>
                 </a>

@@ -538,6 +538,7 @@ class ComposerStaticInit6c8340cc192f0fbdb1ac5edfc2d8df1c
         'App\\Http\\Requests\\StoreSatuanBarangRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreSatuanBarangRequest.php',
         'App\\Http\\Requests\\UpdateDataMerkRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateDataMerkRequest.php',
         'App\\Http\\Requests\\UpdateSatuanBarangRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateSatuanBarangRequest.php',
+        'App\\Models\\DataBarang' => __DIR__ . '/../..' . '/app/Models/DataBarang.php',
         'App\\Models\\DataMerk' => __DIR__ . '/../..' . '/app/Models/DataMerk.php',
         'App\\Models\\Departemen' => __DIR__ . '/../..' . '/app/Models/Departemen.php',
         'App\\Models\\KategoriBarang' => __DIR__ . '/../..' . '/app/Models/KategoriBarang.php',
