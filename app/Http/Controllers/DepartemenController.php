@@ -90,7 +90,10 @@ class DepartemenController extends Controller
      */
     public function update(Request $request, Departemen $departeman)
     {
-        $rules['nama_departemen'] = 'required|unique:departemens|max:255';    
+        $rules['nama_departemen'] = 'required|unique:departemens|max:255';
+        $rules['status'] = 'required';
+        $rules['keterangan'] = 'required|unique:bagians|max:255';
+            
         if ($request->nama_departemen != $departeman->nama_departemen || 
         $request->status != $departeman->status || $request->keterangan != $departeman->keterangan) {
         }

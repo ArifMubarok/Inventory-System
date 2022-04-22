@@ -81,7 +81,7 @@ class SupplierController extends Controller
         return view('admin.master.supplier.edit', [
             "title" => "SIM Inventaris : msInventaris",
             "judul" => "Supplier",
-            'supplier' => $supplier,
+            'supplier' => $supplier
         ]);
     }
 
@@ -95,6 +95,14 @@ class SupplierController extends Controller
     public function update(Request $request, Supplier $supplier)
     {
         $rules['nama_supplier'] = 'required|unique:suppliers|max:255';    
+        $rules['alamat'] = 'required|unique:suppliers|max:255';    
+        $rules['kota'] = 'required|unique:suppliers|max:255';    
+        $rules['telepon'] = 'required|unique:suppliers|max:255';    
+        $rules['fax'] = 'required|unique:suppliers|max:255';    
+        $rules['email'] = 'required';    
+        $rules['cp'] = 'required|unique:suppliers|max:255';    
+        $rules['keterangan'] = 'required|unique:suppliers|max:255';
+
         if ($request->nama_supplier != $supplier->nama_supplier || $request->alamat != $supplier->alamat ||
             $request->kota != $supplier->kota || $request->telepon != $supplier->telepon ||
             $request->fax != $supplier->fax || $request->email != $supplier->email ||

@@ -76,7 +76,14 @@ class BagianController extends Controller
      */
     public function edit(Bagian $bagian)
     {
-        //
+        //dd($bagian);
+        return view('admin.pengaturan.bagian.edit', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Bagian",
+            'bagians' => $bagian,
+            "departemens" => Departemen::all()
+
+        ]);
     }
 
     /**
@@ -88,7 +95,19 @@ class BagianController extends Controller
      */
     public function update(Request $request, Bagian $bagian)
     {
-        //
+        $rules['nama_bagian'] = 'required|unique:bagians|max:255';    
+        $rules['departemen_id'] = 'required';
+        $rules['status'] = 'required';
+        $rules['keterangan'] = 'required|unique:bagians|max:255';    
+
+        if ($request->departemen_id != $bagian->departemen_id || $request->nama_bagian != $bagian->nama_bagian ||
+        $request->status != $bagian->status || $request->keterangan != $bagian->keterangan) {
+        }
+        $validatedData = $request->validate($rules);
+
+        Bagian::where('id', $bagian->id)->update($validatedData);
+
+        return redirect('/bagian')->with('success', 'Bagian telah diubah!');
     }
 
     /**
@@ -99,6 +118,8 @@ class BagianController extends Controller
      */
     public function destroy(Bagian $bagian)
     {
-        //
+        Bagian::where('id', $bagian->id)->delete();
+
+        return redirect('/bagian')->with('success', 'Bagian telah dihapus!');
     }
 }
