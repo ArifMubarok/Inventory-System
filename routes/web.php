@@ -10,6 +10,7 @@ use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\BagianController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\DataUserController;
 
 /*
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
     Route::resource('/bagian', BagianController::class);
     Route::resource('/departemen', DepartemenController::class);
     Route::resource('/data-user', DataUserController::class);
+    Route::resource('/lokasi', LokasiController::class);
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {

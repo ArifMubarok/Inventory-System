@@ -101,7 +101,6 @@ class DataUserController extends Controller
     public function update(Request $request, User $data_user)
     {
         $validatedData = $request->validate([
-            'username' => 'required|unique:users|max:255',
             'password' => 'required|min:8',
             'password2' => 'same:password',
             'role' => 'required',
@@ -110,6 +109,10 @@ class DataUserController extends Controller
             'nomor_hp' => 'max:13',
             'status' => 'required'
         ]);
+
+        if ($request->username != $data_user->username) {
+            $validatedData['username'] = 'required|unique:users|max:255';
+        }
         
         $validatedData['password'] = Hash::make($validatedData['password']);
 

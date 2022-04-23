@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Bagian;
+use App\Models\Lokasi;
 use App\Models\DataMerk;
-use App\Models\Departemen;
-use App\Models\KategoriBarang;
-use App\Models\SatuanBarang;
 use App\Models\Supplier;
 use App\Models\DataBarang;
+use App\Models\Departemen;
+use App\Models\SatuanBarang;
+use App\Models\KategoriBarang;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -191,6 +192,18 @@ class DatabaseSeeder extends Seeder
             'nama_bagian' => 'bagian2',
             'keterangan' => 'keterangan bagian2',
             'status' => 1
+        ]);
+
+        Lokasi::create([
+            'nama_lokasi' => 'lokasi1',
+            'keterangan' => 'keterangan lokasi1',
+            'status' => 1
+        ]);
+
+        Lokasi::create([
+            'nama_lokasi' => 'lokasi2',
+            'keterangan' => 'keterangan lokasi2',
+            'status' => 0
         ]);
 
     }

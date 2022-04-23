@@ -17,7 +17,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->username }}</a>
-          <p class="text-white">Admin</p>
+          <p class="text-white">{{ auth()->user()->role }}</p>
         </div>
       </div>
 
@@ -234,7 +234,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
+                <a href="/lokasi" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lokasi</p>
                 </a>

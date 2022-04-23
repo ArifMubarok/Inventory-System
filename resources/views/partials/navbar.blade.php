@@ -139,7 +139,7 @@
             @csrf
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    {{ auth()->user()->username }}
+                    {{ auth()->user()->username }} ({{ auth()->user()->role }})
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Ubah Profil</a>

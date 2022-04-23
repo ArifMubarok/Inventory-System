@@ -43,8 +43,8 @@
                         <td>{{ $dataBarang->nama_merk }}</td>
                         <td>{{ $dataBarang->nama_kategori }}</td>
                         <td>
-                            <a href="/data-barang/{{ $dataBarang->id }}/edit" class="btn btn-warning mr-2">Edit</a>
-                            <a href="/data-barang/{{ $dataBarang->id }}" class="btn btn-danger">Hapus</a>
+                            <a href="/data-barang/{{ $dataBarang->id }}/edit" class="badge badge-pill badge-warning"><i class="fas fa-edit"></i></a>
+                            <a href="/data-barang/{{ $dataBarang->id }}" class="badge badge-pill badge-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach
