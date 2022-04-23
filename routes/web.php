@@ -10,6 +10,8 @@ use App\Http\Controllers\SatuanBarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\BagianController;
+use App\Http\Controllers\DataUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +37,7 @@ Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
     Route::resource('/supplier', SupplierController::class);
     Route::resource('/bagian', BagianController::class);
     Route::resource('/departemen', DepartemenController::class);
+    Route::resource('/data-user', DataUserController::class);
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {

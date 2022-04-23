@@ -20,19 +20,30 @@
             <thead>
             <tr>
                 <th style="width: 10px">No</th>
-                <th>Merk</th>
+                <th>Nama</th>
+                <th>Departemen</th>
+                <th>Role</th>
+                <th>Status</th>
                 <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($dataMerks as $dataMerk)
+                @foreach ($users as $user)
                   
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $dataMerk->nama_merk }}</td>
+                <td>{{ $user->username }}</td>
+                <td>{{ $user->departemen->nama_departemen }}</td>
+                <td>{{ $user->role }}</td>
+                <td>                 
+                    @if ($user->status == 1)
+                    Non-Aktif
+                    @else
+                    Aktif    
+                    @endif </td>
                 <td>
-                    <a href="/data-merk/{{ $dataMerk->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
-                    <form action="/data-merk/{{ $dataMerk->id }}" method="POST" class="d-inline">
+                    <a href="/data-user/{{ $user->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/data-user/{{ $user->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>

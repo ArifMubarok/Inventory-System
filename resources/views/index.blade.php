@@ -40,7 +40,7 @@
                         @csrf
                     <div class="form-group first">
                         <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" id="username">
+                        <input type="text" name="username" class="form-control" placeholder="Username" id="username" autofocus>
                     </div>
                     <div class="form-group last mb-3">
                         <label for="password">Password</label>

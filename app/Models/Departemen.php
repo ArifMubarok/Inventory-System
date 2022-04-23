@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Bagian;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Departemen extends Model
 {
@@ -16,5 +18,10 @@ class Departemen extends Model
     public function bagian()
     {
         return $this->hasMany(Bagian::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
     }
 }

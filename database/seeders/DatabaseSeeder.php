@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'tes',
             'email' => 'tes@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 1,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('tes')
         ]);
 
@@ -34,6 +37,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'nisa',
             'email' => 'nisa@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 1,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -41,6 +47,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'hasan',
             'email' => 'hasan@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -48,6 +57,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'arif',
             'email' => 'arif@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -55,6 +67,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'zahwa',
             'email' => 'zahwa@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -62,6 +77,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'sufian',
             'email' => 'sufian@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -69,6 +87,9 @@ class DatabaseSeeder extends Seeder
             'username' => 'arik',
             'email' => 'arik@gmail.com',
             'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -76,6 +97,9 @@ class DatabaseSeeder extends Seeder
         	'username' => 'sarpras',
             'email' => 'sarpras@gmail.com',
             'role' => 'sarpras',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -83,6 +107,9 @@ class DatabaseSeeder extends Seeder
         	'username' => 'user',
             'email' => 'user@gmail.com',
             'role' => 'user',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
