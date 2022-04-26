@@ -41,7 +41,11 @@
                         <td>{{ $dataBarang->nama_kategori }}</td>
                         <td>
                             <a href="/data-barang/{{ $dataBarang->id }}/edit" class="btn btn-warning mr-2">Edit</a>
-                            <a href="/data-barang/{{ $dataBarang->id }}" class="btn btn-danger">Hapus</a>
+                            <form action="/data-barang/{{ $dataBarang->id }}" method="POST" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                              </form>
                         </td>
                     </tr>
                 @endforeach

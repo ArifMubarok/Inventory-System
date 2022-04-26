@@ -21,7 +21,9 @@ class DataBarangController extends Controller
         $data = DataBarang::join('satuan_barangs', 'satuan_barangs.id', '=', 'data_barangs.id_satuan')
             ->join('data_merks', 'data_merks.id', '=', 'data_barangs.id_merk')
             ->join('kategori_barangs', 'kategori_barangs.id_kategori', '=', 'data_barangs.id_kategori')
+            ->select('data_barangs.*', 'data_merks.nama_merk', 'kategori_barangs.nama_kategori', 'satuan_barangs.nama_satuan')
             ->get();
+
         return view('admin.master.data_barang.index', [
             'dataBarangs' => $data,
             "title" => "SIM Inventaris : msInventaris",
@@ -91,7 +93,14 @@ class DataBarangController extends Controller
      */
     public function edit(DataBarang $dataBarang)
     {
-        //
+        return view('admin.master.data_barang.edit', [
+            "title" => "SIM Inventaris : msInventaris",
+            "judul" => "Data Barang",
+            'dataBarang' => $dataBarang,
+            'kategoriBarang' => KategoriBarang::all(),
+            'satuanBarang' => SatuanBarang::all(),
+            'dataMerk' => DataMerk::all(),
+        ]);
     }
 
     /**
@@ -103,7 +112,22 @@ class DataBarangController extends Controller
      */
     public function update(Request $request, DataBarang $dataBarang)
     {
-        //
+        $validateInput = $request->validate([
+            'nama_barang' => 'required',
+            'barcode' => 'required',
+            'id_satuan' => 'required',
+            'id_merk' => 'required',
+            'id_kategori' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $ubah = DataBarang::where('id', $dataBarang->id)->update($validateInput);
+
+        if ($ubah) {
+            return redirect('/data-barang')->with('success', 'Data Barang telah diubah !');
+        } else {
+            return redirect('/data-barang')->with('fail', 'Data Barang gagal diubah !');
+        }
     }
 
     /**
@@ -114,6 +138,12 @@ class DataBarangController extends Controller
      */
     public function destroy(DataBarang $dataBarang)
     {
-        //
+        $delete = DataBarang::where('id', $dataBarang->id)->delete();
+
+        if ($delete) {
+            return redirect('/data-barang')->with('success', 'Data Barang telah dihapus !');
+        } else {
+            return redirect('/data-barang')->with('fail', 'Data Barang gagal dihapus !');
+        }
     }
 }
