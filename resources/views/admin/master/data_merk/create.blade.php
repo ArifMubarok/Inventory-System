@@ -27,8 +27,8 @@
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                    <a href="/data-merk" class="btn btn-secondary">Back</a>
+                <div class="card-footer d-flex justify-content-end">
+                    <a href="/data-merk" class="btn btn-secondary mr-2">Back</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>

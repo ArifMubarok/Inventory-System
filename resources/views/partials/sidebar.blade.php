@@ -17,7 +17,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->username }}</a>
-          <p class="text-white">Admin</p>
+          <p class="text-white">{{ auth()->user()->role }}</p>
         </div>
       </div>
 
@@ -38,6 +38,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               
           <li class="nav-item">
             <a href="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -62,6 +63,7 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->role=="admin")  
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-server"></i>
@@ -103,6 +105,9 @@
               </li>
             </ul>
           </li>
+          @endif
+
+          @if (auth()->user()->role=="admin" || auth()->user()->role=="sarpras" )
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
@@ -203,6 +208,10 @@
               </li>
             </ul>
           </li>
+          @endif
+
+          @if (auth()->user()->role=="admin")
+              
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
@@ -213,25 +222,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="/departemen" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Departemen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="/bagian" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bagian</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
+                <a href="/lokasi" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lokasi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
+                <a href="/data-user" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User</p>
                 </a>
@@ -260,6 +269,15 @@
                 </a>
               </li>
             </ul>
+          </li>
+          @endif
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p>
+                Logout
+              </p>
+            </a>
           </li>
         </ul>
       </nav>

@@ -6,8 +6,8 @@
 </div>
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Data Satuan Barang</h3>
-        <a href="satuan-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
+        <h3 class="card-title">Lokasi</h3>
+        <a href="lokasi/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -19,23 +19,29 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th style="width: 10px">#</th>
-                <th>Satuan</th>
+                <th style="width: 10px">No</th>
+                <th>Lokasi</th>
+                <th>Status</th>
                 <th style="width: 130px">Action</th>
             </tr>
             </thead>
             <tbody>
-                @foreach ($satuanBarangs as $satuanBarang)
+                @foreach ($lokasis as $lokasi)
                   
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $satuanBarang->nama_satuan }}</td>
+                <td>{{ $lokasi->nama_lokasi }}</td>
+                <td>@if  ($lokasi->status == 1)
+                    Aktif
+                @else
+                    Non Aktif
+                @endif </td>
                 <td>
-                    <a href="/satuan-barang/{{ $satuanBarang->id }}/edit" class="badge badge-pill badge-warning"><i class="fas fa-edit"></i></a>
-                    <form action="/satuan-barang/{{ $satuanBarang->id }}" method="POST" class="d-inline">
+                    <a href="/lokasi/{{ $lokasi->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <form action="/lokasi/{{ $lokasi->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge badge-pill bg-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"><i class="far fa-trash-alt"></i></span></button>
+                        <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
                       </form>
                 </td>
               </tr>

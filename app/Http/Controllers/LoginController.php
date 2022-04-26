@@ -28,8 +28,7 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials) && auth()->user()->status == "0") {
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }

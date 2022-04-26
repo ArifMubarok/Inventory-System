@@ -7,13 +7,11 @@
 <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 </div>
-    <div class="d-flex align-items-end flex-column">
-        <a href="/kategori-barang/create" class="btn btn-primary mb-3">Tambah Kategori</a>
-    </div>
 
     <div class="card">
         <div class="card-header">
         <h3 class="card-title">Data Kategori</h3>
+        <a href="/kategori-barang/create" class="btn btn-sm btn-info float-right">Tambah Data</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -27,7 +25,7 @@
             <tr>
                 <th style="width: 10px">No.</th>
                 <th>Kategori</th>
-                <th style="width: 10px">Aksi</th>
+                <th style="width: 130px">Aksi</th>
             </tr>
             </thead>
             <tbody>
@@ -36,12 +34,12 @@
             <tr>                    
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nama_kategori }}</td>
-                <td>
-                    <a href="/kategori-barang/{{ $item->id_kategori }}/edit" class="badge bg-warning"><span data-feather="edit">Edit</span></a>
+                <td> 
+                    <a href="/kategori-barang/{{ $item->id_kategori }}/edit" class="badge badge-pill badge-warning"><span data-feather="edit"><i class="fas fa-edit"></i></span></a>
                     <form action="/kategori-barang/{{ $item->id_kategori }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                        <button class="badge badge-pill bg-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"><i class="far fa-trash-alt"></i></span></button>
                       </form>
                 </td>
             </tr>

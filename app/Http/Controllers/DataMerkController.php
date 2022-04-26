@@ -44,12 +44,12 @@ class DataMerkController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_merk' => 'required'
+            'nama_merk' => 'required|unique:data_merks|max:255'
         ]);
 
         DataMerk::create($validatedData);
 
-        return redirect('/data-merk')->with('success', 'merk has been added');
+        return redirect('/data-merk')->with('success', 'data merk berhasil ditambahkan');
     }
 
     /**
@@ -87,13 +87,14 @@ class DataMerkController extends Controller
      */
     public function update(Request $request, DataMerk $dataMerk)
     {
-        $validatedData = $request->validate([
-            'nama_merk' => 'required'
-        ]);
+        $rules['nama_merk'] = 'required|unique:data_merks|max:255';    
+        if ($request->nama_merk != $dataMerk->nama_merk) {
+        }
+        $validatedData = $request->validate($rules);
 
         DataMerk::where('id', $dataMerk->id)->update($validatedData);
 
-        return redirect('/data-merk')->with('success', 'data merk berhasil diubah');
+        return redirect('/data-merk')->with('success', 'data merk berhasil diedit');
     }
 
     /**
@@ -106,6 +107,6 @@ class DataMerkController extends Controller
     {
         DataMerk::where('id', $dataMerk->id)->delete();
 
-        return redirect('/data-merk')->with('success', ' telah dihapus!');
+        return redirect('/data-merk')->with('success', 'data merk telah dihapus!');
     }
 }

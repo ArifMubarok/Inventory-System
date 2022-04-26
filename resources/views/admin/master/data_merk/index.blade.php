@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('halaman')
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+</div>
     <div class="card">
         <div class="card-header">
         <h3 class="card-title">Data Merk</h3>
@@ -28,11 +31,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $dataMerk->nama_merk }}</td>
                 <td>
-                    <a href="/data-merk/{{ $dataMerk->id }}/edit" class="badge badge-pill badge-warning">Edit</a>
+                    <a href="/data-merk/{{ $dataMerk->id }}/edit" class="badge badge-pill badge-warning"><i class="fas fa-edit"></i></a>
                     <form action="/data-merk/{{ $dataMerk->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge badge-pill bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                        <button class="badge badge-pill bg-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"><i class="far fa-trash-alt"></i></span></button>
                       </form>
                 </td>
               </tr>

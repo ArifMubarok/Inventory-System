@@ -69,7 +69,7 @@
                     <div class="mb-3">
                         <label for="foto">Foto</label>
                         <input class="form-control" type="file" id="foto" name="foto">
-                      </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
 

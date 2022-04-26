@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Bagian;
+use App\Models\Lokasi;
 use App\Models\DataMerk;
 use App\Models\Supplier;
 use App\Models\DataBarang;
+use App\Models\Departemen;
 use App\Models\SatuanBarang;
 use App\Models\KategoriBarang;
 use Illuminate\Database\Seeder;
@@ -24,42 +27,90 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'tes',
             'email' => 'tes@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 1,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('tes')
         ]);
 
         User::create([
             'username' => 'nisa',
             'email' => 'nisa@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 1,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
         User::create([
             'username' => 'hasan',
             'email' => 'hasan@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
         User::create([
             'username' => 'arif',
             'email' => 'arif@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
         User::create([
             'username' => 'zahwa',
             'email' => 'zahwa@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
         User::create([
             'username' => 'sufian',
             'email' => 'sufian@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
         User::create([
             'username' => 'arik',
             'email' => 'arik@gmail.com',
+            'role' => 'admin',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
+            'password' => bcrypt('123')
+        ]);
+
+        User::create([
+        	'username' => 'sarpras',
+            'email' => 'sarpras@gmail.com',
+            'role' => 'sarpras',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
+            'password' => bcrypt('123')
+        ]);
+
+        User::create([
+        	'username' => 'user',
+            'email' => 'user@gmail.com',
+            'role' => 'user',
+            'departemen_id' => 2,
+            'nomor_hp' => '0812345678910',
+            'status' => 0,
             'password' => bcrypt('123')
         ]);
 
@@ -100,14 +151,25 @@ class DatabaseSeeder extends Seeder
 
         DataBarang::create([
             'id_satuan' => 1,
-            'id_kategori' => 1,
             'id_merk' => 1,
+            'id_kategori' => 1,
             'nama_barang' => 'tes barang',
-            'keterangan' => 'text',
+            'foto' => 'default.jpg',
             'barcode' => 'E001',
-            'foto' => 'default.jpg'
+            'keterangan' => 'text',
         ]);
 
+        Departemen::create([
+            'nama_departemen' => 'departemen1',
+            'keterangan' => 'keterangan departemen1',
+            'status' => 1
+        ]);
+
+        Departemen::create([
+            'nama_departemen' => 'departemen2',
+            'keterangan' => 'keterangan departemen2',
+            'status' => 0
+        ]);
 
         DataBarang::create([
             'id_satuan' => 2,
@@ -118,5 +180,31 @@ class DatabaseSeeder extends Seeder
             'barcode' => 'E002',
             'foto' => 'default.jpg'
         ]);
+        Bagian::create([
+            'departemen_id' => 1,
+            'nama_bagian' => 'bagian1',
+            'keterangan' => 'keterangan bagian1',
+            'status' => 0
+        ]);
+
+        Bagian::create([
+            'departemen_id' => 2,
+            'nama_bagian' => 'bagian2',
+            'keterangan' => 'keterangan bagian2',
+            'status' => 1
+        ]);
+
+        Lokasi::create([
+            'nama_lokasi' => 'lokasi1',
+            'keterangan' => 'keterangan lokasi1',
+            'status' => 1
+        ]);
+
+        Lokasi::create([
+            'nama_lokasi' => 'lokasi2',
+            'keterangan' => 'keterangan lokasi2',
+            'status' => 0
+        ]);
+
     }
 }
