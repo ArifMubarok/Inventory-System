@@ -43,8 +43,12 @@
                         <td>{{ $dataBarang->nama_merk }}</td>
                         <td>{{ $dataBarang->nama_kategori }}</td>
                         <td>
-                            <a href="/data-barang/{{ $dataBarang->id }}/edit" class="badge badge-pill badge-warning"><i class="fas fa-edit"></i></a>
-                            <a href="/data-barang/{{ $dataBarang->id }}" class="badge badge-pill badge-danger border-0 ml-2" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt"></i></a>
+                            <a href="/data-barang/{{ $dataBarang->id }}/edit" class="btn btn-warning mr-2">Edit</a>
+                            <form action="/data-barang/{{ $dataBarang->id }}" method="POST" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><span data-feather="x-circle">Hapus</span></button>
+                              </form>
                         </td>
                     </tr>
                 @endforeach
