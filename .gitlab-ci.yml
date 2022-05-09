@@ -3,7 +3,7 @@ stages:
 
 
 # upload job, see https://lftp.yar.ru/lftp-man.html
-main:
+cek:
   stage: cek
   script:
     - apt-get update -qq && apt-get install -y -qq lftp
