@@ -23,4 +23,4 @@ username/password
 
 ### Link production
 
-[Sistem Inventaris Hotel Adhiwangsa](v3420003.mhs.d3tiuns.com)
+[Sistem Inventaris Hotel Adhiwangsa](https://v3420003.mhs.d3tiuns.com/)
