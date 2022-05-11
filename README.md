@@ -1,4 +1,3 @@
-
 ## Tentang Projek
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
@@ -17,15 +16,9 @@ Dalam Pengembangan Projek bla bla bla...
 ## User && Role
 
 username/password
-tes/tes (admin)
-hasan/123 (admin)
-arif/123 (admin)
-sufian/123 (admin)
-nisa/123 (admin)
-zahwa/123 (admin)
-ariq/123 (admin)
-sarpras/123 (admin)
-user/123 (admin)
+1. arif/123 (admin)
+2. sarpras/123 (sarpras)
+3. user/123 (user)
 
 
 ### Link production
