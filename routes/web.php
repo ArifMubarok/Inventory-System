@@ -12,6 +12,7 @@ use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\PengadaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth', 'CekRole:admin']], function() {
     Route::resource('/departemen', DepartemenController::class);
     Route::resource('/data-user', DataUserController::class);
     Route::resource('/lokasi', LokasiController::class);
+    Route::resource('/pengadaan-barang', PengadaanController::class);
 });
 
 Route::group(['middleware' => ['auth', 'CekRole:admin,user,sarpras']], function() {

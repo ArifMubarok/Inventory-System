@@ -11,6 +11,7 @@ use App\Models\DataBarang;
 use App\Models\Departemen;
 use App\Models\SatuanBarang;
 use App\Models\KategoriBarang;
+use App\Models\Pengadaan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -206,5 +207,18 @@ class DatabaseSeeder extends Seeder
             'status' => 0
         ]);
 
+
+        Pengadaan::create([
+            'databarang_id' =>1,
+            'supplier_id' =>1,
+            'jumlah' => 2,
+            'harga' => "RP. 3000000",
+            'kondisi' => "baik",
+            'tanggal_pengadaan' =>time(),
+            'depresiasi' => '1',
+            'lama_depresiasi' => '24',
+            'keterangan' => 'apa aja'
+
+        ]);
     }
 }
