@@ -5,12 +5,12 @@ Projek yang kami jalankan merupakan pembaruan Sistem Informasi Manajemen Inventa
 ## Contribution
 
 Dalam Pengembangan Projek kami membagi pekerjaan setiap anggota, dimana secara garis besar pembagiannya seperti dibawah ini : 
-1. Ahmad Hasan Ali -> BackEnd
-2. Ahmad Sufian -> FrontEnd
-3. Ahmad Thoriq Osama -> FrontEnd
-4. Annisa Rahayudi -> Analisis Sistem
-5. Annandhini Zahwa -> Analisis Sistem
-6. Arif Rahman Mubarok -> BackEnd
+1. Ahmad Hasan Ali      (V3420003) -> BackEnd
+2. Ahmad Sufian         (V3420004) -> FrontEnd
+3. Ahmad Thoriq Osama   (V3420005) -> FrontEnd
+4. Annandhini Zahwa     (V3420012) -> Analisis Sistem
+5. Annisa Rahayudi      (V3420013) -> Analisis Sistem
+6. Arif Rahman Mubarok  (V3420014) -> BackEnd
 
 
 ## User && Role
