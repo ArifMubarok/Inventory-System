@@ -1,12 +1,12 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Setting' : 'Create Setting' )
+@section('title', isset($data) ? 'Edit Kategori' : 'Buat Kategori' )
 
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Setting</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Kategori</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.settings.update', $data->id) : route('admin.settings.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.kategori.update', $data->id) : route('admin.kategori.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -37,10 +37,6 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
-      </div>
-      <div class="form-group">
-        <label for="name">Value</label>
-        <input type="text" name="value" class="form-control" autofocus data-parsley-required="true" value="{{{ old('value') ?? $data->value ?? null }}}">
       </div>
     </div>
     <!-- end panel-body -->

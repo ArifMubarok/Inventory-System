@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\KategoriDataTable;
+use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
@@ -25,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.kategori.add-edit');
     }
 
     /**
@@ -36,18 +37,12 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            Kategori::create($request->all());
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**

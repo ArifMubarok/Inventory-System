@@ -44,7 +44,7 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/kategori-barang',
+                    'url' => '/admin/kategori',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Barang'
                 ],
                 [
