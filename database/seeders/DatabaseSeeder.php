@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // SettingSeeder::class,
             LaravelEntrustSeeder::class,
+            MasterSeeder::class,
         ]);
     }
 }

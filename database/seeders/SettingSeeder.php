@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Setting;
+// use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class SettingSeeder extends Seeder
@@ -14,18 +14,22 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        $default = [
-            'skck-nama-pejabat-ttd' => 'NAMA PENANDATANGAN',
-            'skck-jabatan-pejabat-ttd' => 'AJUN KOMISARIS POLISI',
-            'skck-nrp-pejabat-ttd' => '75110267',
-        ];
+        // $default = [
+        //     'skck-nama-pejabat-ttd' => 'NAMA PENANDATANGAN',
+        //     'skck-jabatan-pejabat-ttd' => 'AJUN KOMISARIS POLISI',
+        //     'skck-nrp-pejabat-ttd' => '75110267',
+        // ];
 
-        foreach ($default as $key => $value) {
-            Setting::updateOrCreate([
-                'name' => $key,
-            ], [
-                'value' => $value
-            ]);
-        }
+        // foreach ($default as $key => $value) {
+        //     Setting::updateOrCreate([
+        //         'name' => $key,
+        //     ], [
+        //         'value' => $value
+        //     ]);
+        // }
+
+        // Setting::create([
+
+        // ]);
     }
 }

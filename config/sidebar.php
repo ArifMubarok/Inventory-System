@@ -186,12 +186,12 @@ return [
                 ]
             ],
         ],
-        
-        'menu_user' => [
-            [
-                'icon' => 'fa fa-th-large',
-                'title' => 'Dashboard',
-                'url' => '/',
+
+    'menu_user' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/',
             'caret' => false
             // ], [
             //     'icon' => 'fa fa-envelope',

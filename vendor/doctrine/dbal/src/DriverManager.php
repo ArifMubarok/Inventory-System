@@ -145,8 +145,9 @@ final class DriverManager
      * <b>driverClass</b>:
      * The driver class to use.
      *
-     * @param Configuration|null $config       The configuration to use.
-     * @param EventManager|null  $eventManager The event manager to use.
+     * @param array<string,mixed> $params
+     * @param Configuration|null  $config       The configuration to use.
+     * @param EventManager|null   $eventManager The event manager to use.
      * @psalm-param array{
      *     charset?: string,
      *     dbname?: string,
@@ -171,6 +172,7 @@ final class DriverManager
      *     user?: string,
      *     wrapperClass?: class-string<T>,
      * } $params
+     * @phpstan-param array<string,mixed> $params
      *
      * @psalm-return ($params is array{wrapperClass:mixed} ? T : Connection)
      *
