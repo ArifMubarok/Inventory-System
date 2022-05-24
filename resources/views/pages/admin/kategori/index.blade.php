@@ -22,11 +22,6 @@
 <h1 class="page-header">Master<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
-<div class="alert alert-dark fade show">
-  <strong>Cara pakai!</strong>
-  gunakan fungsi "config('settings.name');"
-</div>
-
 
 <!-- begin panel -->
 <div class="panel panel-inverse">

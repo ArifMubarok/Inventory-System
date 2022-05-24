@@ -1,12 +1,12 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Kategori' : 'Buat Kategori' )
+@section('title', isset($data) ? 'Edit Kategori' : 'Create Kategori' )
 
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Kategori</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->

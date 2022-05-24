@@ -53,7 +53,10 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Kategori::findOrFail($id);
+        return view('pages.admin.kategori.add-edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -65,7 +68,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Kategori::findOrFail($id);
+        try {
+            $data->update($request->all());
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -76,6 +85,6 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Kategori::findOrFail($id)->delete();
     }
 }
