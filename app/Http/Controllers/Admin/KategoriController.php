@@ -42,7 +42,7 @@ class KategoriController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -74,7 +74,7 @@ class KategoriController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -85,6 +85,11 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        return Kategori::findOrFail($id)->delete();
+        try {
+            $kategori = Kategori::findOrFail($id);
+            $kategori->update(['status' => '0']);
+        } catch (\Throwable $th) {
+            return response(['error' => 'Something went wrong']);
+        }
     }
 }

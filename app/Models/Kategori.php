@@ -9,8 +9,8 @@ class Kategori extends Model
 {
     use HasFactory;
 
-    protected $table = 'kategori';
-    protected $fillable = ['name'];
-    public $timestamps = false;
+    protected $table = 'data_kategori';
+    // protected $fillable = ['name', 'status'];
+    protected $guarded = ['id'];
 
 }

@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.kategori.update', $data->id) : route('admin.kategori.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.data-kategori.update', $data->id) : route('admin.data-kategori.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -37,6 +37,7 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
+        <input type="hidden" name="status" value="1">
       </div>
     </div>
     <!-- end panel-body -->
