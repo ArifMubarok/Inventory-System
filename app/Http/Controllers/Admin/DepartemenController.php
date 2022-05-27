@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\KategoriDataTable;
-use App\Models\Kategori;
+use App\DataTables\Admin\DepartemenDataTable;
+use App\Models\Departemen;
 
-class KategoriController extends Controller
+class DepartemenController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(KategoriDataTable $datatable)
+    public function index(DepartemenDataTable $datatable)
     {
         //var_dump($datatable);die;
-        return $datatable->render('pages.admin.kategori.index');
+        return $datatable->render('pages.admin.departemen.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kategori.add-edit');
+        return view('pages.admin.departemen.add-edit');
     }
 
     /**
@@ -39,11 +39,11 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         try {
-            Kategori::create($request->all());
+            Departemen::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -54,8 +54,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $data = Kategori::findOrFail($id);
-        return view('pages.admin.kategori.add-edit', [
+        $data = Departemen::findOrFail($id);
+        return view('pages.admin.departemen.add-edit', [
             'data' => $data
         ]);
     }
@@ -69,13 +69,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kategori::findOrFail($id);
+        $data = Departemen::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -87,8 +87,8 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         try {
-            $kategori = Kategori::findOrFail($id);
-            $kategori->update(['status' => '0']);
+            $departemen = Departemen::findOrFail($id);
+            $departemen->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
