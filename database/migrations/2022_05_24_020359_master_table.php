@@ -30,6 +30,15 @@ class MasterTable extends Migration
             $table->id();
         });
 
+        Schema::create('data_departemen', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->enum('status', ['0', '1']);
+            $table->string('keterangan');
+            $table->enum('status_aktif', ['non-aktif', 'aktif']);
+            $table->timestamps();
+        });
+
         // Schema::create('data_barang', function (Blueprint $table) {
         //     $table->id();
         // });

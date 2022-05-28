@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Kategori;
+use App\Models\Departemen;
 use Illuminate\Database\Seeder;
 
 class MasterSeeder extends Seeder
@@ -17,6 +18,13 @@ class MasterSeeder extends Seeder
         Kategori::create([
             'name' => 'Elektronik',
             'status' => '1',
+        ]);
+
+        Departemen::create([
+            'name' => 'accounting',
+            'status' => '1',
+            'status_aktif' => 'non-aktif',
+            'keterangan' => 'accounting departemen'
         ]);
     }
 }
