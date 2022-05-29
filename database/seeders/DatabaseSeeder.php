@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             // SettingSeeder::class,
             LaravelEntrustSeeder::class,
             MasterSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

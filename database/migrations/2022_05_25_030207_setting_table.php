@@ -21,6 +21,11 @@ class SettingTable extends Migration
         });
         Schema::create('lokasi', function(Blueprint $table){
             $table->id();
+            $table->string('name');
+            $table->enum('status', ['0', '1']);
+            $table->string('keterangan');
+            $table->enum('status_aktif', ['Non-Aktif', 'Aktif']);
+            $table->timestamps();
         });
         Schema::create('user', function(Blueprint $table){
             $table->id();
