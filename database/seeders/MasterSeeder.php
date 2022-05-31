@@ -20,11 +20,6 @@ class MasterSeeder extends Seeder
             'status' => '1',
         ]);
 
-        Departemen::create([
-            'name' => 'accounting',
-            'status' => '1',
-            'status_aktif' => 'non-aktif',
-            'keterangan' => 'accounting departemen'
-        ]);
+
     }
 }

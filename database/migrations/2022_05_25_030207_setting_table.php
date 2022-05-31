@@ -27,7 +27,7 @@ class SettingTable extends Migration
             $table->string('name');
             $table->enum('status', ['0','1']);
             $table->string('keterangan');
-            $table->enum('status_aktif', ['Aktif','Non-Aktif']);
+            $table->enum('status_aktif', ['aktif','non-aktif']);
             $table->timestamps();
 
             $table->foreign('departemen_id')->references('id')->on('departemen')

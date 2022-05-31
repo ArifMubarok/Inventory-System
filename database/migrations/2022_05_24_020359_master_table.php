@@ -22,6 +22,9 @@ class MasterTable extends Migration
 
         Schema::create('data_satuan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_satuan');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
         Schema::create('data_merk', function (Blueprint $table) {
             $table->id();
