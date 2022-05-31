@@ -9,7 +9,12 @@ class Departemen extends Model
 {
     use HasFactory;
 
-    protected $table = 'data_departemen';
+    protected $table = 'departemen';
     // protected $fillable = ['name', 'status'];
     protected $guarded = ['id'];
+
+    public function bagian()
+    {
+        return $this->hasMany(Bagian::class);
+    }
 }

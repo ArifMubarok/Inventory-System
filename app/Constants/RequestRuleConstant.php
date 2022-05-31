@@ -4,6 +4,16 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function bagianTable()
+    {
+        return [
+            'name' => 'required|min:3',
+            'departemen_id' => 'required',
+            'status_aktif' => 'required',
+            'keterangan' => 'required'
+        ];
+    }
+
     public static function userTable()
     {
         return [

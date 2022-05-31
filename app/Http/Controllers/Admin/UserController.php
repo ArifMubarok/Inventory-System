@@ -50,7 +50,7 @@ class UserController extends Controller
                         'error' => $msg
                     ], 500);
                 }
-                return back()->withInput()->withToastError($msg);
+                return redirect(route('admin.users.index'))->withToastSuccess($msg);
             }
 
             if ($request->wantsJson()) {
