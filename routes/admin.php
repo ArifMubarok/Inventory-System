@@ -16,6 +16,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('/settings', 'SettingController');
         Route::resource('/data-kategori', 'KategoriController');
         Route::resource('/departemen', 'DepartemenController');
-        
+        Route::resource('/data-satuan', 'SatuanController');
     });
 });
