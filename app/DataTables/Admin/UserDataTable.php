@@ -88,7 +88,9 @@ class UserDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('name')->title('Nama Lengkap'),
-            Column::make('roles')->title('Hak Akses'),
+            Column::make('roles')
+                ->title('Hak Akses')
+                ->orderable(false),
             Column::make('email'),
             Column::make('created_at')->title('Ditambahkan pada'),
         ];

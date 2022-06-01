@@ -21,9 +21,10 @@ class BagianDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->setRowId(function ($row){
+            ->setRowId(function ($row) {
                 return $row->id;
             })
+            ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.bagian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
@@ -32,9 +33,10 @@ class BagianDataTable extends DataTable
                 return $btn;
             })
             ->editColumn('departemen', function ($row) {
-                $display = $row->departemen->where('id', $row->id)->pluck('name')->toArray();
+                $display = $row->departemen->where('id', $row->departemen->id)->pluck('name')->toArray();
                 return implode(', ', $display);
-            });
+            })
+            ;
     }
 
     /**
@@ -78,14 +80,17 @@ class BagianDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')
+                  ->width(5),
+            Column::make('name')->title('Bagian'),
+            Column::make('departemen')
+                  ->orderable(false),
+            Column::make('status_aktif')->title('Aktif'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('name')->title('Bagian'),
-            Column::make('departemen'),
-            Column::make('status_aktif')->title('Aktif'),
         ];
     }
 

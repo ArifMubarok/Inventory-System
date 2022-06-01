@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Kategori;
 use App\Models\Departemen;
+use App\Models\Satuan;
 use Illuminate\Database\Seeder;
 
 class MasterSeeder extends Seeder
@@ -20,6 +21,9 @@ class MasterSeeder extends Seeder
             'status' => '1',
         ]);
 
-
+        Satuan::create([
+            'nama_satuan' => 'Rim',
+            'status' => '1',
+        ]);
     }
 }

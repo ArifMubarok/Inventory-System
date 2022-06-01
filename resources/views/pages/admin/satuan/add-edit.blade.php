@@ -36,7 +36,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="nama_satuan">Nama Satuan</label>
-        <input type="text" name="nama_satuan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('nama_satuan') ?? $data->name ?? null }}}">
+        <input type="text" name="nama_satuan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('nama_satuan') ?? $data->nama_satuan ?? null }}}">
         <input type="hidden" name="status" value="1">
       </div>
     </div>
