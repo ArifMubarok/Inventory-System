@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\DataTables\Admin\KategoriDataTable;
 use App\Models\Kategori;
+use Illuminate\Http\Request;
+use App\Http\Requests\Admin\KategoriForm;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Master\KategoriDataTable;
 
 class KategoriController extends Controller
 {
@@ -17,7 +18,7 @@ class KategoriController extends Controller
     public function index(KategoriDataTable $datatable)
     {
         //var_dump($datatable);die;
-        return $datatable->render('pages.admin.kategori.index');
+        return $datatable->render('pages.admin.master.kategori.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kategori.add-edit');
+        return view('pages.admin.master.kategori.add-edit');
     }
 
     /**
@@ -36,14 +37,14 @@ class KategoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KategoriForm $request)
     {
         try {
             Kategori::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -55,7 +56,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $data = Kategori::findOrFail($id);
-        return view('pages.admin.kategori.add-edit', [
+        return view('pages.admin.master.kategori.add-edit', [
             'data' => $data
         ]);
     }
@@ -75,7 +76,7 @@ class KategoriController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**

@@ -19,23 +19,23 @@
         <thead>
           <tr>
             <th width="1%"></th>
-            <th width="1%" data-orderable="false"></th>
-            <th class="text-nowrap">Rendering engine</th>
-            <th class="text-nowrap">Browser</th>
-            <th class="text-nowrap">Platform(s)</th>
-            <th class="text-nowrap">Engine version</th>
-            <th class="text-nowrap">CSS grade</th>
+            <th class="text-nowrap">Barang</th>
+            <th class="text-nowrap">Judul Laporan</th>
+            <th class="text-nowrap">Laporan</th>
+            <th class="text-nowrap">Status</th>
+            <th class="text-nowrap">Dilaporkan Oleh</th>
+            <th class="text-nowrap">Tanggal Laporan</th>
           </tr>
         </thead>
         <tbody>
           <tr class="odd gradeX">
             <td width="1%" class="f-s-600 text-inverse">1</td>
-            <td width="1%" class="with-img"><img src="/assets/img/user/user-1.jpg" class="img-rounded height-30" /></td>
-            <td>Trident</td>
-            <td>Internet Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td>4</td>
-            <td>X</td>
+            <td>Haram</td>
+            <td>Hehe</td>
+            <td>Hehehe</td>
+            <td>Belum Kawin</td>
+            <td>Komandan</td>
+            <td>17 Agustus 1945</td>
           </tr>
         </tbody>
       </table>

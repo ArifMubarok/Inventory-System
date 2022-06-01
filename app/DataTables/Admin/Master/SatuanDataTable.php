@@ -73,10 +73,10 @@ class SatuanDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false),
-            Column::make('nama_satuan'),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false),
+            Column::make('nama_satuan')->title('Satuan'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

@@ -2,7 +2,7 @@
 <ol class="breadcrumb float-xl-right">
     <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
     <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-    <li class="breadcrumb-item active">Dashboard v3</li>
+    {{-- <li class="breadcrumb-item active">Dashboard v3</li> --}}
   </ol>
   <!-- end breadcrumb -->
   <!-- begin page-header -->

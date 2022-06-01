@@ -8,9 +8,9 @@
           <h4>MASTER BARANG</h4>
           <p>0</p>	
         </div>
-        <div class="stats-link">
+        {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-        </div>
+        </div> --}}
       </div>
     </div>
     <!-- end col-3 -->
@@ -22,9 +22,9 @@
           <h4>BARANG AKTIF</h4>
           <p>0</p>	
         </div>
-        <div class="stats-link">
+        {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-        </div>
+        </div> --}}
       </div>
     </div>
     <!-- end col-3 -->
@@ -36,9 +36,9 @@
           <h4>BARANG NON-AKTIF</h4>
           <p>0</p>	
         </div>
-        <div class="stats-link">
+        {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-        </div>
+        </div> --}}
       </div>
     </div>
     <!-- end col-3 -->
@@ -50,9 +50,9 @@
           <h4>TOTAL BARANG</h4>
           <p>0</p>	
         </div>
-        <div class="stats-link">
+        {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
-        </div>
+        </div> --}}
       </div>
     </div>
     <!-- end col-3 -->
