@@ -13,6 +13,15 @@ class RequestRuleConstant
             'barcode' => 'required|min:3'
         ];
     }
+    
+    public static function departemenTable()
+    {
+        return [
+            'name' => 'required|min:3',
+            'status_aktif' => 'required',
+            'keterangan' => 'required'
+        ];
+    }
 
     public static function bagianTable()
     {

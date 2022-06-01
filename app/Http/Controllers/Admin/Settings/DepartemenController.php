@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Settings\DepartemenDataTable;
+use App\Http\Requests\Admin\DepartemenForm;
 use App\Models\Departemen;
 
 class DepartemenController extends Controller
@@ -16,7 +17,6 @@ class DepartemenController extends Controller
      */
     public function index(DepartemenDataTable $datatable)
     {
-        //var_dump($datatable);die;
         return $datatable->render('pages.admin.settings.departemen.index');
     }
 
@@ -36,7 +36,7 @@ class DepartemenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartemenForm $request)
     {
         try {
             Departemen::create($request->all());
