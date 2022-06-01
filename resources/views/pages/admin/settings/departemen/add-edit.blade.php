@@ -1,12 +1,12 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Kategori' : 'Create Kategori' )
+@section('title', isset($data) ? 'Edit Departemen' : 'Create Departemen' )
 
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Setting</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.data-kategori.update', $data->id) : route('admin.data-kategori.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.settings.departemen.update', $data->id) : route('admin.settings.departemen.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -35,10 +35,23 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama</label>
+        <label for="name">Nama Departemen</label>
         <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
         <input type="hidden" name="status" value="1">
       </div>
+      <div class="form-group">
+        <label for="status_aktif">Status</label>
+        <select class="form-control" name="status_aktif">
+          <option selected>{{{ old('status_aktif') ?? $data->status_aktif ?? 'Pilih Status' }}}</option>
+          <option value="aktif">aktif</option>
+          <option value="non-aktif">non-aktif</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="keterangan">Keterangan</label>
+        <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('keterangan') ?? $data->keterangan ?? null }}}">
+      </div>
+      
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

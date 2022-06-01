@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
-use App\DataTables\Admin\UserDataTable;
+use App\DataTables\Admin\Settings\UserDataTable;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserForm;
@@ -14,13 +14,13 @@ class UserController extends Controller
 {
     public function index(UserDataTable $datatable)
     {
-        return $datatable->render('pages.admin.user.index');
+        return $datatable->render('pages.admin.settings.user.index');
     }
 
     public function create()
     {
         $roles = Role::pluck('display_name', 'id');
-        return view('pages.admin.user.add-edit', ['roles' => $roles]);
+        return view('pages.admin.settings.user.add-edit', ['roles' => $roles]);
     }
 
     public function store(UserForm $request)
@@ -50,7 +50,7 @@ class UserController extends Controller
                         'error' => $msg
                     ], 500);
                 }
-                return back()->withInput()->withToastError($msg);
+                return redirect(route('admin.settings.users.index'))->withToastSuccess($msg);
             }
 
             if ($request->wantsJson()) {
@@ -60,7 +60,7 @@ class UserController extends Controller
                 ]);
             }
 
-            return redirect(route('admin.users.index'))->withToastSuccess($msg);
+            return redirect(route('admin.settings.users.index'))->withToastSuccess($msg);
         });
     }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     {
         $data = User::with(['profile', 'roles'])->findOrFail($id);
         $roles = Role::pluck('display_name', 'id');
-        return view('pages.admin.user.add-edit', ['data' => $data, 'roles' => $roles]);
+        return view('pages.admin.settings.user.add-edit', ['data' => $data, 'roles' => $roles]);
     }
 
     public function update(UserForm $request, User $user)
@@ -104,7 +104,7 @@ class UserController extends Controller
                 ]);
             }
 
-            return redirect(route('admin.users.index'))->withToastSuccess($msg);
+            return redirect(route('admin.settings.users.index'))->withToastSuccess($msg);
         });
     }
 

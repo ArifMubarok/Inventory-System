@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 // use App\Models\Setting;
-use App\Models\Lokasi;
+use App\Models\Bagian;
+use App\Models\Departemen;
 use Illuminate\Database\Seeder;
 
 class SettingSeeder extends Seeder
@@ -39,5 +40,22 @@ class SettingSeeder extends Seeder
         // Setting::create([
 
         // ]);
+
+        
+
+        Departemen::create([
+            'name' => 'accounting',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'keterangan' => 'accounting departemen'
+        ]);
+
+        Bagian::create([
+            'name' => 'Cashier',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'departemen_id' => '1',
+            'keterangan' => 'bagian departemen'
+        ]);
     }
 }

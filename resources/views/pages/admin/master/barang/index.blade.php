@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Departemen')
+@section('title', 'Barang')
 
 @push('css')
 <!-- datatables -->
@@ -14,12 +14,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Setting</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Setting<small> @yield('title')</small></h1>
+<h1 class="page-header">Master<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 

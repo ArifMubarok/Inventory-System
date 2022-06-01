@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables\Admin\Master;
 
-use App\Models\User;
+use App\Models\Satuan;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UserDataTable extends DataTable
+class SatuanDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,35 +21,25 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
+            ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.users.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.users.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master.data-satuan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master.data-satuan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
-
                 return $btn;
-            })
-            ->editColumn('roles', function ($row) {
-                $display = $row->roles->pluck('display_name')->toArray();
-                return implode(', ', $display);
-            })
-            ->editColumn('created_at', function ($row) {
-                return $row->created_at->locale('id');
             });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\User $model
+     * @param \App\App\Models\Satuan $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(Satuan $model)
     {
-        return $model->with('roles:id,display_name')->newQuery();
+        return $model->where('status', '=', '1')->newQuery();
     }
 
     /**
@@ -60,7 +50,7 @@ class UserDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('user-table')
+            ->setTableId('satuan-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -82,15 +72,19 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')
+                  ->width(20)
+                  ->addClass('text-center')
+                  ->orderable(false),
+            Column::make('nama_satuan'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('name')->title('Nama Lengkap'),
-            Column::make('roles')->title('Hak Akses'),
-            Column::make('email'),
-            Column::make('created_at')->title('Ditambahkan pada'),
+            // Column::make('add your columns'),
+            // Column::make('created_at'),
+            // Column::make('updated_at'),
         ];
     }
 
@@ -101,6 +95,6 @@ class UserDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'User_' . date('YmdHis');
+        return 'Satuan_' . date('YmdHis');
     }
 }

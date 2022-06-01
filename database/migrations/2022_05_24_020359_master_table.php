@@ -22,6 +22,9 @@ class MasterTable extends Migration
 
         Schema::create('data_satuan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_satuan');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
         Schema::create('data_merk', function (Blueprint $table) {
             $table->id();
@@ -30,18 +33,26 @@ class MasterTable extends Migration
             $table->id();
         });
 
-        Schema::create('data_departemen', function (Blueprint $table) {
+        Schema::create('data_barang', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('satuan_id');
+            $table->unsignedBigInteger('merk_id')->nullable();
+            $table->unsignedBigInteger('kategori_id');
             $table->string('name');
-            $table->enum('status', ['0', '1']);
-            $table->string('keterangan');
-            $table->enum('status_aktif', ['non-aktif', 'aktif']);
+            $table->string('keterangan')->nullable();
+            $table->string('barcode')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
-        });
 
-        // Schema::create('data_barang', function (Blueprint $table) {
-        //     $table->id();
-        // });
+            $table->foreign('satuan_id')->references('id')->on('data_satuan')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('merk_id')->references('id')->on('data_merk')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('kategori_id')->references('id')->on('data_kategori')
+                  ->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

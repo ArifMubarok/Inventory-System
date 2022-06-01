@@ -1,12 +1,12 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Departemen' : 'Create Departemen' )
+@section('title', isset($data) ? 'Edit Barang' : 'Create Barang' )
 
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Setting</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.departemen.update', $data->id) : route('admin.departemen.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master.data-barang.update', $data->id) : route('admin.master.data-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -35,22 +35,26 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama Departemen</label>
+        <label for="name">Nama Barang</label>
         <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
-        <input type="hidden" name="status" value="1">
       </div>
       <div class="form-group">
-        <label for="status_aktif">Status</label>
-        <select class="form-control" name="status_aktif">
-          <option selected>{{{ old('status_aktif') ?? $data->status_aktif ?? 'Pilih Status' }}}</option>
-          <option value="aktif">aktif</option>
-          <option value="non-aktif">non-aktif</option>
-        </select>
+        <label for="name">Barcode</label>
+        <input type="text" name="barcode" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->barcode ?? null }}}">
+      </div>
+      <div class="form-group">
+        <label for="satuan_id">Nama Satuan</label>
+        <x-form.dropdown name="satuan_id" :options="$satuan" :selected="old('satuan_id') ?? (isset($data->satuan_id) ? $data->satuan_id : null)" placeholder="Pilih Satuan" />
+      </div>
+      <div class="form-group">
+        <label for="kategori_id">Nama Kategori</label>
+        <x-form.dropdown name="kategori_id" :options="$kategori" :selected="old('kategori_id') ?? (isset($data->kategori_id) ? $data->kategori_id : null)" placeholder="Pilih Kategori" />
       </div>
       <div class="form-group">
         <label for="keterangan">Keterangan</label>
         <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('keterangan') ?? $data->keterangan ?? null }}}">
       </div>
+      
       
     </div>
     <!-- end panel-body -->

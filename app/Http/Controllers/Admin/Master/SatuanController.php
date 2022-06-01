@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
 
+use App\Models\Satuan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\KategoriDataTable;
-use App\Models\Kategori;
+use App\DataTables\Admin\Master\SatuanDataTable;
 
-class KategoriController extends Controller
+class SatuanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(KategoriDataTable $datatable)
+    public function index(SatuanDataTable $datatable)
     {
-        //var_dump($datatable);die;
-        return $datatable->render('pages.admin.kategori.index');
+        return $datatable->render('pages.admin.master.satuan.index');
     }
 
     /**
@@ -27,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kategori.add-edit');
+        return view('pages.admin.master.satuan.add-edit');
     }
 
     /**
@@ -39,11 +38,22 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         try {
-            Kategori::create($request->all());
+            Satuan::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -54,8 +64,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $data = Kategori::findOrFail($id);
-        return view('pages.admin.kategori.add-edit', [
+        $data = Satuan::findOrFail($id);
+        return view('pages.admin.master.satuan.add-edit', [
             'data' => $data
         ]);
     }
@@ -69,13 +79,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Kategori::findOrFail($id);
+        $data = Satuan::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
     }
 
     /**
@@ -87,8 +97,8 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         try {
-            $kategori = Kategori::findOrFail($id);
-            $kategori->update(['status' => '0']);
+            $satuan = Satuan::findOrFail($id);
+            $satuan->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

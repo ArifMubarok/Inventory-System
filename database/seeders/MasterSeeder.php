@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Kategori;
 use App\Models\Departemen;
+use App\Models\Satuan;
 use Illuminate\Database\Seeder;
 
 class MasterSeeder extends Seeder
@@ -20,11 +21,9 @@ class MasterSeeder extends Seeder
             'status' => '1',
         ]);
 
-        Departemen::create([
-            'name' => 'accounting',
+        Satuan::create([
+            'nama_satuan' => 'Rim',
             'status' => '1',
-            'status_aktif' => 'non-aktif',
-            'keterangan' => 'accounting departemen'
         ]);
     }
 }
