@@ -8,7 +8,7 @@ use App\Models\DataBarang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Master\DataBarangDataTable;
-use App\Http\Requests\DataBarangForm;
+use App\Http\Requests\Admin\DataBarangForm;
 
 class DataBarangController extends Controller
 {
