@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\DepartemenDataTable;
-use App\Models\Departemen;
+use App\DataTables\Admin\Master\KategoriDataTable;
+use App\Models\Kategori;
 
-class DepartemenController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(DepartemenDataTable $datatable)
+    public function index(KategoriDataTable $datatable)
     {
         //var_dump($datatable);die;
-        return $datatable->render('pages.admin.departemen.index');
+        return $datatable->render('pages.admin.master.kategori.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class DepartemenController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.departemen.add-edit');
+        return view('pages.admin.master.kategori.add-edit');
     }
 
     /**
@@ -39,11 +39,11 @@ class DepartemenController extends Controller
     public function store(Request $request)
     {
         try {
-            Departemen::create($request->all());
+            Kategori::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -54,8 +54,8 @@ class DepartemenController extends Controller
      */
     public function edit($id)
     {
-        $data = Departemen::findOrFail($id);
-        return view('pages.admin.departemen.add-edit', [
+        $data = Kategori::findOrFail($id);
+        return view('pages.admin.master.kategori.add-edit', [
             'data' => $data
         ]);
     }
@@ -69,13 +69,13 @@ class DepartemenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Departemen::findOrFail($id);
+        $data = Kategori::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.master.data-kategori.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -87,8 +87,8 @@ class DepartemenController extends Controller
     public function destroy($id)
     {
         try {
-            $departemen = Departemen::findOrFail($id);
-            $departemen->update(['status' => '0']);
+            $kategori = Kategori::findOrFail($id);
+            $kategori->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

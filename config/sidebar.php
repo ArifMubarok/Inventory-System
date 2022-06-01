@@ -44,23 +44,23 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/data-kategori',
+                    'url' => '/admin/master/data-kategori',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Barang'
                 ],
                 [
-                    'url' => '/admin/data-satuan',
+                    'url' => '/admin/master/data-satuan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Satuan'
                 ],
                 [
-                    'url' => '/admin/data-merk',
+                    'url' => '/admin/master/data-merk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Merk'
                 ],
                 [
-                    'url' => '/admin/data-barang',
+                    'url' => '/admin/master/data-barang',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Barang'
                 ],
                 [
-                    'url' => '/admin/data-supplier',
+                    'url' => '/admin/master/data-supplier',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Supplier'
                 ],
             ]
@@ -140,19 +140,19 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/departemen',
+                    'url' => '/admin/settings/departemen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Departemen'
                 ],
                 [
-                    'url' => '/admin/bagian',
+                    'url' => '/admin/settings/bagian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Bagian'
                 ],
                 [
-                    'url' => '/admin/lokasi',
+                    'url' => '/admin/settings/lokasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Lokasi'
                 ],
                 [
-                    'url' => '/admin/users',
+                    'url' => '/admin/settings/users',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;User'
                 ],
                 ]

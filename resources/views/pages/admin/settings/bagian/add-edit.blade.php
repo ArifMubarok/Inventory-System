@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.data-kategori.update', $data->id) : route('admin.data-kategori.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.settings.bagian.update', $data->id) : route('admin.settings.bagian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -35,9 +35,26 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama</label>
+        <label for="departemen_id">Nama Departemen</label>
+        {{-- @dump($data) --}}
+        <x-form.dropdown name="departemen_id" :options="$departemen" :selected="old('departemen_id') ?? (isset($data->departemen_id) ? $data->departemen_id : null)" placeholder="Pilih Departemen" />
+      </div>
+      <div class="form-group">
+        <label for="name">Nama Bagian</label>
         <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
         <input type="hidden" name="status" value="1">
+      </div>
+      <div class="form-group">
+        <label for="status_aktif">Status</label>
+        <select class="select2 form-control" name="status_aktif">
+          <option selected>{{{ old('status_aktif') ?? $data->status_aktif ?? 'Pilih Status' }}}</option>
+          <option value="aktif">aktif</option>
+          <option value="non-aktif">non-aktif</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="keterangan">Keterangan</label>
+        <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('keterangan') ?? $data->name ?? null }}}">
       </div>
     </div>
     <!-- end panel-body -->
