@@ -152,7 +152,7 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Lokasi'
                 ],
                 [
-                    'url' => '/admin/user',
+                    'url' => '/admin/users',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;User'
                 ],
                 ]

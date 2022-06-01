@@ -13,11 +13,25 @@ class SettingTable extends Migration
      */
     public function up()
     {
-        Schema::create('departemen', function(Blueprint $table){
+        Schema::create('departemen', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('status', ['0', '1']);
+            $table->string('keterangan');
+            $table->enum('status_aktif', ['non-aktif', 'aktif']);
+            $table->timestamps();
         });
         Schema::create('bagian', function(Blueprint $table){
             $table->id();
+            $table->unsignedBigInteger('departemen_id');
+            $table->string('name');
+            $table->enum('status', ['0','1']);
+            $table->string('keterangan');
+            $table->enum('status_aktif', ['aktif','non-aktif']);
+            $table->timestamps();
+
+            $table->foreign('departemen_id')->references('id')->on('departemen')
+            ->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::create('lokasi', function(Blueprint $table){
             $table->id();
