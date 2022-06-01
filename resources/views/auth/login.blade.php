@@ -1,6 +1,6 @@
 @extends('layouts.empty', ['paceTop' => true, 'bodyExtraClass' => 'bg-white'])
 
-@section('title', 'Polres')
+@section('title', 'msInventaris')
 
 @section('content')
 <!-- begin login -->
@@ -9,9 +9,9 @@
 	<div class="news-feed">
 		<div class="news-image" style="background-image: url(/assets/img/login-bg/front.png)"></div>
 		<div class="news-caption">
-			<h4 class="caption-title"><b>e</b>Layanan</h4>
+			<h4 class="caption-title"><b>ms</b>Inventaris</h4>
 			<p>
-				Sistem Informasi Layanan
+				Sistem Informasi Manajemen Inventaris
 			</p>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Master;
 use App\Models\Satuan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SatuanForm;
 use App\DataTables\Admin\Master\SatuanDataTable;
 
 class SatuanController extends Controller
@@ -35,7 +36,7 @@ class SatuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SatuanForm $request)
     {
         try {
             Satuan::create($request->all());

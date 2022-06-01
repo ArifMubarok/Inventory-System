@@ -23,6 +23,20 @@ class RequestRuleConstant
         ];
     }
 
+    public static function satuanTable()
+    {
+        return [
+            'nama_satuan' => 'required|min:2|max:50'
+        ];
+    }
+
+    public static function kategoriTable()
+    {
+        return [
+            'name' => 'required|min:2|max:50'
+        ];
+    }
+
     public static function userTable()
     {
         return [
