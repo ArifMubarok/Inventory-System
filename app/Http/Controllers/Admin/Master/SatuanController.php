@@ -16,7 +16,7 @@ class SatuanController extends Controller
      */
     public function index(SatuanDataTable $datatable)
     {
-        return $datatable->render('pages.admin.satuan.index');
+        return $datatable->render('pages.admin.master.satuan.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.satuan.add-edit');
+        return view('pages.admin.master.satuan.add-edit');
     }
 
     /**
@@ -42,7 +42,7 @@ class SatuanController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
     }
 
     /**
@@ -65,7 +65,7 @@ class SatuanController extends Controller
     public function edit($id)
     {
         $data = Satuan::findOrFail($id);
-        return view('pages.admin.satuan.add-edit', [
+        return view('pages.admin.master.satuan.add-edit', [
             'data' => $data
         ]);
     }
@@ -85,7 +85,7 @@ class SatuanController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
+        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
     }
 
     /**

@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::resource('/data-supplier', 'SupplierController');
         });
 
-        Route::group(['namespace' => 'Settings', 'prefix' => 'setting', 'as' => 'setting.'], function (){
+        Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function (){
             Route::resource('/departemen', 'DepartemenController');
             Route::resource('/bagian', 'BagianController');
             Route::resource('/users', 'UserController');
@@ -31,6 +31,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             
         });
         
-        Route::resource('/settings', 'SettingController');
+        // Route::resource('/settings', 'SettingController');
     });
 });

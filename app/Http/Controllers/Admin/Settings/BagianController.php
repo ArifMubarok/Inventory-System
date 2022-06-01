@@ -24,7 +24,7 @@ class BagianController extends Controller
      */
     public function index(BagianDataTable $datatable)
     {
-        return $datatable->render('pages.admin.bagian.index');
+        return $datatable->render('pages.admin.settings.bagian.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class BagianController extends Controller
         $departemen = Departemen::where('status_aktif', 'aktif')
                                 ->where('status', '1')
                                 ->pluck('name', 'id');
-        return view('pages.admin.bagian.add-edit', [
+        return view('pages.admin.settings.bagian.add-edit', [
             'departemen' => $departemen
         ]);
     }
@@ -55,7 +55,7 @@ class BagianController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.setting.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.bagian.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -81,7 +81,7 @@ class BagianController extends Controller
         $departemen = Departemen::where('status_aktif', 'aktif')
                                 ->where('status', '1')
                                 ->pluck('name', 'id');
-        return view('pages.admin.bagian.add-edit', [
+        return view('pages.admin.settings.bagian.add-edit', [
             'data' => $data,
             'departemen' => $departemen
         ]);
@@ -102,7 +102,7 @@ class BagianController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.setting.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.bagian.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**

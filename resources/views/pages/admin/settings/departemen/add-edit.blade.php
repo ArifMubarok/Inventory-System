@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.departemen.update', $data->id) : route('admin.departemen.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.settings.departemen.update', $data->id) : route('admin.settings.departemen.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}

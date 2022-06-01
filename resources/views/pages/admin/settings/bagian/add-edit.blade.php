@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.setting.bagian.update', $data->id) : route('admin.setting.bagian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.settings.bagian.update', $data->id) : route('admin.settings.bagian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -36,7 +36,8 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="departemen_id">Nama Departemen</label>
-        <x-form.dropdown name="departemen_id" :options="$departemen" :selected="old('departemen_id') ?? (isset($data->departemen) ? $data->departemen->pluck('id')->toArray() : null)" data-parsley-required="true"/>
+        {{-- @dump($data) --}}
+        <x-form.dropdown name="departemen_id" :options="$departemen" :selected="old('departemen_id') ?? (isset($data->departemen_id) ? $data->departemen_id : null)" placeholder="Pilih Departemen" />
       </div>
       <div class="form-group">
         <label for="name">Nama Bagian</label>

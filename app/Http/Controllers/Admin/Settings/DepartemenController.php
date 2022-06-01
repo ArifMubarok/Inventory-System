@@ -17,7 +17,7 @@ class DepartemenController extends Controller
     public function index(DepartemenDataTable $datatable)
     {
         //var_dump($datatable);die;
-        return $datatable->render('pages.admin.departemen.index');
+        return $datatable->render('pages.admin.settings.departemen.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class DepartemenController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.departemen.add-edit');
+        return view('pages.admin.settings.departemen.add-edit');
     }
 
     /**
@@ -43,7 +43,7 @@ class DepartemenController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.departemen.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -55,7 +55,7 @@ class DepartemenController extends Controller
     public function edit($id)
     {
         $data = Departemen::findOrFail($id);
-        return view('pages.admin.departemen.add-edit', [
+        return view('pages.admin.settings.departemen.add-edit', [
             'data' => $data
         ]);
     }
@@ -75,7 +75,7 @@ class DepartemenController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.departemen.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.departemen.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**

@@ -140,19 +140,19 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/setting/departemen',
+                    'url' => '/admin/settings/departemen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Departemen'
                 ],
                 [
-                    'url' => '/admin/setting/bagian',
+                    'url' => '/admin/settings/bagian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Bagian'
                 ],
                 [
-                    'url' => '/admin/setting/lokasi',
+                    'url' => '/admin/settings/lokasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Lokasi'
                 ],
                 [
-                    'url' => '/admin/setting/users',
+                    'url' => '/admin/settings/users',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;User'
                 ],
                 ]

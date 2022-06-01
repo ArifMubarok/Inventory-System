@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables\Admin\Settings;
 
 use App\Models\Departemen;
 use Yajra\DataTables\Html\Button;
@@ -24,8 +24,8 @@ class DepartemenDataTable extends DataTable
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.setting.departemen.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.setting.departemen.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.settings.departemen.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.settings.departemen.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
                 return $btn;
             });
