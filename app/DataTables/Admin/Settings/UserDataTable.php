@@ -24,10 +24,11 @@ class UserDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             })
+            ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.users.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.users.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.setting.users.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.setting.users.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -82,17 +83,21 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+            Column::make('DT_RowIndex')->title('No')
+                  ->width(20)
+                  ->addClass('text-center')
+                  ->orderable(false),
             Column::make('name')->title('Nama Lengkap'),
             Column::make('roles')
                 ->title('Hak Akses')
                 ->orderable(false),
             Column::make('email'),
             Column::make('created_at')->title('Ditambahkan pada'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

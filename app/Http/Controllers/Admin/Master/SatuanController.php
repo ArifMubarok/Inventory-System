@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\DataTables\Admin\BagianDataTable;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\BagianForm;
-use App\Models\Bagian;
-use App\Models\Departemen;
+use App\Models\Satuan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Master\SatuanDataTable;
 
-class BagianController extends Controller
+class SatuanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(BagianDataTable $datatable)
+    public function index(SatuanDataTable $datatable)
     {
-        return $datatable->render('pages.admin.bagian.index');
+        return $datatable->render('pages.admin.satuan.index');
     }
 
     /**
@@ -28,12 +26,7 @@ class BagianController extends Controller
      */
     public function create()
     {
-        $departemen = Departemen::where('status_aktif', 'aktif')
-                                ->where('status', '1')
-                                ->pluck('name', 'id');
-        return view('pages.admin.bagian.add-edit', [
-            'departemen' => $departemen
-        ]);
+        return view('pages.admin.satuan.add-edit');
     }
 
     /**
@@ -42,14 +35,14 @@ class BagianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BagianForm $request)
+    public function store(Request $request)
     {
         try {
-            Bagian::create($request->all());
+            Satuan::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.data-satuan.index'))->withInput()->withToastSucces('success saving data');
     }
 
     /**
@@ -71,13 +64,9 @@ class BagianController extends Controller
      */
     public function edit($id)
     {
-        $data = Bagian::findOrFail($id);
-        $departemen = Departemen::where('status_aktif', 'aktif')
-                                ->where('status', '1')
-                                ->pluck('name', 'id');
-        return view('pages.admin.bagian.add-edit', [
-            'data' => $data,
-            'departemen' => $departemen
+        $data = Satuan::findOrFail($id);
+        return view('pages.admin.satuan.add-edit', [
+            'data' => $data
         ]);
     }
 
@@ -90,13 +79,13 @@ class BagianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Bagian::findOrFail($id);
+        $data = Satuan::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
     }
 
     /**
@@ -108,8 +97,8 @@ class BagianController extends Controller
     public function destroy($id)
     {
         try {
-            $bagian = Bagian::findOrFail($id);
-            $bagian->update(['status' => '0']);
+            $satuan = Satuan::findOrFail($id);
+            $satuan->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

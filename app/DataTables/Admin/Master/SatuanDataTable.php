@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables\Admin\Master;
 
 use App\Models\Satuan;
 use Yajra\DataTables\Html\Button;
@@ -21,10 +21,11 @@ class SatuanDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.data-satuan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.data-satuan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master.data-satuan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master.data-satuan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
                 return $btn;
             });
@@ -71,12 +72,16 @@ class SatuanDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')
+                  ->width(20)
+                  ->addClass('text-center')
+                  ->orderable(false),
+            Column::make('nama_satuan'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('nama_satuan'),
             // Column::make('add your columns'),
             // Column::make('created_at'),
             // Column::make('updated_at'),

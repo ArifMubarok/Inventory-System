@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
-use App\DataTables\Admin\UserDataTable;
+use App\DataTables\Admin\Settings\UserDataTable;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserForm;

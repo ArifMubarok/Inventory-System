@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\DepartemenDataTable;
+use App\DataTables\Admin\Settings\DepartemenDataTable;
 use App\Models\Departemen;
 
 class DepartemenController extends Controller
