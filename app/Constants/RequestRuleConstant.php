@@ -4,6 +4,16 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function barangTable()
+    {
+        return [
+            'name' => 'required|min:3',
+            'satuan_id' => 'required',
+            'kategori_id' => 'required',
+            'barcode' => 'required|min:3'
+        ];
+    }
+
     public static function bagianTable()
     {
         return [
