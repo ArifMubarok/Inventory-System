@@ -35,6 +35,20 @@ class RequestRuleConstant
         ];
     }
 
+    public static function supplierTable()
+    {
+        return [
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'fax' => 'required',
+            'email' => 'required',
+            'cp' => 'required',
+            'keterangan' => 'required',
+            'status' => 'required',
+        ];
+    }
+
     public static function settingTable()
     {
         return [
