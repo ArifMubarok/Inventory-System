@@ -2,29 +2,23 @@
 
 namespace App\Http\Controllers\Admin\Settings;
 
-use App\Models\Bagian;
-use App\Models\Departemen;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\LokasiForm;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Admin\BagianForm;
-use App\DataTables\Admin\Settings\BagianDataTable;
+use App\DataTables\Admin\Settings\LokasiDataTable;
 
-class BagianController extends Controller
+class LokasiController extends Controller
 {
-    // public function __construct()
-    // {
-    //     dd(auth()->user()->role=="admin");
-    // }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(BagianDataTable $datatable)
+    public function index(LokasiDataTable $datatable)
     {
-        return $datatable->render('pages.admin.settings.bagian.index');
+        //var_dump($datatable);die;
+        return $datatable->render('pages.admin.settings.lokasi.index');
     }
 
     /**
@@ -34,12 +28,7 @@ class BagianController extends Controller
      */
     public function create()
     {
-        $departemen = Departemen::where('status_aktif', 'aktif')
-                                ->where('status', '1')
-                                ->pluck('name', 'id');
-        return view('pages.admin.settings.bagian.add-edit', [
-            'departemen' => $departemen
-        ]);
+        return view('pages.admin.settings.lokasi.add-edit');
     }
 
     /**
@@ -48,14 +37,14 @@ class BagianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BagianForm $request)
+    public function store(LokasiForm $request)
     {
         try {
-            Bagian::create($request->all());
+            Lokasi::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.settings.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -64,10 +53,11 @@ class BagianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -77,13 +67,9 @@ class BagianController extends Controller
      */
     public function edit($id)
     {
-        $data = Bagian::findOrFail($id);
-        $departemen = Departemen::where('status_aktif', 'aktif')
-                                ->where('status', '1')
-                                ->pluck('name', 'id');
-        return view('pages.admin.settings.bagian.add-edit', [
-            'data' => $data,
-            'departemen' => $departemen
+        $data = Lokasi::findOrFail($id);
+        return view('pages.admin.settings.lokasi.add-edit', [
+            'data' => $data
         ]);
     }
 
@@ -94,15 +80,15 @@ class BagianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BagianForm $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = Bagian::findOrFail($id);
+        $data = Lokasi::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.settings.bagian.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -114,8 +100,8 @@ class BagianController extends Controller
     public function destroy($id)
     {
         try {
-            $bagian = Bagian::findOrFail($id);
-            $bagian->update(['status' => '0']);
+            $lokasi = Lokasi::findOrFail($id);
+            $lokasi->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

@@ -1,25 +1,20 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use App\Constants\RequestRuleConstant;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TestForm extends FormRequest
+class LokasiForm extends FormRequest
 {
-    /**
-     * Indicates if the validator should stop on the first rule failure.
-     *
-     * @var bool
-     */
-    protected $stopOnFirstFailure = true;
-
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
+    protected $stopOnFirstFailure = true;
+    
+     public function authorize()
     {
         return true;
     }
@@ -31,6 +26,6 @@ class TestForm extends FormRequest
      */
     public function rules()
     {
-        return RequestRuleConstant::settingTable();
+        return RequestRuleConstant::lokasiTable();
     }
 }

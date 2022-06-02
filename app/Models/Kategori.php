@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\DataBarang;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kategori extends Model
 {
@@ -12,5 +13,9 @@ class Kategori extends Model
     protected $table = 'data_kategori';
     // protected $fillable = ['name', 'status'];
     protected $guarded = ['id'];
-
+    
+    public function dataBarang()
+    {
+        return $this->hasMany(DataBarang::class);
+    }
 }

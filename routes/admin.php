@@ -17,7 +17,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/data-satuan', 'SatuanController');
             Route::resource('/data-merk', 'MerkController');
             // Route::resource('/data-merk', 'MerkController');
-            // Route::resource('/data-barang', 'DataBarangController');
+            Route::resource('/data-barang', 'DataBarangController');
             // Route::resource('/data-supplier', 'SupplierController');
         });
 
@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/departemen', 'DepartemenController');
             Route::resource('/bagian', 'BagianController');
             Route::resource('/users', 'UserController');
+            Route::resource('/lokasi', 'LokasiController');
             
         });
         
