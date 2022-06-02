@@ -21,9 +21,9 @@ class BarangTable extends Migration
             $table->integer('jumlah');
             $table->integer('harga');
             $table->string('tanggal_pengadaan');
-            $table->integer('depresiasi');
-            $table->integer('lama_depresiasi');
-            $table->string('keterangan');
+            $table->integer('depresiasi')->nullable();
+            $table->integer('lama_depresiasi')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')

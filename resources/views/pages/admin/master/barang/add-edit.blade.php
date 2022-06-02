@@ -40,7 +40,7 @@
       </div>
       <div class="form-group">
         <label for="name">Barcode</label>
-        <input type="text" name="barcode" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->barcode ?? null }}}">
+        <input type="text" name="barcode" class="form-control" autofocus data-parsley-required="true" value="{{{ old('barcode') ?? $data->barcode ?? null }}}">
       </div>
       <div class="form-group">
         <label for="satuan_id">Nama Satuan</label>

@@ -21,15 +21,25 @@ class PengadaanDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.barang.pengadaan-barang.bagian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.barang.pengadaan-barang.bagian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.barang.pengadaan-barang.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.barang.pengadaan-barang.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
                 return $btn;
             })
-            // ->editColumn()
+            ->editColumn('databarang', function ($row) {
+                $display = $row->databarang->where('id', $row->databarang->id)->pluck('name')->toArray();
+                return implode(', ', $display);
+            })
+            ->editColumn('supplier', function ($row) {
+                $display = $row->supplier->where('id', $row->supplier->id)->pluck('nama_supplier')->toArray();
+                return implode(', ', $display);
+            })
             ;
     }
 
@@ -41,7 +51,7 @@ class PengadaanDataTable extends DataTable
      */
     public function query(Pengadaan $model)
     {
-        return $model->with('dataBarang:id,name', 'supplier:id')->newQuery();
+        return $model->with('databarang:id', 'supplier:id,nama_supplier')->newQuery();
     }
 
     /**
@@ -82,10 +92,10 @@ class PengadaanDataTable extends DataTable
                   ->width(20)
                   ->addClass('text-center')
                   ->orderable(false),
-            Column::make('databarang_id')
+            Column::make('databarang')
                   ->orderable(false)
                   ->title('Barang'),
-            Column::make('supplier_id')
+            Column::make('supplier')
                   ->orderable(false)
                   ->title('Supplier'),
             Column::make('tanggal_pengadaan')

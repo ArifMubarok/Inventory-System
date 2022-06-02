@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
-use App\DataTables\Admin\Barang\PengadaanDataTable;
-use App\Http\Controllers\Controller;
+use App\Models\Supplier;
 use App\Models\DataBarang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Barang\PengadaanDataTable;
+use App\Http\Requests\Admin\PengadaanForm;
+use App\Models\Pengadaan;
 
 class PengadaanController extends Controller
 {
@@ -26,10 +29,10 @@ class PengadaanController extends Controller
      */
     public function create()
     {
-        $departemen = DataBarang::pluck('name', 'id');
-        $supplier = Supplier::pluck('name', 'id');
-        return view('pages.admin.settings.bagian.add-edit', [
-            'departemen' => $departemen,
+        $barang = DataBarang::pluck('name', 'id');
+        $supplier = Supplier::pluck('nama_supplier', 'id');
+        return view('pages.admin.barang.pengadaan.add-edit', [
+            'barang' => $barang,
             'supplier' => $supplier
         ]);
     }
@@ -40,9 +43,14 @@ class PengadaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PengadaanForm $request)
     {
-        //
+        try {
+            Pengadaan::create($request->all());
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.barang.pengadaan-barang.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -64,7 +72,14 @@ class PengadaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Pengadaan::findOrFail($id);
+        $barang = DataBarang::pluck('name', 'id');
+        $supplier = Supplier::pluck('nama_supplier', 'id');
+        return view('pages.admin.barang.pengadaan.add-edit', [
+            'barang' => $barang,
+            'supplier' => $supplier,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -74,9 +89,15 @@ class PengadaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PengadaanForm $request, $id)
     {
-        //
+        $data = Pengadaan::findOrFail($id);
+        try {
+            $data->update($request->all());
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.barang.pengadaan-barang.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -87,6 +108,6 @@ class PengadaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Pengadaan::findOrFail($id)->delete();
     }
 }

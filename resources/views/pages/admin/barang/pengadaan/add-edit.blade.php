@@ -1,6 +1,7 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Barang' : 'Create Barang' )
+@section('title', isset($data) ? 'Edit Pengadaan' : 'Create Pengadaan' )
+
 
 @section('content')
 <!-- begin breadcrumb -->
@@ -16,7 +17,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master.data-barang.update', $data->id) : route('admin.master.data-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.barang.pengadaan-barang.update', $data->id) : route('admin.barang.pengadaan-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -35,24 +36,49 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama Barang</label>
-        <input type="text" name="name" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->name ?? null }}}">
+        <label for="databarang_id">Nama Barang*</label>
+        <x-form.dropdown name="databarang_id" :options="$barang" :selected="old('databarang_id') ?? (isset($data->databarang_id) ? $data->databarang_id : null)" placeholder="Pilih Barang" />
       </div>
       <div class="form-group">
-        <label for="name">Barcode</label>
-        <input type="text" name="barcode" class="form-control" autofocus data-parsley-required="true" value="{{{ old('name') ?? $data->barcode ?? null }}}">
+        <label for="supplier_id">Nama Supplier*</label>
+        <x-form.dropdown name="supplier_id" :options="$supplier" :selected="old('supplier_id') ?? (isset($data->supplier_id) ? $data->supplier_id : null)" placeholder="Pilih Supplier" />
       </div>
       <div class="form-group">
-        <label for="satuan_id">Nama Satuan</label>
-        <x-form.dropdown name="satuan_id" :options="$satuan" :selected="old('satuan_id') ?? (isset($data->satuan_id) ? $data->satuan_id : null)" placeholder="Pilih Satuan" />
+        <label for="jumlah">Jumlah Barang*</label>
+        <input type="number" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ old('jumlah') ?? $data->jumlah ?? null }}}">
       </div>
       <div class="form-group">
-        <label for="kategori_id">Nama Kategori</label>
-        <x-form.dropdown name="kategori_id" :options="$kategori" :selected="old('kategori_id') ?? (isset($data->kategori_id) ? $data->kategori_id : null)" placeholder="Pilih Kategori" />
+        <label for="harga">Harga Barang*</label>
+        <input type="number" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ old('harga') ?? $data->harga ?? null }}}">
       </div>
       <div class="form-group">
-        <label for="keterangan">Keterangan</label>
-        <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('keterangan') ?? $data->keterangan ?? null }}}">
+        <label for="kondisi">Kondisi*</label>
+        <select class="select2 form-control" name="kondisi">
+          <option selected>{{{ old('kondisi') ?? $data->kondisi ?? 'Pilih Status' }}}</option>
+          <option value="baik">Baik</option>
+          <option value="sedang">Sedang</option>
+          <option value="rusak">Rusak</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="satuan_id">Tanggal Pengadaan</label>
+        <div class="row">
+          <div class="col-md-12">
+            <input type="text" name="tanggal_pengadaan" class="form-control date-picker" placeholder="Tanggal Pengadaan" value="{{{ old('tanggal_pengadaan') ?? (isset($data->tanggal_pengadaan) ? $data->tanggal_pengadaan : null) ?? null }}}" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="depresiasi">Depresiasi</label>
+        <input type="number" name="depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('depresiasi') ?? $data->depresiasi ?? null }}}">
+      </div>
+      <div class="form-group">
+        <label for="lama_depresiasi">Lama Depresiasi (Bln)</label>
+        <input type="number" name="lama_depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('lama_depresiasi') ?? $data->lama_depresiasi ?? null }}}">
+      </div>
+      <div class="form-group">
+        <label for="keteranga">Keterangan</label>
+        <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="false" value="{{{ old('keterangan') ?? $data->keterangan ?? null }}}">
       </div>
       
       
@@ -75,4 +101,5 @@
 
 @push('scripts')
 <script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
+<script src="{{ asset('/assets/js/custom/datetime-picker.js') }}"></script>
 @endpush
