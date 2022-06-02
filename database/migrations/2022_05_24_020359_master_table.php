@@ -28,6 +28,9 @@ class MasterTable extends Migration
         });
         Schema::create('data_merk', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_merk');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
         Schema::create('data_supplier', function (Blueprint $table) {
             $table->id();

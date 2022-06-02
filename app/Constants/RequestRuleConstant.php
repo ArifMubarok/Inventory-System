@@ -30,6 +30,13 @@ class RequestRuleConstant
         ];
     }
 
+    public static function merkTable()
+    {
+        return [
+            'nama_merk' => 'required|min:2|max:50'
+        ];
+    }
+
     public static function kategoriTable()
     {
         return [
