@@ -15,15 +15,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['namespace' => 'Master', 'prefix' => 'master', 'as' => 'master.'], function () {
             Route::resource('/data-kategori', 'KategoriController');
             Route::resource('/data-satuan', 'SatuanController');
+            Route::resource('/data-merk', 'MerkController');
             // Route::resource('/data-merk', 'MerkController');
-            // Route::resource('/data-barang', 'DataBarangController');
             Route::resource('/data-supplier', 'SupplierController');
+            Route::resource('/data-barang', 'DataBarangController');
         });
 
         Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function () {
             Route::resource('/departemen', 'DepartemenController');
             Route::resource('/bagian', 'BagianController');
             Route::resource('/users', 'UserController');
+            Route::resource('/lokasi', 'LokasiController');
         });
 
         Route::group(['namespace' => 'Barang'], function () {

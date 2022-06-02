@@ -3,21 +3,23 @@
 namespace App\Http\Controllers\Admin\Master;
 
 use App\Models\Satuan;
+use App\Models\Kategori;
+use App\Models\DataBarang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\SatuanForm;
-use App\DataTables\Admin\Master\SatuanDataTable;
+use App\DataTables\Admin\Master\DataBarangDataTable;
+use App\Http\Requests\Admin\DataBarangForm;
 
-class SatuanController extends Controller
+class DataBarangController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SatuanDataTable $datatable)
+    public function index(DataBarangDataTable $datatable)
     {
-        return $datatable->render('pages.admin.master.satuan.index');
+        return $datatable->render('pages.admin.master.barang.index');
     }
 
     /**
@@ -27,7 +29,16 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.satuan.add-edit');
+        $satuan = Satuan::where('status', '1')
+                        ->pluck('nama_satuan', 'id');
+
+        $kategori = Kategori::where('status', '1')
+                            ->pluck('name', 'id');
+
+        return view('pages.admin.master.barang.add-edit', [
+            'satuan' => $satuan,
+            'kategori' =>$kategori,
+        ]);
     }
 
     /**
@@ -36,14 +47,14 @@ class SatuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SatuanForm $request)
+    public function store(DataBarangForm $request)
     {
         try {
-            Satuan::create($request->all());
+            DataBarang::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+        return redirect(route('admin.master.data-barang.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -65,9 +76,17 @@ class SatuanController extends Controller
      */
     public function edit($id)
     {
-        $data = Satuan::findOrFail($id);
-        return view('pages.admin.master.satuan.add-edit', [
-            'data' => $data
+        $data = DataBarang::findOrFail($id);
+        $satuan = Satuan::where('status', '1')
+                        ->pluck('nama_satuan', 'id');
+
+        $kategori = Kategori::where('status', '1')
+                            ->pluck('name', 'id');
+                            
+        return view('pages.admin.master.barang.add-edit', [
+            'data' => $data,
+            'satuan' => $satuan,
+            'kategori' => $kategori,
         ]);
     }
 
@@ -78,15 +97,15 @@ class SatuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DataBarangForm $request, $id)
     {
-        $data = Satuan::findOrFail($id);
+        $data = DataBarang::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
+        return redirect(route('admin.master.data-barang.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -97,11 +116,6 @@ class SatuanController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $satuan = Satuan::findOrFail($id);
-            $satuan->update(['status' => '0']);
-        } catch (\Throwable $th) {
-            return response(['error' => 'Something went wrong']);
-        }
+        return DataBarang::findOrFail($id)->delete();
     }
 }

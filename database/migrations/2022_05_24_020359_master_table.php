@@ -28,6 +28,9 @@ class MasterTable extends Migration
         });
         Schema::create('data_merk', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_merk');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
         Schema::create('data_supplier', function (Blueprint $table) {
             $table->id();
@@ -42,9 +45,26 @@ class MasterTable extends Migration
             $table->timestamps();
         });
 
-        // Schema::create('data_barang', function (Blueprint $table) {
-        //     $table->id();
-        // });
+        Schema::create('data_barang', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('satuan_id');
+            $table->unsignedBigInteger('merk_id')->nullable();
+            $table->unsignedBigInteger('kategori_id');
+            $table->string('name');
+            $table->string('keterangan')->nullable();
+            $table->string('barcode')->nullable();
+            $table->string('foto')->nullable();
+            $table->timestamps();
+
+            $table->foreign('satuan_id')->references('id')->on('data_satuan')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('merk_id')->references('id')->on('data_merk')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('kategori_id')->references('id')->on('data_kategori')
+                  ->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
