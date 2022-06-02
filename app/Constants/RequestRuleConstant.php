@@ -4,6 +4,15 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function lokasiTable()
+    {
+        return [
+            'name' => 'required|min:3',
+            'status_aktif' => 'required',
+            'keterangan' => 'required'
+        ];
+    }
+
     public static function barangTable()
     {
         return [
@@ -33,6 +42,27 @@ class RequestRuleConstant
         ];
     }
 
+    public static function satuanTable()
+    {
+        return [
+            'nama_satuan' => 'required|min:2|max:50'
+        ];
+    }
+
+    public static function merkTable()
+    {
+        return [
+            'nama_merk' => 'required|min:2|max:50'
+        ];
+    }
+
+    public static function kategoriTable()
+    {
+        return [
+            'name' => 'required|min:2|max:50'
+        ];
+    }
+
     public static function userTable()
     {
         return [
@@ -51,6 +81,20 @@ class RequestRuleConstant
             'user_profile_tanggal_lahir' => 'required',
             'user_profile_alamat' => 'required',
             'user_profile_no_telp' => 'required',
+        ];
+    }
+
+    public static function supplierTable()
+    {
+        return [
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'fax' => 'required',
+            'email' => 'required',
+            'cp' => 'required',
+            'keterangan' => 'required',
+            'status' => 'required',
         ];
     }
 

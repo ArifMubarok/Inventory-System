@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use App\Models\Satuan;
+use App\DataTables\Admin\Master\MerkDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\SatuanForm;
-use App\DataTables\Admin\Master\SatuanDataTable;
+use App\Http\Requests\Admin\MerkForm;
+use App\Models\Merk;
 
-class SatuanController extends Controller
+class MerkController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SatuanDataTable $datatable)
+    public function index(MerkDataTable $datatable)
     {
-        return $datatable->render('pages.admin.master.satuan.index');
+        return $datatable->render('pages.admin.master.merk.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.satuan.add-edit');
+        return view('pages.admin.master.merk.add-edit');
     }
 
     /**
@@ -36,14 +36,14 @@ class SatuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SatuanForm $request)
+    public function store(MerkForm $request)
     {
         try {
-            Satuan::create($request->all());
+            Merk::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+        return redirect(route('admin.master.data-merk.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -65,8 +65,8 @@ class SatuanController extends Controller
      */
     public function edit($id)
     {
-        $data = Satuan::findOrFail($id);
-        return view('pages.admin.master.satuan.add-edit', [
+        $data = Merk::findOrFail($id);
+        return view('pages.admin.master.merk.add-edit', [
             'data' => $data
         ]);
     }
@@ -80,13 +80,13 @@ class SatuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Satuan::findOrFail($id);
+        $data = Merk::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
+        return redirect(route('admin.master.data-merk.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -98,8 +98,8 @@ class SatuanController extends Controller
     public function destroy($id)
     {
         try {
-            $satuan = Satuan::findOrFail($id);
-            $satuan->update(['status' => '0']);
+            $kategori = Merk::findOrFail($id);
+            $kategori->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

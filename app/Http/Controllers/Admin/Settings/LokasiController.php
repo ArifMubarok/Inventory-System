@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\Settings;
 
-use App\Models\Satuan;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\LokasiForm;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\SatuanForm;
-use App\DataTables\Admin\Master\SatuanDataTable;
+use App\DataTables\Admin\Settings\LokasiDataTable;
 
-class SatuanController extends Controller
+class LokasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SatuanDataTable $datatable)
+    public function index(LokasiDataTable $datatable)
     {
-        return $datatable->render('pages.admin.master.satuan.index');
+        //var_dump($datatable);die;
+        return $datatable->render('pages.admin.settings.lokasi.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.satuan.add-edit');
+        return view('pages.admin.settings.lokasi.add-edit');
     }
 
     /**
@@ -36,14 +37,14 @@ class SatuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SatuanForm $request)
+    public function store(LokasiForm $request)
     {
         try {
-            Satuan::create($request->all());
+            Lokasi::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -52,10 +53,11 @@ class SatuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +67,8 @@ class SatuanController extends Controller
      */
     public function edit($id)
     {
-        $data = Satuan::findOrFail($id);
-        return view('pages.admin.master.satuan.add-edit', [
+        $data = Lokasi::findOrFail($id);
+        return view('pages.admin.settings.lokasi.add-edit', [
             'data' => $data
         ]);
     }
@@ -80,13 +82,13 @@ class SatuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Satuan::findOrFail($id);
+        $data = Lokasi::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -98,8 +100,8 @@ class SatuanController extends Controller
     public function destroy($id)
     {
         try {
-            $satuan = Satuan::findOrFail($id);
-            $satuan->update(['status' => '0']);
+            $lokasi = Lokasi::findOrFail($id);
+            $lokasi->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

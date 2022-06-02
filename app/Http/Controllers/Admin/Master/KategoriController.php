@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
+use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\KategoriForm;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Master\KategoriDataTable;
-use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
@@ -36,7 +37,7 @@ class KategoriController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KategoriForm $request)
     {
         try {
             Kategori::create($request->all());

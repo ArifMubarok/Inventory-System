@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use App\Models\Satuan;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\SatuanForm;
-use App\DataTables\Admin\Master\SatuanDataTable;
+use App\Http\Requests\Admin\SupplierForm;
+use App\DataTables\Admin\Master\SupplierDataTable;
 
-class SatuanController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SatuanDataTable $datatable)
+    public function index(SupplierDataTable $datatable)
     {
-        return $datatable->render('pages.admin.master.satuan.index');
+        return $datatable->render('pages.admin.master.supplier.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.satuan.add-edit');
+        return view('pages.admin.master.supplier.add-edit');
     }
 
     /**
@@ -36,14 +37,14 @@ class SatuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SatuanForm $request)
+    public function store(SupplierForm $request)
     {
         try {
-            Satuan::create($request->all());
+            Supplier::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSucces('success saving data');
+        return redirect(route('admin.master.data-supplier.index'))->withInput()->withToastSucces('success saving data');
     }
 
     /**
@@ -65,8 +66,8 @@ class SatuanController extends Controller
      */
     public function edit($id)
     {
-        $data = Satuan::findOrFail($id);
-        return view('pages.admin.master.satuan.add-edit', [
+        $data = Supplier::findorFail($id);
+        return view('pages.admin.master.supplier.add-edit', [
             'data' => $data
         ]);
     }
@@ -80,13 +81,13 @@ class SatuanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Satuan::findOrFail($id);
+        $data = Supplier::findOrFail($id);
         try {
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.master.data-satuan.index'))->withInput()->withToastSuccess('Data changed successfully');
+        return redirect(route('admin.master.data-supplier.index'))->withInput()->withToastSuccess('Data changed successfully');
     }
 
     /**
@@ -98,8 +99,8 @@ class SatuanController extends Controller
     public function destroy($id)
     {
         try {
-            $satuan = Satuan::findOrFail($id);
-            $satuan->update(['status' => '0']);
+            $data = Supplier::findOrFail($id);
+            $data->update(['status' => '0']);
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

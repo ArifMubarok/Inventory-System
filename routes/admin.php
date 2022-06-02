@@ -12,26 +12,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
 
-        Route::group(['namespace' => 'Master', 'prefix' => 'master', 'as' => 'master.'], function (){
+        Route::group(['namespace' => 'Master', 'prefix' => 'master', 'as' => 'master.'], function () {
             Route::resource('/data-kategori', 'KategoriController');
             Route::resource('/data-satuan', 'SatuanController');
+            Route::resource('/data-merk', 'MerkController');
             // Route::resource('/data-merk', 'MerkController');
+            Route::resource('/data-supplier', 'SupplierController');
             Route::resource('/data-barang', 'DataBarangController');
-            // Route::resource('/data-supplier', 'SupplierController');
         });
 
-        Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function (){
+        Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function () {
             Route::resource('/departemen', 'DepartemenController');
             Route::resource('/bagian', 'BagianController');
             Route::resource('/users', 'UserController');
-            
+            Route::resource('/lokasi', 'LokasiController');
         });
         
         Route::group(['namespace' => 'Barang', 'prefix' => 'barang', 'as' => 'barang.'], function (){
             Route::resource('/pengadaan-barang', 'PengadaanController');
             
         });
-        
+
         // Route::resource('/settings', 'SettingController');
     });
 });

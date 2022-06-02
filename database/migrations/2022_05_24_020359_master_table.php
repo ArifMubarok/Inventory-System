@@ -28,9 +28,21 @@ class MasterTable extends Migration
         });
         Schema::create('data_merk', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_merk');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
         Schema::create('data_supplier', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_supplier');
+            $table->text('alamat');
+            $table->string('kota');
+            $table->string('fax');
+            $table->string('email');
+            $table->string('cp');
+            $table->text('keterangan');
+            $table->enum('status', ['0', '1']);
+            $table->timestamps();
         });
 
         Schema::create('data_barang', function (Blueprint $table) {
@@ -45,13 +57,13 @@ class MasterTable extends Migration
             $table->timestamps();
 
             $table->foreign('satuan_id')->references('id')->on('data_satuan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('merk_id')->references('id')->on('data_merk')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('kategori_id')->references('id')->on('data_kategori')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
