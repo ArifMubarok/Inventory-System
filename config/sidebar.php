@@ -72,35 +72,35 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/pengadaan-barang',
+                    'url' => '/admin/barang/pengadaan-barang',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pengadaan Barang'
                 ],
                 [
-                    'url' => '/admin/penempatan-barang',
+                    'url' => '/admin/barang/penempatan-barang',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penempatan Barang'
                 ],
                 [
-                    'url' => '/admin/barang',
+                    'url' => '/admin/barang/barang',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Barang'
                 ],
                 [
-                    'url' => '/admin/cetak-barcode',
+                    'url' => '/admin/barang/cetak-barcode',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Cetak Barcode'
                 ],
                 [
-                    'url' => '/admin/mutasi-lokasi',
+                    'url' => '/admin/barang/mutasi-lokasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Mutasi Lokasi'
                 ],
                 [
-                    'url' => '/admin/proses-opname',
+                    'url' => '/admin/barang/proses-opname',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Proses Opname'
                 ],
                 [
-                    'url' => '/admin/hitung-depresiasi',
+                    'url' => '/admin/barang/hitung-depresiasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Hitung Depresiasi'
                 ],
                 [
-                    'url' => '/admin/barang-nonaktif',
+                    'url' => '/admin/barang/barang-nonaktif',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Barang Non-Aktif'
                 ],
             ]

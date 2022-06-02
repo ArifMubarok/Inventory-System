@@ -48,6 +48,9 @@ class SettingTable extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('departemen');
+        Schema::dropIfExists('bagian');
+        Schema::dropIfExists('lokasi');
+        Schema::dropIfExists('user');
     }
 }

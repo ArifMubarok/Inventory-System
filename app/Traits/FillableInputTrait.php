@@ -67,7 +67,6 @@ trait FillableInputTrait
     if (in_array($attribute, $this->getFillable())) {
       return true;
     }
-
     return false;
   }
 }
