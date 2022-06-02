@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use App\Models\Setting;
 use App\Models\Bagian;
+use App\Models\Lokasi;
 use App\Models\Departemen;
 use Illuminate\Database\Seeder;
 
@@ -16,12 +17,6 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        Lokasi::create([
-            'name' => 'Dapur',
-            'status' => '1',
-            'status_aktif' => 'Aktif',
-            'keterangan' => 'Lokasi Dapur'
-        ]);
         
         // $default = [
         //     'skck-nama-pejabat-ttd' => 'NAMA PENANDATANGAN',
@@ -56,6 +51,13 @@ class SettingSeeder extends Seeder
             'status_aktif' => 'aktif',
             'departemen_id' => '1',
             'keterangan' => 'bagian departemen'
+        ]);
+
+        Lokasi::create([
+            'name' => 'Dapur',
+            'status' => '1',
+            'status_aktif' => 'Aktif',
+            'keterangan' => 'Lokasi Dapur'
         ]);
     }
 }

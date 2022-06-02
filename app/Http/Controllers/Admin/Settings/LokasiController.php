@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Settings;
 
 use App\Models\Lokasi;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\LokasiForm;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\LokasiDataTable;
+use App\DataTables\Admin\Settings\LokasiDataTable;
 
 class LokasiController extends Controller
 {
@@ -17,7 +18,7 @@ class LokasiController extends Controller
     public function index(LokasiDataTable $datatable)
     {
         //var_dump($datatable);die;
-        return $datatable->render('pages.admin.lokasi.index');
+        return $datatable->render('pages.admin.settings.lokasi.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class LokasiController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.lokasi.add-edit');
+        return view('pages.admin.settings.lokasi.add-edit');
     }
 
     /**
@@ -36,14 +37,14 @@ class LokasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LokasiForm $request)
     {
         try {
             Lokasi::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.lokasi.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
@@ -67,7 +68,7 @@ class LokasiController extends Controller
     public function edit($id)
     {
         $data = Lokasi::findOrFail($id);
-        return view('pages.admin.lokasi.add-edit', [
+        return view('pages.admin.settings.lokasi.add-edit', [
             'data' => $data
         ]);
     }
@@ -87,7 +88,7 @@ class LokasiController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
-        return redirect(route('admin.lokasi.index'))->withInput()->withToastSuccess('success saving data');
+        return redirect(route('admin.settings.lokasi.index'))->withInput()->withToastSuccess('success saving data');
     }
 
     /**
