@@ -36,6 +36,10 @@ class DataBarangDataTable extends DataTable
                 $display = $row->satuan->where('id', $row->satuan->id)->pluck('nama_satuan')->toArray();
                 return implode(', ', $display);
             })
+            ->editColumn('merk', function ($row) {
+                $display = $row->merk->where('id', $row->merk->id)->pluck('nama_merk')->toArray();
+                return implode(', ', $display);
+            })
             ->editColumn('kategori', function ($row) {
                 $display = $row->kategori->where('id', $row->kategori->id)->pluck('name')->toArray();
                 return implode(', ', $display);
@@ -51,7 +55,7 @@ class DataBarangDataTable extends DataTable
      */
     public function query(DataBarang $model)
     {
-        return $model->with('satuan:id,nama_satuan','kategori:id,name')->newQuery();
+        return $model->with('satuan:id,nama_satuan','kategori:id,name', 'merk:id,nama_merk')->newQuery();
     }
 
     /**
@@ -92,8 +96,8 @@ class DataBarangDataTable extends DataTable
             Column::make('barcode'),
             Column::make('satuan')
                   ->orderable(false),
-            // Column::make('merk')
-            //       ->orderable(false),
+            Column::make('merk')
+                  ->orderable(false),
             Column::make('kategori')
                   ->orderable(false),
             Column::computed('action')

@@ -78,7 +78,7 @@ class SatuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SatuanForm $request, $id)
     {
         $data = Satuan::findOrFail($id);
         try {

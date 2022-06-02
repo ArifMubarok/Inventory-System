@@ -68,7 +68,7 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KategoriForm $request, $id)
     {
         $data = Kategori::findOrFail($id);
         try {

@@ -47,6 +47,10 @@
         <x-form.dropdown name="satuan_id" :options="$satuan" :selected="old('satuan_id') ?? (isset($data->satuan_id) ? $data->satuan_id : null)" placeholder="Pilih Satuan" />
       </div>
       <div class="form-group">
+        <label for="merk_id">Nama Satuan</label>
+        <x-form.dropdown name="merk_id" :options="$merk" :selected="old('merk_id') ?? (isset($data->merk_id) ? $data->merk_id : null)" placeholder="Pilih Satuan" />
+      </div>
+      <div class="form-group">
         <label for="kategori_id">Nama Kategori</label>
         <x-form.dropdown name="kategori_id" :options="$kategori" :selected="old('kategori_id') ?? (isset($data->kategori_id) ? $data->kategori_id : null)" placeholder="Pilih Kategori" />
       </div>

@@ -18,6 +18,7 @@ class RequestRuleConstant
         return [
             'name' => 'required|min:3',
             'satuan_id' => 'required',
+            'merk_id' => 'required',
             'kategori_id' => 'required',
             'barcode' => 'required|min:3'
         ];

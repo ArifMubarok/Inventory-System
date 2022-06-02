@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Master\DataBarangDataTable;
 use App\Http\Requests\Admin\DataBarangForm;
+use App\Models\Merk;
 
 class DataBarangController extends Controller
 {
@@ -35,9 +36,13 @@ class DataBarangController extends Controller
         $kategori = Kategori::where('status', '1')
                             ->pluck('name', 'id');
 
+        $merk = Merk::where('status', '1')
+                            ->pluck('nama_merk', 'id');
+
         return view('pages.admin.master.barang.add-edit', [
             'satuan' => $satuan,
             'kategori' =>$kategori,
+            'merk' => $merk,
         ]);
     }
 
@@ -82,11 +87,15 @@ class DataBarangController extends Controller
 
         $kategori = Kategori::where('status', '1')
                             ->pluck('name', 'id');
-                            
+            
+        $merk = Merk::where('status', '1')
+                    ->pluck('nama_merk', 'id');
+                    
         return view('pages.admin.master.barang.add-edit', [
             'data' => $data,
             'satuan' => $satuan,
             'kategori' => $kategori,
+            'merk' => $merk,
         ]);
     }
 
