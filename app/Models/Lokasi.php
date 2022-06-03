@@ -12,4 +12,10 @@ class Lokasi extends Model
     protected $table = 'lokasi';
     // protected $fillable = ['name', 'status'];
     protected $guarded = ['id'];
+
+    
+    public function penempatan() 
+    {
+        return $this->hasMany(Penempatan::class);
+    }
 }

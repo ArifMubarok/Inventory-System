@@ -23,6 +23,10 @@ class MasterSeeder extends Seeder
             'name' => 'Elektronik',
             'status' => '1',
         ]);
+        Kategori::create([
+            'name' => 'Minuman',
+            'status' => '1',
+        ]);
 
         Satuan::create([
             'nama_satuan' => 'Rim',
@@ -52,6 +56,16 @@ class MasterSeeder extends Seeder
             'kategori_id' => '1',
             'keterangan' => 'Aqua Databarang',
             'barcode' => 'A0001',
+            
+        ]);
+
+        DataBarang::create([
+            'name' => 'Galon',
+            'satuan_id' => '1',
+            'merk_id' => '1',
+            'kategori_id' => '2',
+            'keterangan' => 'Aqua Databarang',
+            'barcode' => 'A0002',
             
         ]);
     }

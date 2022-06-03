@@ -45,6 +45,7 @@ class PengadaanController extends Controller
      */
     public function store(PengadaanForm $request)
     {
+        // dd($request->all());
         try {
             Pengadaan::create($request->all());
         } catch (\Throwable $th) {
