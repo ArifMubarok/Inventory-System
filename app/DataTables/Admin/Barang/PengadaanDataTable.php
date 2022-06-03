@@ -91,12 +91,15 @@ class PengadaanDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
-                  ->orderable(false),
+                  ->orderable(false)
+                  ->searchable(false),
             Column::make('databarang')
                   ->orderable(false)
+                  ->searchable(false)
                   ->title('Barang'),
             Column::make('supplier')
                   ->orderable(false)
+                  ->searchable(false)
                   ->title('Supplier'),
             Column::make('tanggal_pengadaan')
                   ->title('Tanggal Pengadaan'),

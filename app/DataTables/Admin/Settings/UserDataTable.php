@@ -86,11 +86,13 @@ class UserDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
-                  ->orderable(false),
+                  ->orderable(false)
+                  ->searchable(false),
             Column::make('name')->title('Nama Lengkap'),
             Column::make('roles')
                 ->title('Hak Akses')
-                ->orderable(false),
+                ->orderable(false)
+                ->searchable(false),
             Column::make('email'),
             Column::make('created_at')->title('Ditambahkan pada'),
             Column::computed('action')

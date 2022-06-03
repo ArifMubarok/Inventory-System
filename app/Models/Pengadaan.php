@@ -33,4 +33,9 @@ class Pengadaan extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function penempatan()
+    {
+        return $this->hasMany(Penempatan::class);
+    }
 }

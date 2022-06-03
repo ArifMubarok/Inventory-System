@@ -32,18 +32,18 @@ class DataBarangDataTable extends DataTable
                 $btn = $btn . '</div>';
                 return $btn;
             })
-            ->editColumn('satuan', function ($row) {
-                $display = $row->satuan->where('id', $row->satuan->id)->pluck('nama_satuan')->toArray();
-                return implode(', ', $display);
-            })
-            ->editColumn('merk', function ($row) {
-                $display = $row->merk->where('id', $row->merk->id)->pluck('nama_merk')->toArray();
-                return implode(', ', $display);
-            })
-            ->editColumn('kategori', function ($row) {
-                $display = $row->kategori->where('id', $row->kategori->id)->pluck('name')->toArray();
-                return implode(', ', $display);
-            })
+            // ->editColumn('satuan', function ($row) {
+            //     $display = $row->satuan->where('id', $row->satuan->id)->pluck('nama_satuan')->toArray();
+            //     return implode(', ', $display);
+            // })
+            // ->editColumn('merk', function ($row) {
+            //     $display = $row->merk->where('id', $row->merk->id)->pluck('nama_merk')->toArray();
+            //     return implode(', ', $display);
+            // })
+            // ->editColumn('kategori', function ($row) {
+            //     $display = $row->kategori->where('id', $row->kategori->id)->pluck('name')->toArray();
+            //     return implode(', ', $display);
+            // })
             ;
     }
 
@@ -91,15 +91,13 @@ class DataBarangDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
-                  ->orderable(false),
+                  ->orderable(false)
+                  ->searchable(false),
             Column::make('name')->title('Barang'),
             Column::make('barcode'),
-            Column::make('satuan')
-                  ->orderable(false),
-            Column::make('merk')
-                  ->orderable(false),
-            Column::make('kategori')
-                  ->orderable(false),
+            Column::make('satuan.nama_satuan')->title('Satuan'),
+            Column::make('merk.nama_merk')->title('Merk'),
+            Column::make('kategori.name'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

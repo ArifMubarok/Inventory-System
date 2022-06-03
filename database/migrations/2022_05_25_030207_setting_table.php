@@ -41,9 +41,6 @@ class SettingTable extends Migration
             $table->enum('status_aktif', ['Non-Aktif', 'Aktif']);
             $table->timestamps();
         });
-        Schema::create('user', function(Blueprint $table){
-            $table->id();
-        });
     }
 
     /**
