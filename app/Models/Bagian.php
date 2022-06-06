@@ -16,4 +16,9 @@ class Bagian extends Model
     {
         return $this->belongsTo(Departemen::class);
     }
+
+    public function penempatan() 
+    {
+        return $this->hasMany(Penempatan::class);
+    }
 }

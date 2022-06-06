@@ -28,4 +28,9 @@ class DataBarang extends Model
     {
         return $this->belongsTo(Satuan::class);
     }
+
+    public function pengadaan()
+    {
+        return $this->hasMany(Pengadaan::class);
+    }
 }

@@ -13,6 +13,8 @@ class BarangTable extends Migration
      */
     public function up()
     {
+        
+
         Schema::create('pengadaan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('databarang_id');
@@ -21,15 +23,35 @@ class BarangTable extends Migration
             $table->integer('jumlah');
             $table->integer('harga');
             $table->string('tanggal_pengadaan');
-            $table->integer('depresiasi');
-            $table->integer('lama_depresiasi');
-            $table->string('keterangan');
+            $table->integer('depresiasi')->nullable();
+            $table->integer('lama_depresiasi')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')
                   ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('supplier_id')->references('id')->on('data_supplier')
+                  ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        
+        Schema::create('penempatan', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('pengadaan_id');
+            $table->unsignedBigInteger('bagian_id');
+            $table->unsignedBigInteger('lokasi_id');
+            $table->string('tanggal_penempatan');
+            $table->enum('penempatan', ['0', '1']);
+            $table->timestamps();
+
+            $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('bagian_id')->references('id')->on('bagian')
+                  ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('lokasi_id')->references('id')->on('lokasi')
                   ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -42,5 +64,6 @@ class BarangTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pengadaan');
+        Schema::dropIfExists('penempatan');
     }
 }

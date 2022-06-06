@@ -83,10 +83,12 @@ class BagianDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
-                  ->orderable(false),
+                  ->orderable(false)
+                  ->searchable(false),
             Column::make('name')->title('Bagian'),
             Column::make('departemen')
-                  ->orderable(false),
+                  ->orderable(false)
+                  ->searchable(false),
             Column::make('status_aktif')->title('Aktif'),
             Column::computed('action')
                   ->exportable(false)

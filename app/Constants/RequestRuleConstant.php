@@ -4,6 +4,18 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function pengadaanTable()
+    {
+        return [
+            'databarang_id' => 'required',
+            'supplier_id' => 'required',
+            'kondisi' => 'required',
+            'jumlah' => 'required',
+            'harga' => 'required',
+            'tanggal_pengadaan' => 'required',
+        ];
+    }
+
     public static function lokasiTable()
     {
         return [

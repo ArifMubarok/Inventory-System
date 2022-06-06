@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pengadaan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supplier extends Model
 {
@@ -11,4 +12,9 @@ class Supplier extends Model
 
     protected $table = 'data_supplier';
     protected $guarded = ['id'];
+
+    public function pengadaan()
+    {
+        return $this->hasMany(Pengadaan::class);
+    }
 }

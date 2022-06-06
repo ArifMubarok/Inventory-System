@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         
         Route::group(['namespace' => 'Barang', 'prefix' => 'barang', 'as' => 'barang.'], function (){
             Route::resource('/pengadaan-barang', 'PengadaanController');
+            Route::resource('/penempatan-barang', 'PenempatanController');
             
         });
 
