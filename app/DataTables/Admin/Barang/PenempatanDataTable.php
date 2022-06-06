@@ -25,10 +25,14 @@ class PenempatanDataTable extends DataTable
                 return $row->id;
             })
             ->addIndexColumn()
-            ->editColumn('Pilih', function ($row){
-                $btn ='<input class="form-check-input" type="checkbox" name="id" value="'. $row->id .'" id="checkbox1">';
-                return $btn;
-            });
+            // ->editColumn('Pilih', function ($row) {
+            //     $btn = '<input class="form-check-input" type="checkbox" name="id" value="' . $row->id . '" id="checkbox1">';
+            //     return $btn;
+            // });
+            ->editColumn('action', static function ($row) {
+                return '<input type="checkbox" value="' . $row->id . '"/>';
+            })
+            ->rawColumns(['action']);
     }
 
     /**
@@ -50,11 +54,11 @@ class PenempatanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('penempatan-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1);
+            ->setTableId('penempatan-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->orderBy(1);
     }
 
     /**
@@ -66,19 +70,25 @@ class PenempatanDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false)
-                  ->searchable(false),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('pengadaan.databarang.barcode')->title('Barcode'),
             Column::make('pengadaan.databarang.name')->title('Barang'),
             Column::make('pengadaan.databarang.kategori.name')->title('Kategori'),
             Column::make('pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
-            Column::checkbox('Pilih')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(20)
-                  ->addClass('text-center')
+            // Column::checkbox('Pilih')
+            //     ->exportable(false)
+            //     ->printable(false)
+            //     ->width(20)
+            //     ->addClass('text-center'),
+            Column::computed('action')
+                ->title('Pilih')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

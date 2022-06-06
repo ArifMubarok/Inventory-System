@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
-use App\DataTables\Admin\Barang\PenempatanDataTable;
-use App\Http\Controllers\Controller;
+use App\Models\Bagian;
+use App\Models\Lokasi;
 use App\Models\Penempatan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Barang\PenempatanDataTable;
+use App\Models\Departemen;
 
 class PenempatanController extends Controller
 {
@@ -17,7 +20,12 @@ class PenempatanController extends Controller
     public function index(PenempatanDataTable $datatable)
     {
         // dd(Penempatan::with('pengadaan.databarang.kategori:id,name')->pluck('pengadaan.databarang.kategori.name'));
-        return $datatable->render('pages.admin.barang.penempatan.index');
+        $data = Departemen::get();
+        $lokasi = Lokasi::get('name', 'id');
+        return $datatable->render('pages.admin.barang.penempatan.index', [
+            'data' => $data,
+            'lokasi' => $lokasi
+        ]);
     }
 
     /**

@@ -39,6 +39,59 @@
     {{ $dataTable->table() }}
   </form>
   <!-- end panel-body -->
+
+  {{-- begin panel body --}}
+  <div class="panel-body">
+    <form>
+    <div class="row">
+      <div class="col-md-6">
+          <div class="form-group row m-b-15">
+            <label class="col-form-label col-md-4"><strong>Departemen dan Bagian*</strong></label>
+            <div class="col-md-8">
+              <select class="form-control">
+                
+                @foreach ($data as $item)
+                <optgroup label="{{ $item->name }}">
+                  @foreach ($item->bagian as $item)
+                  <option value="{{ $item->id }}">{{ $item->name }}</option>
+                  @endforeach
+                </optgroup>
+                
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="form-group row m-b-15">
+            <label class="col-form-label col-md-4"><strong>Pilih Lokasi Baru*</strong></label>
+            <div class="col-md-8">
+              <select class="form-control">
+                  @foreach ($lokasi as $item)
+                  <option value="{{ $item->id }}">{{ $item->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-lg-4 col-form-label"><strong>Tgl. Penempatan*</strong></label>
+          <div class="col-lg-8">
+            <div class="input-group date" id="datetimepicker1">
+              <input type="text" class="form-control" />
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-dot-circle"></i> Simpan</button>
+          <button type="reset" class="btn btn-warning"><i class="fa fa-undo"></i> Reset</button>
+
+      </div>
+    </div>
+  </form>
+  </div>
+  
 </div>
 <!-- end panel -->
 @endsection
