@@ -12,7 +12,7 @@ class DataBarang extends Model
     use HasFactory;
 
     protected $table = 'data_barang';
-    protected $fillable = ['satuan_id', 'merk_id', 'kategori_id', 'name', 'keterangan', 'barcode', 'foto'];
+    protected $fillable = ['satuan_id', 'merk_id', 'kategori_id', 'name', 'keterangan', 'barcode', 'image'];
 
     public function kategori()
     {

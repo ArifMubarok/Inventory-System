@@ -16,7 +16,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master.data-barang.update', $data->id) : route('admin.master.data-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master.data-barang.update', $data->id) : route('admin.master.data-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true" enctype="multipart/form-data">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -57,6 +57,10 @@
       <div class="form-group">
         <label for="keterangan">Keterangan</label>
         <input type="text" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ old('keterangan') ?? $data->keterangan ?? null }}}">
+      </div>
+      <div class="form-group">
+        <label for="image">Foto</label>
+        <input type="file" name="image" class="form-control" data-parsley-required="true" value="{{{ old('image') ?? $data->image ?? null }}}">
       </div>
       
       

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
-use App\DataTables\Admin\Barang\PengadaanDataTable;
-use App\Http\Controllers\Controller;
+use App\Models\Supplier;
 use App\Models\DataBarang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Barang\PengadaanDataTable;
 
 class PengadaanController extends Controller
 {

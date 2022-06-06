@@ -15,15 +15,28 @@ class RequestRuleConstant
 
     public static function barangTable()
     {
+        // $data = [
+        //     'name' => 'required|min:3',
+        //     'satuan_id' => 'required',
+        //     'merk_id' => 'required',
+        //     'kategori_id' => 'required',
+        //     'barcode' => 'required|min:3',
+        //     'image' => 'image|file|max:5120|required'
+        // ];
+
+        // if ($data['image']) {
+        //     $data['image'] = $data['images']->file('image')->store('images');
+        // }
         return [
             'name' => 'required|min:3',
             'satuan_id' => 'required',
             'merk_id' => 'required',
             'kategori_id' => 'required',
-            'barcode' => 'required|min:3'
+            'barcode' => 'required|min:3',
+            'image' => 'image|file|max:3072|required'
         ];
     }
-    
+
     public static function departemenTable()
     {
         return [
