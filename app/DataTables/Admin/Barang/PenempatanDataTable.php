@@ -40,7 +40,7 @@ class PenempatanDataTable extends DataTable
      */
     public function query(Penempatan $model)
     {
-        return $model->where('penempatan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
+        return $model->where('status_ditempatkan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
     }
 
     /**
@@ -56,7 +56,7 @@ class PenempatanDataTable extends DataTable
             ->minifiedAjax()
             ->responsive(true)
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-            ->orderBy(1);
+            ->orderBy(6);
     }
 
     /**
@@ -80,7 +80,8 @@ class PenempatanDataTable extends DataTable
                 ->exportable(false)
                 ->printable(true)
                 ->width(20)
-                ->addClass('text-center')
+                ->addClass('text-center'),
+            Column::make('penempatan_id')->hidden(true)
         ];
     }
 

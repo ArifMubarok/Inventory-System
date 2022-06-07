@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Supplier;
+use App\Models\Pengadaan;
 use App\Models\DataBarang;
+use App\Models\Penempatan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Barang\PengadaanDataTable;
 use App\Http\Requests\Admin\PengadaanForm;
-use App\Models\Pengadaan;
+use App\DataTables\Admin\Barang\PengadaanDataTable;
 
 class PengadaanController extends Controller
 {
@@ -45,9 +46,18 @@ class PengadaanController extends Controller
      */
     public function store(PengadaanForm $request)
     {
-        // dd($request->all());
+        // dd($dataPenempatan);
         try {
             Pengadaan::create($request->all());
+            $jumlah = $request->jumlah;
+            $pengadaan_id = Pengadaan::latest()->first('id');
+            $dataPenempatan = ([
+                'pengadaan_id' => $pengadaan_id->id,
+                'status_ditempatkan' => '1'
+            ]);
+            for ($i = 1; $i <= $jumlah; $i++) {
+                Penempatan::create($dataPenempatan);
+            }
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
