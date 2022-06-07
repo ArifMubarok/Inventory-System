@@ -90,5 +90,12 @@ class SettingSeeder extends Seeder
             'status_aktif' => 'Aktif',
             'keterangan' => 'Lokasi Dapur'
         ]);
+
+        Lokasi::create([
+            'name' => 'Office',
+            'status' => '1',
+            'status_aktif' => 'Aktif',
+            'keterangan' => 'Lokasi Office'
+        ]);
     }
 }
