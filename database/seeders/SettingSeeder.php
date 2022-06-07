@@ -17,7 +17,7 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // $default = [
         //     'skck-nama-pejabat-ttd' => 'NAMA PENANDATANGAN',
         //     'skck-jabatan-pejabat-ttd' => 'AJUN KOMISARIS POLISI',
@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
 
         // ]);
 
-        
+
 
         Departemen::create([
             'name' => 'Accounting',

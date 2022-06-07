@@ -71,10 +71,10 @@ class PenempatanDataTable extends DataTable
         return [
             Column::make('penempatan_id')->hidden(true),
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false)
-                  ->searchable(false),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('pengadaan.databarang.barcode')->title('Barcode'),
             Column::make('pengadaan.databarang.name')->title('Barang'),
             Column::make('pengadaan.databarang.kategori.name')->title('Kategori'),
