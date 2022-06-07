@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
+use App\Models\Bagian;
 use App\Models\Lokasi;
 use App\Models\Departemen;
 use App\Models\Penempatan;
@@ -96,7 +97,7 @@ class PenempatanController extends Controller
     public function prosesPenempatan(Request $request)
     {
         try {
-            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update(['penempatan'=>'0']);            
+            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update(['penempatan' => '0']);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error');
         }

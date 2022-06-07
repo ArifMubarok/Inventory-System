@@ -53,7 +53,7 @@ class MasterTable extends Migration
             $table->string('name');
             $table->string('keterangan')->nullable();
             $table->string('barcode')->nullable();
-            $table->string('foto')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('satuan_id')->references('id')->on('data_satuan')
