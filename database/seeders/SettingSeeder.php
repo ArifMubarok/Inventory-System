@@ -17,7 +17,7 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // $default = [
         //     'skck-nama-pejabat-ttd' => 'NAMA PENANDATANGAN',
         //     'skck-jabatan-pejabat-ttd' => 'AJUN KOMISARIS POLISI',
@@ -36,13 +36,20 @@ class SettingSeeder extends Seeder
 
         // ]);
 
-        
+
 
         Departemen::create([
-            'name' => 'accounting',
+            'name' => 'Accounting',
             'status' => '1',
             'status_aktif' => 'aktif',
             'keterangan' => 'accounting departemen'
+        ]);
+
+        Departemen::create([
+            'name' => 'Food and Beverage',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'keterangan' => 'food and beverage departemen'
         ]);
 
         Bagian::create([
@@ -50,6 +57,30 @@ class SettingSeeder extends Seeder
             'status' => '1',
             'status_aktif' => 'aktif',
             'departemen_id' => '1',
+            'keterangan' => 'bagian departemen'
+        ]);
+
+        Bagian::create([
+            'name' => 'Bar',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'departemen_id' => '2',
+            'keterangan' => 'bagian departemen'
+        ]);
+
+        Bagian::create([
+            'name' => 'Banquet',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'departemen_id' => '2',
+            'keterangan' => 'bagian departemen'
+        ]);
+
+        Bagian::create([
+            'name' => 'Food Production',
+            'status' => '1',
+            'status_aktif' => 'aktif',
+            'departemen_id' => '2',
             'keterangan' => 'bagian departemen'
         ]);
 
