@@ -37,7 +37,7 @@ class BarangTable extends Migration
 
         
         Schema::create('penempatan', function (Blueprint $table) {
-            $table->id();
+            $table->id('penempatan_id');
             $table->unsignedBigInteger('pengadaan_id');
             $table->unsignedBigInteger('bagian_id');
             $table->unsignedBigInteger('lokasi_id');
