@@ -57,7 +57,8 @@ class PenempatanDataTable extends DataTable
                     ->minifiedAjax()
                     ->responsive(true)
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1);
+                    ->orderBy(0);
+
     }
 
     /**
@@ -68,6 +69,7 @@ class PenempatanDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('penempatan_id')->hidden(true),
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
@@ -81,7 +83,7 @@ class PenempatanDataTable extends DataTable
                   ->exportable(false)
                   ->printable(true)
                   ->width(20)
-                  ->addClass('text-center')
+                  ->addClass('text-center'),
         ];
     }
 

@@ -33,4 +33,9 @@ class DataBarang extends Model
     {
         return $this->hasMany(Pengadaan::class);
     }
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
 }

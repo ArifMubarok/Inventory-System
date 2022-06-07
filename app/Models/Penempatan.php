@@ -10,7 +10,7 @@ class Penempatan extends Model
     use HasFactory;
 
     protected $table = 'penempatan';
-    protected $guarded = ['id'];
+    protected $guarded = ['penempatan_id'];
 
     public function pengadaan()
     {
@@ -25,6 +25,11 @@ class Penempatan extends Model
     public function lokasi()
     {
         return $this->belongsTo(Lokasi::class);
+    }
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
     }
 
 }
