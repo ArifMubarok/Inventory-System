@@ -21,10 +21,12 @@ class PenempatanController extends Controller
     {
         // dd(Penempatan::with('pengadaan.databarang.kategori:id,name')->pluck('pengadaan.databarang.kategori.name'));
         $data = Departemen::get();
+        $bagian = Bagian::get();
         $lokasi = Lokasi::get('name', 'id');
         return $datatable->render('pages.admin.barang.penempatan.index', [
             'data' => $data,
-            'lokasi' => $lokasi
+            'lokasi' => $lokasi,
+            'bagian' => $bagian
         ]);
     }
 
