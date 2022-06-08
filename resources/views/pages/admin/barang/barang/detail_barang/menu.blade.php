@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Unlimited Nav Tabs')
+@section('title', 'Barang > Detail Barang')
 
 @push('css')
 <link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
@@ -17,12 +17,12 @@
 	<!-- begin breadcrumb -->
 	<ol class="breadcrumb float-xl-right">
 		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item"><a href="javascript:;">UI Elements</a></li>
-		<li class="breadcrumb-item active">Unlimited Nav Tabs</li>
+		<li class="breadcrumb-item"><a href="javascript:;">Barang</a></li>
+		<li class="breadcrumb-item active">@yield('title')</li>
 	</ol>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
-	<h1 class="page-header">Unlimited Nav Tabs <small>header small text goes here...</small></h1>
+	<h1 class="page-header">Barang <small>@yield('title')</small></h1>
 	<!-- end page-header -->
 	
 	<!-- begin row -->
