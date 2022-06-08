@@ -22,10 +22,15 @@ class BarangDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->setRowId(function ($row) {
-                return $row->barang_id;
+                return $row->id;
             })
-            ->addIndexColumn();
-            // ->addColumn('action', 'barang.action');
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.barang.barang.show', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '</div>';
+                return $btn;
+            });
     }
 
     /**
@@ -36,10 +41,11 @@ class BarangDataTable extends DataTable
      */
     public function query(Barang $model)
     {
-        return $model->with('penempatan.pengadaan.databarang:id,name,barcode,merk_id', 
+        return $model->with('penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
+                            'penempatan.pengadaan.databarang:id,name,merk_id', 
                             'penempatan.pengadaan.databarang.merk:id,nama_merk', 
-                            'penempatan.bagian:id,name,departemen_id',
                             'penempatan.bagian.departemen:id,name',
+                            'penempatan.bagian:id,name,departemen_id',
                             'penempatan.lokasi:id,name',
                             )->newQuery();
     }
@@ -74,23 +80,24 @@ class BarangDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id')->hidden(true)->printable(false),
             Column::make('DT_RowIndex')->title('No')
                   ->width(20)
                   ->addClass('text-center')
                   ->orderable(false)
                   ->searchable(false),
-            Column::make('penempatan.pengadaan.databarang.barcode')->title('Barcode'),
+            Column::make('penempatan.barcode')->title('Barcode'),
             Column::make('penempatan.pengadaan.databarang.name')->title('Barang'),
             Column::make('penempatan.pengadaan.databarang.merk.nama_merk')->title('Merk'),
             Column::make('penempatan.bagian.departemen.name')->title('Departemen'),
             Column::make('penempatan.bagian.name')->title('Bagian'),
             Column::make('penempatan.lokasi.name')->title('Lokasi'),
             Column::make('penempatan.pengadaan.kondisi')->title('Kondisi'),
-            // Column::computed('action')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(60)
+                  ->addClass('text-center'),
         ];
     }
 

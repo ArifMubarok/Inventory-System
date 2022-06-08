@@ -56,7 +56,7 @@ class BarangTable extends Migration
         });
 
         Schema::create('barang', function (Blueprint $table) {
-            $table->id('barang_id');
+            $table->id();
             $table->unsignedBigInteger('penempatan_id');
             $table->timestamps();
 

@@ -92,6 +92,7 @@ class PengadaanDataTable extends DataTable
                 ->addClass('text-center')
                 ->orderable(false)
                 ->searchable(false),
+            Column::make('id')->hidden(true)->printable(false),
             Column::make('databarang')
                 ->orderable(false)
                 ->searchable(false)
