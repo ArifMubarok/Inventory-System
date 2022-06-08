@@ -97,7 +97,12 @@ class PenempatanController extends Controller
     public function prosesPenempatan(Request $request)
     {
         try {
-            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update(['penempatan' => '0']);
+            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update([
+                'status_ditempatkan' => '0',
+                'bagian_id' => $request->bagian,
+                'lokasi_id' => $request->lokasi,
+                'tanggal_penempatan' => $request->tanggal_penempatan
+            ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error');
         }

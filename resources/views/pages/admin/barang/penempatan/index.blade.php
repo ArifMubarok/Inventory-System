@@ -122,7 +122,7 @@
 
 
 
-  function penempatan () {
+  function penempatan() {
     let checkbox_terpilih = $("#table tbody .cb-child:checked")
     let semua_id = []
     $.each(checkbox_terpilih, function(index, elm){
@@ -147,7 +147,6 @@
       tanggal.push(elm.value)
     })
 
-    
 
     $.ajax({
       url:"{{ url('') }}/admin/barang/penempatan-barang/proses",
@@ -155,6 +154,11 @@
       data: {penempatan_id:semua_id, bagian:bagian, lokasi:lokasi, tanggal_penempatan:tanggal},
       success:function(res){
         table.api.reload();
+        // if(res.success == true){
+        //   setTimeout(function () {
+        //     location.reload();
+        //   }, 1000)
+        // }
       }
     })
   }

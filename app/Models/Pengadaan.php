@@ -14,13 +14,13 @@ class Pengadaan extends Model
     protected $table = 'pengadaan';
     protected $fillable = [
         'databarang_id',
-        'supplier_id', 
-        'kondisi', 
-        'jumlah', 
-        'harga', 
-        'tanggal_pengadaan', 
-        'depresiasi', 
-        'lama_depresiasi', 
+        'supplier_id',
+        'kondisi',
+        'jumlah',
+        'harga',
+        'tanggal_pengadaan',
+        'depresiasi',
+        'lama_depresiasi',
         'keterangan'
     ];
 

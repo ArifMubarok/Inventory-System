@@ -35,6 +35,7 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
+      <input type="hidden" name="code" value="000">
       <div class="form-group">
         <label for="databarang_id">Nama Barang*</label>
         <x-form.dropdown name="databarang_id" :options="$barang" :selected="old('databarang_id') ?? (isset($data->databarang_id) ? $data->databarang_id : null)" placeholder="Pilih Barang" />
