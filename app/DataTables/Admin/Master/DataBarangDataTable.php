@@ -44,7 +44,7 @@ class DataBarangDataTable extends DataTable
             //     $display = $row->kategori->where('id', $row->kategori->id)->pluck('name')->toArray();
             //     return implode(', ', $display);
             // })
-            ;
+        ;
     }
 
     /**
@@ -55,7 +55,7 @@ class DataBarangDataTable extends DataTable
      */
     public function query(DataBarang $model)
     {
-        return $model->with('satuan:id,nama_satuan','kategori:id,name', 'merk:id,nama_merk')->newQuery();
+        return $model->with('satuan:id,nama_satuan', 'kategori:id,name', 'merk:id,nama_merk')->newQuery();
     }
 
     /**
@@ -66,18 +66,18 @@ class DataBarangDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('databarang-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('databarang-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->orderBy(1)
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -89,20 +89,20 @@ class DataBarangDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false)
-                  ->searchable(false),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('name')->title('Barang'),
             Column::make('barcode'),
             Column::make('satuan.nama_satuan')->title('Satuan'),
             Column::make('merk.nama_merk')->title('Merk'),
-            Column::make('kategori.name'),
+            Column::make('kategori.name')->title('Kategori'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
