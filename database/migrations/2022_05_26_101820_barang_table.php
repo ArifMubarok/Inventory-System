@@ -64,13 +64,13 @@ class BarangTable extends Migration
             // $table->unsignedBigInteger('riwayatlaporan_id');
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             // $table->foreign('databarang_id')->references('id')->on('data_barang')
             //       ->onUpdate('cascade')->onDelete('cascade');
