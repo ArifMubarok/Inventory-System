@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
-use App\DataTables\Admin\Barang\BarangDataTable;
-use App\Http\Controllers\Controller;
+use App\Models\Barang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Barang\BarangDataTable;
+use App\DataTables\Admin\Barang\PenempatanDataTable;
 
 class BarangController extends Controller
 {
@@ -24,8 +26,11 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PenempatanDataTable $datatable, $id)
     {
-        return 'test';
+        $data_barang = Barang::where('id', '=', $id)->get();
+        return view('pages.admin.barang.barang.detail_barang.menu', [
+            'data_barang' => $data_barang
+        ]);
     }
 }

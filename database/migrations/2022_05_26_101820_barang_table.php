@@ -42,6 +42,7 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('bagian_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
             $table->string('tanggal_penempatan')->nullable();
+            $table->string('barcode')->nullable();
             $table->enum('status_ditempatkan', ['0', '1']);
             $table->timestamps();
 
@@ -61,7 +62,7 @@ class BarangTable extends Migration
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             // $table->foreign('databarang_id')->references('id')->on('data_barang')
             //       ->onUpdate('cascade')->onDelete('cascade');

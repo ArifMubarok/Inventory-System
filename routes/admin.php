@@ -19,10 +19,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::resource('/data-merk', 'MerkController');
             Route::resource('/data-supplier', 'SupplierController');
             Route::resource('/data-barang', 'DataBarangController');
-
-            Route::get('/detail-barang', function () {
-                return view('pages.admin.barang.barang.detail_barang.menu');
-            });
         });
 
         Route::group(['namespace' => 'Settings', 'prefix' => 'settings', 'as' => 'settings.'], function () {
@@ -36,7 +32,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/pengadaan-barang', 'PengadaanController');
             Route::resource('/penempatan-barang', 'PenempatanController');
             Route::resource('/barang', 'BarangController');
-            
         });
 
         // Route::resource('/settings', 'SettingController');
