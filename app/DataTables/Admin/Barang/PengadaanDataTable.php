@@ -50,7 +50,7 @@ class PengadaanDataTable extends DataTable
      */
     public function query(Pengadaan $model)
     {
-        return $model->with('databarang:id', 'supplier:id,nama_supplier')->newQuery();
+        return $model->with('databarang:id,name', 'supplier:id,nama_supplier')->newQuery();
     }
 
     /**
