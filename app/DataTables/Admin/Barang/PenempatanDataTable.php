@@ -67,6 +67,7 @@ class PenempatanDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('penempatan_id')->hidden(true)->printable(false),
             Column::make('DT_RowIndex')->title('No')
                 ->width(20)
                 ->addClass('text-center')

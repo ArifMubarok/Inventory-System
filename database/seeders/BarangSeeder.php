@@ -38,6 +38,7 @@ class BarangSeeder extends Seeder
             'bagian_id' => '1',
             'lokasi_id' => '1',
             'tanggal_penempatan' => '02-06-2022',
+            'barcode' => 'A0001.1.1',
             'status_ditempatkan' => '1',
         ]);
 
@@ -45,6 +46,7 @@ class BarangSeeder extends Seeder
             'pengadaan_id' => '2',
             'tanggal_penempatan' => '02-06-2022',
             'status_ditempatkan' => '1',
+            'barcode' => 'A0002.1.1',
         ]);
     }
 }

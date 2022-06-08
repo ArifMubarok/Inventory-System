@@ -53,7 +53,11 @@ class PengadaanController extends Controller
             foreach ($dataBarangMaster as $item) {
                 $barcodeMaster = $item->barcode;
             }
-            $barcodePengadaan = Pengadaan::where('databarang_id', '=', $request->databarang_id)->count();
+            if (Pengadaan::where('databarang_id', '=', $request->databarang_id)->count() == 0) {
+                $barcodePengadaan = 1;
+            }else {
+                $barcodePengadaan = Pengadaan::where('databarang_id', '=', $request->databarang_id)->count() + 1;
+            }
             $barcodePengadaan += $request->code;
             $barcodeData = $barcodeMaster . "." . $barcodePengadaan;
 

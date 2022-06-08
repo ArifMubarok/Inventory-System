@@ -26,6 +26,6 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'test';
     }
 }
