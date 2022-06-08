@@ -54,15 +54,20 @@ class DataBarangController extends Controller
      */
     public function store(DataBarangForm $request)
     {
-        // dd($request['image']->store('images'));
+        // dd($request->file('image')->store('images'));
+
         try {
-            if ($request->file('image')) {
-                $request['image'] = $request->file('image')->store('images');
-                // dd($request['image']);
-                // dd($request->image);
-                // DataBarang::rename($request->image, $request->file('image')->store('images'));
-            }
-            DataBarang::create($request->all());
+            $file_name = $request->image->getClientOriginalName();
+            $image = $request->image->storeAs('images', $file_name);
+            DataBarang::create([
+                'satuan_id' => $request->satuan_id,
+                'merk_id' => $request->merk_id,
+                'kategori_id' => $request->kategori_id,
+                'name' => $request->name,
+                'keterangan' => $request->keterangan,
+                'barcode' => $request->barcode,
+                'image' => $image
+            ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }

@@ -46,17 +46,32 @@ class PengadaanController extends Controller
      */
     public function store(PengadaanForm $request)
     {
-        // dd($dataPenempatan);
+        // dd($request);
+        // dd($dataBarangMaster);
         try {
+            $dataBarangMaster = DataBarang::where('id', '=', $request->databarang_id)->get();
+            foreach ($dataBarangMaster as $item) {
+                $barcodeMaster = $item->barcode;
+            }
+            $barcodePengadaan = Pengadaan::where('databarang_id', '=', $request->databarang_id)->count();
+            $barcodePengadaan += $request->code;
+            $barcodeData = $barcodeMaster . "." . $barcodePengadaan;
+
             Pengadaan::create($request->all());
-            $jumlah = $request->jumlah;
             $pengadaan_id = Pengadaan::latest()->first('id');
-            $dataPenempatan = ([
-                'pengadaan_id' => $pengadaan_id->id,
-                'status_ditempatkan' => '1'
-            ]);
-            for ($i = 1; $i <= $jumlah; $i++) {
+
+            $barcodeBarang = 1;
+            // dd($barcode);
+            $jumlah = $request->jumlah;
+            while ($barcodeBarang <= $jumlah) {
+                $barcode = $barcodeData . "." . $barcodeBarang;
+                $dataPenempatan = ([
+                    'pengadaan_id' => $pengadaan_id->id,
+                    'status_ditempatkan' => '1',
+                    'barcode' => $barcode
+                ]);
                 Penempatan::create($dataPenempatan);
+                $barcodeBarang++;
             }
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
