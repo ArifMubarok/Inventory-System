@@ -26,7 +26,7 @@ class PenempatanDataTable extends DataTable
             })
             ->addIndexColumn()
             ->editColumn('Pilih', function ($row) {
-                $btn = '<input class="cb-child" type="checkbox" name="id" value="' . $row->penempatan_id . '" id="checkbox1"/>';
+                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" id="checkbox1"/>';
                 return $btn;
             })
             ->rawColumns(['Pilih']);
@@ -67,7 +67,6 @@ class PenempatanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('penempatan_id')->hidden(true),
             Column::make('DT_RowIndex')->title('No')
                 ->width(20)
                 ->addClass('text-center')
@@ -79,10 +78,10 @@ class PenempatanDataTable extends DataTable
             Column::make('pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
             Column::make('Pilih')
                 ->exportable(false)
-                ->printable(true)
+                ->printable(false)
                 ->width(20)
                 ->addClass('text-center'),
-            Column::make('penempatan_id')->hidden(true)
+            Column::make('penempatan_id')->hidden(true)->printable(false)
         ];
     }
 

@@ -57,17 +57,8 @@ class BarangTable extends Migration
 
         Schema::create('barang', function (Blueprint $table) {
             $table->id('barang_id');
-            $table->unsignedBigInteger('databarang_id');
-            $table->unsignedBigInteger('pengadaan_id');
             $table->unsignedBigInteger('penempatan_id');
-            // $table->unsignedBigInteger('riwayatpenempatan_id');
-            // $table->unsignedBigInteger('riwayatlaporan_id');
-
-            $table->foreign('databarang_id')->references('id')->on('data_barang')
-                  ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
                   ->onUpdate('cascade')->onDelete('cascade');
