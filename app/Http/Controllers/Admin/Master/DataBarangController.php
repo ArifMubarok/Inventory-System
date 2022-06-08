@@ -31,17 +31,17 @@ class DataBarangController extends Controller
     public function create()
     {
         $satuan = Satuan::where('status', '1')
-                        ->pluck('nama_satuan', 'id');
+            ->pluck('nama_satuan', 'id');
 
         $kategori = Kategori::where('status', '1')
-                            ->pluck('name', 'id');
+            ->pluck('name', 'id');
 
         $merk = Merk::where('status', '1')
-                            ->pluck('nama_merk', 'id');
+            ->pluck('nama_merk', 'id');
 
         return view('pages.admin.master.barang.add-edit', [
             'satuan' => $satuan,
-            'kategori' =>$kategori,
+            'kategori' => $kategori,
             'merk' => $merk,
         ]);
     }
@@ -54,7 +54,14 @@ class DataBarangController extends Controller
      */
     public function store(DataBarangForm $request)
     {
+        // dd($request['image']->store('images'));
         try {
+            if ($request->file('image')) {
+                $request['image'] = $request->file('image')->store('images');
+                // dd($request['image']);
+                // dd($request->image);
+                // DataBarang::rename($request->image, $request->file('image')->store('images'));
+            }
             DataBarang::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
@@ -83,14 +90,14 @@ class DataBarangController extends Controller
     {
         $data = DataBarang::findOrFail($id);
         $satuan = Satuan::where('status', '1')
-                        ->pluck('nama_satuan', 'id');
+            ->pluck('nama_satuan', 'id');
 
         $kategori = Kategori::where('status', '1')
-                            ->pluck('name', 'id');
-            
+            ->pluck('name', 'id');
+
         $merk = Merk::where('status', '1')
-                    ->pluck('nama_merk', 'id');
-                    
+            ->pluck('nama_merk', 'id');
+
         return view('pages.admin.master.barang.add-edit', [
             'data' => $data,
             'satuan' => $satuan,

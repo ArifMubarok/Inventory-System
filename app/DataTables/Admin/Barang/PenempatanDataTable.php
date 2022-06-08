@@ -22,13 +22,14 @@ class PenempatanDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->setRowId(function ($row) {
-                return $row->id;
+                return $row->penempatan_id;
             })
             ->addIndexColumn()
-            ->editColumn('Pilih', function ($row){
-                $btn ='<input class="form-check-input" type="checkbox" name="id" value="'. $row->id .'" id="checkbox1">';
+            ->editColumn('Pilih', function ($row) {
+                $btn = '<input class="cb-child" type="checkbox" name="id" value="' . $row->penempatan_id . '" id="checkbox1"/>';
                 return $btn;
-            });
+            })
+            ->rawColumns(['Pilih']);
     }
 
     /**
@@ -39,7 +40,7 @@ class PenempatanDataTable extends DataTable
      */
     public function query(Penempatan $model)
     {
-        return $model->where('penempatan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
+        return $model->where('status_ditempatkan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
     }
 
     /**
@@ -50,11 +51,12 @@ class PenempatanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('penempatan-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1);
+            ->setTableId('table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->responsive(true)
+            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->orderBy(6);
     }
 
     /**
@@ -65,20 +67,22 @@ class PenempatanDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('penempatan_id')->hidden(true),
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false)
-                  ->searchable(false),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('pengadaan.databarang.barcode')->title('Barcode'),
             Column::make('pengadaan.databarang.name')->title('Barang'),
             Column::make('pengadaan.databarang.kategori.name')->title('Kategori'),
             Column::make('pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
-            Column::checkbox('Pilih')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(20)
-                  ->addClass('text-center')
+            Column::make('Pilih')
+                ->exportable(false)
+                ->printable(true)
+                ->width(20)
+                ->addClass('text-center'),
+            Column::make('penempatan_id')->hidden(true)
         ];
     }
 

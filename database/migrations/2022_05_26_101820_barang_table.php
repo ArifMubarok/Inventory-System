@@ -13,7 +13,7 @@ class BarangTable extends Migration
      */
     public function up()
     {
-        
+
 
         Schema::create('pengadaan', function (Blueprint $table) {
             $table->id();
@@ -29,30 +29,54 @@ class BarangTable extends Migration
             $table->timestamps();
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('supplier_id')->references('id')->on('data_supplier')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
-        
+
         Schema::create('penempatan', function (Blueprint $table) {
-            $table->id();
+            $table->id('penempatan_id');
             $table->unsignedBigInteger('pengadaan_id');
-            $table->unsignedBigInteger('bagian_id');
-            $table->unsignedBigInteger('lokasi_id');
-            $table->string('tanggal_penempatan');
-            $table->enum('penempatan', ['0', '1']);
+            $table->unsignedBigInteger('bagian_id')->nullable();
+            $table->unsignedBigInteger('lokasi_id')->nullable();
+            $table->string('tanggal_penempatan')->nullable();
+            $table->enum('status_ditempatkan', ['0', '1']);
             $table->timestamps();
+
+            $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('bagian_id')->references('id')->on('bagian')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('lokasi_id')->references('id')->on('lokasi')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('barang', function (Blueprint $table) {
+            $table->id('barang_id');
+            $table->unsignedBigInteger('databarang_id');
+            $table->unsignedBigInteger('pengadaan_id');
+            $table->unsignedBigInteger('penempatan_id');
+            // $table->unsignedBigInteger('riwayatpenempatan_id');
+            // $table->unsignedBigInteger('riwayatlaporan_id');
+
+            $table->foreign('databarang_id')->references('id')->on('data_barang')
+                  ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
                   ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreign('bagian_id')->references('id')->on('bagian')
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
                   ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->foreign('lokasi_id')->references('id')->on('lokasi')
-                  ->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
+
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
