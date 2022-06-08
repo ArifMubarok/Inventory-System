@@ -19,12 +19,12 @@ class Penempatan extends Model
 
     public function bagian()
     {
-        return $this->belongsTo(Bagian::class, 'parent_id', 'id');
+        return $this->belongsTo(Bagian::class);
     }
 
     public function lokasi()
     {
-        return $this->belongsTo(Lokasi::class, 'parent_id');
+        return $this->belongsTo(Lokasi::class);
     }
 
     public function barang()

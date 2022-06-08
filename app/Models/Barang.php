@@ -12,6 +12,10 @@ class Barang extends Model
 {
     protected $table = 'barang';
 
+    protected $fillable = [
+        'penempatan_id',
+    ];
+
     use HasFactory;
 
     public function databarang()

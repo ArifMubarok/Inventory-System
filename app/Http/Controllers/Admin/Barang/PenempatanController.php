@@ -9,6 +9,8 @@ use App\Models\Penempatan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Barang\PenempatanDataTable;
+use App\Http\Requests\Admin\PenempatanForm;
+use App\Models\Barang;
 
 class PenempatanController extends Controller
 {
@@ -44,9 +46,24 @@ class PenempatanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PenempatanForm $request)
     {
-        //
+        try {
+            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update([
+                'status_ditempatkan' => '0',
+                'bagian_id' => $request->bagian_id,
+                'lokasi_id' => $request->lokasi_id,
+                'tanggal_penempatan' => $request->tanggal_penempatan
+            ]);
+            foreach ($request->penempatan_id as $penempatan) {
+                Barang::create([
+                    'penempatan_id' => $penempatan
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error');
+        }
+        return redirect(route('admin.barang.penempatan-barang.index'));
     }
 
     /**
@@ -92,15 +109,5 @@ class PenempatanController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function prosesPenempatan(Request $request)
-    {
-        try {
-            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update(['penempatan' => '0']);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError('Error');
-        }
-        return redirect(route('admin.barang.penempatan-barang.index'));
     }
 }
