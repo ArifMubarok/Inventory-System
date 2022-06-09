@@ -44,7 +44,6 @@ class BarangTable extends Migration
             $table->string('tanggal_penempatan')->nullable();
             $table->string('barcode')->nullable();
             $table->enum('status_ditempatkan', ['0', '1']);
-            $table->enum('Pilih', ['0', '1']);
             $table->timestamps();
 
             $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
