@@ -4,6 +4,16 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function penempatanTable()
+    {
+        return [
+            'penempatan_id' => 'required',
+            'bagian_id' => 'required',
+            'lokasi_id' => 'required',
+            'tanggal_penempatan' => 'required'
+        ];
+    }
+
     public static function pengadaanTable()
     {
         return [
@@ -13,6 +23,7 @@ class RequestRuleConstant
             'jumlah' => 'required',
             'harga' => 'required',
             'tanggal_pengadaan' => 'required',
+            'code' => 'min:3'
         ];
     }
 
@@ -27,25 +38,13 @@ class RequestRuleConstant
 
     public static function barangTable()
     {
-        // $data = [
-        //     'name' => 'required|min:3',
-        //     'satuan_id' => 'required',
-        //     'merk_id' => 'required',
-        //     'kategori_id' => 'required',
-        //     'barcode' => 'required|min:3',
-        //     'image' => 'image|file|max:5120|required'
-        // ];
-
-        // if ($data['image']) {
-        //     $data['image'] = $data['images']->file('image')->store('images');
-        // }
         return [
             'name' => 'required|min:3',
             'satuan_id' => 'required',
             'merk_id' => 'required',
             'kategori_id' => 'required',
             'barcode' => 'required|min:3',
-            'image' => 'image|file|max:3072|required'
+            'image' => 'required|file|image|max:3072'
         ];
     }
 

@@ -42,7 +42,9 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('bagian_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
             $table->string('tanggal_penempatan')->nullable();
+            $table->string('barcode')->nullable();
             $table->enum('status_ditempatkan', ['0', '1']);
+            $table->enum('Pilih', ['0', '1']);
             $table->timestamps();
 
             $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
@@ -56,21 +58,12 @@ class BarangTable extends Migration
         });
 
         Schema::create('barang', function (Blueprint $table) {
-            $table->id('barang_id');
-            $table->unsignedBigInteger('databarang_id');
-            $table->unsignedBigInteger('pengadaan_id');
+            $table->id();
             $table->unsignedBigInteger('penempatan_id');
-            // $table->unsignedBigInteger('riwayatpenempatan_id');
-            // $table->unsignedBigInteger('riwayatlaporan_id');
-
-            $table->foreign('databarang_id')->references('id')->on('data_barang')
-                  ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->foreign('pengadaan_id')->references('id')->on('pengadaan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
-                  ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
 
             // $table->foreign('databarang_id')->references('id')->on('data_barang')
             //       ->onUpdate('cascade')->onDelete('cascade');

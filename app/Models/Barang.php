@@ -12,6 +12,10 @@ class Barang extends Model
 {
     protected $table = 'barang';
 
+    protected $fillable = [
+        'penempatan_id',
+    ];
+
     use HasFactory;
 
     public function databarang()
@@ -26,6 +30,6 @@ class Barang extends Model
 
     public function penempatan()
     {
-        return $this->belongsTo(Penempatan::class, 'barang_id', 'penempatan_id');
+        return $this->belongsTo(Penempatan::class, 'penempatan_id', 'penempatan_id');
     }
 }

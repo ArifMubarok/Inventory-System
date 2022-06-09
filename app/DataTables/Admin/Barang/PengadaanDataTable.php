@@ -39,8 +39,7 @@ class PengadaanDataTable extends DataTable
             ->editColumn('supplier', function ($row) {
                 $display = $row->supplier->where('id', $row->supplier->id)->pluck('nama_supplier')->toArray();
                 return implode(', ', $display);
-            })
-            ;
+            });
     }
 
     /**
@@ -51,7 +50,7 @@ class PengadaanDataTable extends DataTable
      */
     public function query(Pengadaan $model)
     {
-        return $model->with('databarang:id', 'supplier:id,nama_supplier')->newQuery();
+        return $model->with('databarang:id,name', 'supplier:id,nama_supplier')->newQuery();
     }
 
     /**
@@ -62,22 +61,22 @@ class PengadaanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('pengadaan-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1)
-                    ->parameters([
-                        'responsive' => true,
-                        'autowidth' => false
-                    ])
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('pengadaan-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->orderBy(1)
+            ->parameters([
+                'responsive' => true,
+                'autowidth' => false
+            ])
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -89,28 +88,29 @@ class PengadaanDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')
-                  ->width(20)
-                  ->addClass('text-center')
-                  ->orderable(false)
-                  ->searchable(false),
+                ->width(20)
+                ->addClass('text-center')
+                ->orderable(false)
+                ->searchable(false),
+            Column::make('id')->hidden(true)->printable(false),
             Column::make('databarang')
-                  ->orderable(false)
-                  ->searchable(false)
-                  ->title('Barang'),
+                ->orderable(false)
+                ->searchable(false)
+                ->title('Barang'),
             Column::make('supplier')
-                  ->orderable(false)
-                  ->searchable(false)
-                  ->title('Supplier'),
+                ->orderable(false)
+                ->searchable(false)
+                ->title('Supplier'),
             Column::make('tanggal_pengadaan')
-                  ->title('Tanggal Pengadaan'),
+                ->title('Tanggal Pengadaan'),
             Column::make('jumlah')
-                  ->title('Jumlah Barang'),
+                ->title('Jumlah Barang'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
+
         ];
     }
 
