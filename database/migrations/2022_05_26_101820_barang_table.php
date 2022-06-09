@@ -71,6 +71,17 @@ class BarangTable extends Migration
             // $table->foreign('databarang_id')->references('id')->on('data_barang')
             //       ->onUpdate('cascade')->onDelete('cascade');
         });
+
+
+        Schema::create('opname', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('barang_id');
+            $table->string('tanggal_opname')->nullable();
+            $table->string('keterangan')->nullable();
+
+            $table->foreign('barang_id')->references('id')->on('barang')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
