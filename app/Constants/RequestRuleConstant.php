@@ -11,6 +11,13 @@ class RequestRuleConstant
             'lokasi_id' => 'required',
         ];
     }
+
+    public static function depresiasiTable()
+    {
+        return [
+            'penempatan_id' => 'required',
+        ];
+    }
     public static function penempatanTable()
     {
         return [

@@ -59,6 +59,7 @@ class BarangTable extends Migration
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('penempatan_id');
+            $table->integer('nilai_barang')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
