@@ -11,16 +11,27 @@ class Pengadaan extends Model
 {
     use HasFactory;
 
-    protected $guarded=['id'];
-
-    public function supplier() 
-    {
-        return $this->belongsTo(Supplier::class);
-    }
+    protected $table = 'pengadaan';
+    protected $fillable = [
+        'databarang_id',
+        'supplier_id',
+        'kondisi',
+        'jumlah',
+        'harga',
+        'tanggal_pengadaan',
+        'depresiasi',
+        'lama_depresiasi',
+        'keterangan'
+    ];
 
     public function databarang()
     {
         return $this->belongsTo(DataBarang::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
     }
 
     public function penempatan()

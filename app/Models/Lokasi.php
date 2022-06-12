@@ -9,11 +9,13 @@ class Lokasi extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = 'lokasi';
+    protected $fillable = ['name', 'status', 'keterangan', 'status_aktif'];
+    // protected $guarded = ['id'];
 
-    public function penempatan()
+    
+    public function penempatan() 
     {
         return $this->hasMany(Penempatan::class);
     }
-
 }
