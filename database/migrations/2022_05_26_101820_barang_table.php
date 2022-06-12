@@ -70,6 +70,21 @@ class BarangTable extends Migration
             // $table->foreign('databarang_id')->references('id')->on('data_barang')
             //       ->onUpdate('cascade')->onDelete('cascade');
         });
+
+        Schema::create('cetak_barcode', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('penempatan_id');
+            $table->timestamps();
+
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
+
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Barang\PenempatanDataTable;
 use App\Http\Requests\Admin\PenempatanForm;
 use App\Models\Barang;
+use App\Models\CetakBarcode;
 
 class PenempatanController extends Controller
 {
@@ -57,6 +58,9 @@ class PenempatanController extends Controller
             ]);
             foreach ($request->penempatan_id as $penempatan) {
                 Barang::create([
+                    'penempatan_id' => $penempatan
+                ]);
+                CetakBarcode::create([
                     'penempatan_id' => $penempatan
                 ]);
             }
