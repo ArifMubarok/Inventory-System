@@ -74,9 +74,16 @@ class BarangTable extends Migration
 
         Schema::create('riwayat_penempatan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('penempatan_id');
+            $table->unsignedBigInteger('penempatan_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
             $table->string('tanggal_pemindahan')->nullable();
+            $table->timestamps();
+
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('lokasi_id')->references('id')->on('lokasi')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create('cetak_barcode', function (Blueprint $table) {

@@ -18,6 +18,7 @@ class RequestRuleConstant
             'penempatan_id' => 'required',
         ];
     }
+
     public static function penempatanTable()
     {
         return [

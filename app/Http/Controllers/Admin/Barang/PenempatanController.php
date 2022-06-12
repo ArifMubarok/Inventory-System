@@ -61,12 +61,15 @@ class PenempatanController extends Controller
                 Barang::create([
                     'penempatan_id' => $penempatan
                 ]);
+
                 RiwayatPenempatan::create([
                     'penempatan_id' => $penempatan,
-                    'lokasi_id' => $request->lokasi_id
+                    'lokasi_id' => $request->lokasi_id,
                 ]);
+
                 CetakBarcode::create([
-                    'penempatan_id' => $penempatan
+                    'penempatan_id' => $penempatan,
+                    'lokasi_id' => $request->lokasi_id,
                 ]);
             }
         } catch (\Throwable $th) {
