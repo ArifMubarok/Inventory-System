@@ -13,7 +13,7 @@ class Kategori extends Model
     protected $table = 'data_kategori';
     // protected $fillable = ['name', 'status'];
     protected $guarded = ['id'];
-    
+
     public function dataBarang()
     {
         return $this->hasMany(DataBarang::class);

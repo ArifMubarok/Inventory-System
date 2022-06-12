@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin\Barang;
 
-use App\Models\Barang;
+use App\Models\CetakBarcode;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
-class DepresiasiDataTable extends DataTable
+class CetakBarcodeDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -25,20 +25,21 @@ class DepresiasiDataTable extends DataTable
                 return $row->id;
             })
             ->addIndexColumn()
-            ->editColumn('Pilih', function ($row) {
-                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" penempatan_id="checkbox1"/>';
+            ->addColumn('action', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.barang.cetak-barcode.show', $row->id) . '" class="btn btn-info buttons-edit" target="_blank" ><i class="fas fa-print"></i></a>';
+                $btn = $btn . '</div>';
                 return $btn;
-            })
-            ->rawColumns(['Pilih']);
+            });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Barang $model
+     * @param \App\App\Models\CetakBarcodeDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Barang $model)
+    public function query(CetakBarcode $model)
     {
         return $model->with(
             'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
@@ -58,11 +59,11 @@ class DepresiasiDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('barang-table')
+            ->setTableId('cetakbarcodedatatable-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-            // ->orderBy(2)
+            ->orderBy(1)
             ->buttons(
                 Button::make('create'),
                 Button::make('export'),
@@ -88,14 +89,15 @@ class DepresiasiDataTable extends DataTable
                 ->searchable(false),
             Column::make('penempatan.barcode')->title('Barcode'),
             Column::make('penempatan.pengadaan.databarang.name')->title('Barang'),
-            Column::make('penempatan.pengadaan.depresiasi')->title('Depresiasi'),
-            Column::make('penempatan.pengadaan.lama_depresiasi')->title('Lama Depresiasi (Bln)'),
-            Column::make('penempatan.pengadaan.harga')->title('Harga Barang'),
-            Column::make('penempatan.pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
-            Column::make('Pilih')
+            Column::make('penempatan.pengadaan.databarang.merk.nama_merk')->title('Merk'),
+            Column::make('penempatan.bagian.departemen.name')->title('Departemen'),
+            Column::make('penempatan.bagian.name')->title('Bagian'),
+            Column::make('penempatan.lokasi.name')->title('Lokasi'),
+            Column::make('penempatan.pengadaan.kondisi')->title('Kondisi'),
+            Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(20)
+                ->width(60)
                 ->addClass('text-center'),
         ];
     }
@@ -107,6 +109,6 @@ class DepresiasiDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Barang_' . date('YmdHis');
+        return 'CetakBarcode_' . date('YmdHis');
     }
 }

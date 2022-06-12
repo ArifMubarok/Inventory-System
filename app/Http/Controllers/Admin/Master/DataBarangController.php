@@ -120,9 +120,19 @@ class DataBarangController extends Controller
      */
     public function update(DataBarangForm $request, $id)
     {
+        $file_name = $request->image->getClientOriginalName();
+        $image = $request->image->storeAs('images', $file_name);
         $data = DataBarang::findOrFail($id);
         try {
-            $data->update($request->all());
+            $data->update([
+                'satuan_id' => $request->satuan_id,
+                'merk_id' => $request->merk_id,
+                'kategori_id' => $request->kategori_id,
+                'name' => $request->name,
+                'keterangan' => $request->keterangan,
+                'barcode' => $request->barcode,
+                'image' => $image
+            ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
         }
