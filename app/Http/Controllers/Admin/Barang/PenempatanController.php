@@ -12,6 +12,7 @@ use App\DataTables\Admin\Barang\PenempatanDataTable;
 use App\Http\Requests\Admin\PenempatanForm;
 use App\Models\Barang;
 use App\Models\RiwayatPenempatan;
+use App\Models\CetakBarcode;
 
 class PenempatanController extends Controller
 {
@@ -63,6 +64,9 @@ class PenempatanController extends Controller
                 RiwayatPenempatan::create([
                     'penempatan_id' => $penempatan,
                     'lokasi_id' => $request->lokasi_id
+                ]);
+                CetakBarcode::create([
+                    'penempatan_id' => $penempatan
                 ]);
             }
         } catch (\Throwable $th) {
