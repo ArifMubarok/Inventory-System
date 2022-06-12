@@ -4,6 +4,13 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    
+    public static function depresiasiTable()
+    {
+        return [
+            'penempatan_id' => 'required',
+        ];
+    }
     public static function penempatanTable()
     {
         return [
