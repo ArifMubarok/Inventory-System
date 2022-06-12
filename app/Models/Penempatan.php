@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Bagian;
+use App\Models\Barang;
+use App\Models\Lokasi;
+use App\Models\Pengadaan;
+use App\Models\RiwayatPenempatan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Penempatan extends Model
 {
@@ -32,4 +37,8 @@ class Penempatan extends Model
         return $this->hasMany(Barang::class);
     }
 
+    public function riwayat_penempatan()
+    {
+        return $this->hasMany(RiwayatPenempatan::class);
+    }
 }

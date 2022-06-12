@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
-use App\Models\Bagian;
 use App\Models\Lokasi;
+use App\Models\Kategori;
 use App\Models\Departemen;
 use App\Models\Penempatan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Barang\PenempatanDataTable;
-use App\Http\Requests\Admin\PenempatanForm;
-use App\Models\Barang;
+use App\Http\Requests\Admin\MutasiLokasiForm;
+use App\DataTables\Admin\Barang\MutasiLokasiDataTable;
 use App\Models\RiwayatPenempatan;
 
-class PenempatanController extends Controller
+class MutasiLokasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PenempatanDataTable $datatable)
+    public function index(MutasiLokasiDataTable $datatable)
     {
-        // dd(Penempatan::with('pengadaan.databarang.kategori:id,name')->pluck('pengadaan.databarang.kategori.name'));
-        $data = Departemen::get();
+        $departemen = Departemen::get();
         $lokasi = Lokasi::get();
-        return $datatable->render('pages.admin.barang.penempatan.index', [
-            'data' => $data,
-            'lokasi' => $lokasi
+        $kategori = Kategori::get();
+        return $datatable->render('pages.admin.barang.mutasi_lokasi.index', [
+            'departemen' => $departemen,
+            'lokasi' => $lokasi,
+            'kategori' => $kategori,
         ]);
     }
 
@@ -47,28 +47,24 @@ class PenempatanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PenempatanForm $request)
+    public function store(MutasiLokasiForm $request)
     {
+        $tanggal_pemindahan = date('d-m-Y');
         try {
-            Penempatan::whereIn('penempatan_id', $request->penempatan_id)->update([
-                'status_ditempatkan' => '0',
-                'bagian_id' => $request->bagian_id,
+            Penempatan::where('penempatan_id', $request->penempatan_id)->update([
                 'lokasi_id' => $request->lokasi_id,
-                'tanggal_penempatan' => $request->tanggal_penempatan
             ]);
-            foreach ($request->penempatan_id as $penempatan) {
-                Barang::create([
-                    'penempatan_id' => $penempatan
-                ]);
+            foreach ($request->penempatan_id as $item) {
                 RiwayatPenempatan::create([
-                    'penempatan_id' => $penempatan,
-                    'lokasi_id' => $request->lokasi_id
+                    'penempatan_id' => $item,
+                    'lokasi_id' => $request->lokasi_id,
+                    'tanggal_pemindahan' => $tanggal_pemindahan,
                 ]);
             }
         } catch (\Throwable $th) {
-            return back()->withInput()->withToastError('Error');
+            return back()->withInput()->withToastError('Error move location');
         }
-        return redirect(route('admin.barang.penempatan-barang.index'));
+        return redirect(route('admin.barang.mutasi-lokasi.index'))->withInput()->withToastSuccess('Success move location');
     }
 
     /**
