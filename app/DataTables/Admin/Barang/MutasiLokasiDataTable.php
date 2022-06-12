@@ -9,7 +9,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
-class PenempatanDataTable extends DataTable
+class MutasiLokasiDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -35,12 +35,18 @@ class PenempatanDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Penempatan $model
+     * @param \App\App\Models\MutasiLokasi $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Penempatan $model)
     {
-        return $model->where('status_ditempatkan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
+        return $model->where('status_ditempatkan', '=', '0')
+            ->with(
+                'bagian.departemen:id,name',
+                'pengadaan.databarang.merk:id,nama_merk',
+                'pengadaan.databarang:id,name,barcode,kategori_id,merk_id',
+                'lokasi:id,name'
+            )->newQuery();
     }
 
     /**
@@ -51,12 +57,18 @@ class PenempatanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('table')
+            ->setTableId('mutasilokasi-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->responsive(true)
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-            ->orderBy(0);
+            // ->orderBy(1)
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -74,21 +86,17 @@ class PenempatanDataTable extends DataTable
                 ->orderable(false)
                 ->searchable(false),
             Column::make('barcode')->width(150)->title('Barcode'),
-            Column::make('pengadaan.databarang.name')
-                ->title('Barang')
-                ->orderable(false)
-                ->searchable(false),
-            Column::make('pengadaan.databarang.kategori.name')
-                ->title('Kategori')
-                ->orderable(false)
-                ->searchable(false),
-            Column::make('pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
+            Column::make('pengadaan.databarang.name')->title('Barang'),
+            Column::make('pengadaan.databarang.merk.nama_merk')->title('Merk'),
+            Column::make('bagian.departemen.name')->title('Departemen'),
+            Column::make('bagian.name')->title('Bagian'),
+            Column::make('lokasi.name')->title('Lokasi'),
             Column::make('Pilih')
                 ->exportable(false)
                 ->printable(false)
                 ->width(20)
                 ->addClass('text-center'),
-            Column::make('penempatan_id')->hidden(true)->printable(false)
+            Column::make('penempatan_id')->hidden(true)->printable(false),
         ];
     }
 
@@ -99,6 +107,6 @@ class PenempatanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Penempatan_' . date('YmdHis');
+        return 'MutasiLokasi_' . date('YmdHis');
     }
 }

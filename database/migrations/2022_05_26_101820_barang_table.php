@@ -59,9 +59,49 @@ class BarangTable extends Migration
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('penempatan_id');
+            $table->integer('nilai_barang')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
+
+            // $table->foreign('databarang_id')->references('id')->on('data_barang')
+            //       ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('riwayat_penempatan', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('penempatan_id')->nullable();
+            $table->unsignedBigInteger('lokasi_id')->nullable();
+            $table->string('tanggal_pemindahan')->nullable();
+            $table->timestamps();
+
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('lokasi_id')->references('id')->on('lokasi')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('cetak_barcode', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('penempatan_id');
+            $table->timestamps();
+
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('opname', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('barang_id');
+            $table->string('tanggal_opname')->nullable();
+            $table->string('keterangan')->nullable();
+
+            $table->foreign('barang_id')->references('id')->on('barang')
                 ->onUpdate('cascade')->onDelete('cascade');
 
             // $table->foreign('databarang_id')->references('id')->on('data_barang')

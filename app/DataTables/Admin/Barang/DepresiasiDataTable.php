@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin\Barang;
 
-use App\Models\Penempatan;
+use App\Models\Barang;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
-class PenempatanDataTable extends DataTable
+class DepresiasiDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -22,11 +22,11 @@ class PenempatanDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->setRowId(function ($row) {
-                return $row->penempatan_id;
+                return $row->id;
             })
             ->addIndexColumn()
             ->editColumn('Pilih', function ($row) {
-                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" id="checkbox1"/>';
+                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" penempatan_id="checkbox1"/>';
                 return $btn;
             })
             ->rawColumns(['Pilih']);
@@ -35,12 +35,19 @@ class PenempatanDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Penempatan $model
+     * @param \App\App\Models\Barang $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Penempatan $model)
+    public function query(Barang $model)
     {
-        return $model->where('status_ditempatkan', '=', '1')->with('pengadaan.databarang.kategori:id,name', 'pengadaan.databarang:id,name,barcode,kategori_id')->newQuery();
+        return $model->with(
+            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
+            'penempatan.pengadaan.databarang:id,name,merk_id',
+            'penempatan.pengadaan.databarang.merk:id,nama_merk',
+            'penempatan.bagian.departemen:id,name',
+            'penempatan.bagian:id,name,departemen_id',
+            'penempatan.lokasi:id,name',
+        )->newQuery();
     }
 
     /**
@@ -51,12 +58,18 @@ class PenempatanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('table')
+            ->setTableId('barang-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->responsive(true)
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-            ->orderBy(0);
+            // ->orderBy(2)
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -67,28 +80,23 @@ class PenempatanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('penempatan_id')->hidden(true)->printable(false),
+            Column::make('id')->hidden(true)->printable(false),
             Column::make('DT_RowIndex')->title('No')
                 ->width(20)
                 ->addClass('text-center')
                 ->orderable(false)
                 ->searchable(false),
-            Column::make('barcode')->width(150)->title('Barcode'),
-            Column::make('pengadaan.databarang.name')
-                ->title('Barang')
-                ->orderable(false)
-                ->searchable(false),
-            Column::make('pengadaan.databarang.kategori.name')
-                ->title('Kategori')
-                ->orderable(false)
-                ->searchable(false),
-            Column::make('pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
+            Column::make('penempatan.barcode')->title('Barcode'),
+            Column::make('penempatan.pengadaan.databarang.name')->title('Barang'),
+            Column::make('penempatan.pengadaan.depresiasi')->title('Depresiasi'),
+            Column::make('penempatan.pengadaan.lama_depresiasi')->title('Lama Depresiasi (Bln)'),
+            Column::make('penempatan.pengadaan.harga')->title('Harga Barang'),
+            Column::make('penempatan.pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
             Column::make('Pilih')
                 ->exportable(false)
                 ->printable(false)
                 ->width(20)
                 ->addClass('text-center'),
-            Column::make('penempatan_id')->hidden(true)->printable(false)
         ];
     }
 
@@ -99,6 +107,6 @@ class PenempatanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Penempatan_' . date('YmdHis');
+        return 'Barang_' . date('YmdHis');
     }
 }
