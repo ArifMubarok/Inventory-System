@@ -19,7 +19,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ route('admin.users.update', $data->id) }}" id="form" name="form" method="POST" data-parsley-validate="true" redirect-back="false">
+<form action="{{ route('admin.settings.users.update', $data->id) }}" id="form" name="form" method="POST" data-parsley-validate="true" redirect-back="false">
     @csrf
     {{ method_field('PUT') }}
     <div class=" row">

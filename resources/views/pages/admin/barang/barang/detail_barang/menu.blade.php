@@ -15,11 +15,7 @@
 
 @section('content')
 	<!-- begin breadcrumb -->
-	<ol class="breadcrumb float-xl-right">
-		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item"><a href="javascript:;">Barang</a></li>
-		<li class="breadcrumb-item active">@yield('title')</li>
-	</ol>
+	<a href="{{ route('admin.barang.barang.index') }}" class="btn btn-primary float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-list"></i>List Data</a>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
 	<h1 class="page-header">Barang <small>@yield('title')</small></h1>
