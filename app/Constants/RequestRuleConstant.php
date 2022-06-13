@@ -4,6 +4,15 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function opnameTable()
+    {
+        return [
+            'kondisi' => 'required',
+            'tanggal_opname' => 'required',
+            'keterangan' => 'required'
+        ];
+    }
+    
     public static function mutasiLokasiTable()
     {
         return [
