@@ -26,7 +26,7 @@ class DepresiasiDataTable extends DataTable
             })
             ->addIndexColumn()
             ->editColumn('Pilih', function ($row) {
-                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" penempatan_id="checkbox1"/>';
+                $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" id="checkbox1"/>';
                 return $btn;
             })
             ->rawColumns(['Pilih']);
@@ -63,13 +63,7 @@ class DepresiasiDataTable extends DataTable
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             // ->orderBy(2)
-            ->buttons(
-                Button::make('create'),
-                Button::make('export'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            );
+            ;
     }
 
     /**
