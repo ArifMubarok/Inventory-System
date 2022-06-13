@@ -10,7 +10,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             return redirect(route('admin.dashboard'));
         });
 
-        Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('/cek-barang', 'CekController@index')->name('cek-barang.index');
 
         Route::group(['namespace' => 'Master', 'prefix' => 'master', 'as' => 'master.'], function () {
             Route::resource('/data-kategori', 'KategoriController');
