@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/pengadaan-barang', 'PengadaanController');
             Route::resource('/penempatan-barang', 'PenempatanController');
             Route::resource('/barang', 'BarangController');
+            Route::resource('/barang-nonaktif', 'BarangNonAktifController');
         });
 
         // Route::resource('/settings', 'SettingController');
