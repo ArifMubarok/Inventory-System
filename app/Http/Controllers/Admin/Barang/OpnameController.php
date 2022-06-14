@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Barang;
 
+use App\Models\Barang;
 use App\Models\Lokasi;
+use App\Models\Opname;
+use App\Models\Kategori;
+use App\Models\Pengadaan;
 use App\Models\Departemen;
+use App\Models\Penempatan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\OpnameForm;
 use App\DataTables\Admin\Barang\OpnameDataTable;
-use App\Models\Kategori;
+use App\DataTables\Admin\Barang\OpnameAddDataTable;
 
 class OpnameController extends Controller
 {
@@ -26,12 +32,12 @@ class OpnameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(OpnameAddDataTable $datatable)
     {
         $data = Departemen::get();
         $lokasi = Lokasi::get();
         $kategori = Kategori::get();
-        return view('pages.admin.barang.opname.add-edit', [
+        return $datatable->render('pages.admin.barang.opname.add-edit', [
             'data' => $data,
             'lokasi' => $lokasi,
             'kategori' => $kategori
@@ -44,9 +50,27 @@ class OpnameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OpnameForm $request)
     {
-        //
+        // dd($request);
+        try {
+            // Opname::whereIn('id', $request->id)->update([
+            //     'kondisi' => $request->kondisi,
+            //     'tanggal_opname' => $request->tanggal_opname,
+            //     'keterangan' => $request->keterangan
+            // ]);
+            foreach ($request->id as $opname) {
+                Opname::create([
+                    'barang_id' => $opname,
+                    'kondisi' => $request->kondisi,
+                    'tanggal_opname' => $request->tanggal_opname,
+                    'keterangan' => $request->keterangan
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.barang.proses-opname.index'))->withInput()->withToastSucces('success saving data');
     }
 
     /**

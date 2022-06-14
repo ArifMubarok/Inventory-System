@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Constants\RequestRuleConstant;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OpnameForm extends FormRequest
@@ -23,8 +24,6 @@ class OpnameForm extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return RequestRuleConstant::opnameTable();
     }
 }

@@ -99,8 +99,10 @@ class BarangTable extends Migration
         Schema::create('opname', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
+            $table->string('kondisi')->nullable();
             $table->string('tanggal_opname')->nullable();
             $table->string('keterangan')->nullable();
+            $table->timestamps();
 
             $table->foreign('barang_id')->references('id')->on('barang')
                 ->onUpdate('cascade')->onDelete('cascade');
