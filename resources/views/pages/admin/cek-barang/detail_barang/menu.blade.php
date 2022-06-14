@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Barang > Detail Barang')
+@section('title', 'Detail Barang')
 
 @push('css')
 <link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
@@ -15,7 +15,13 @@
 
 @section('content')
 	<!-- begin breadcrumb -->
-	<a href="{{ route('admin.barang.barang.index') }}" class="btn btn-primary float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-list"></i>List Data</a>
+	@foreach ($barang as $item)
+	<form action="{{ route('admin.cek-barang.lapor') }}" method="get">
+		@csrf
+		<input type="text" name="barcode" value="{{ $item->barcode }}"  hidden>
+		<button type="submit" class="btn btn-danger float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-comment"></i>Lapor</button>
+	</form>
+	<a href="{{ route('admin.cek-barang.index') }}" class="btn btn-primary float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-search"></i>Cek Barang</a>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
 	<h1 class="page-header">Barang <small>@yield('title')</small></h1>
@@ -43,6 +49,8 @@
 				<!-- end panel-heading -->
 				<!-- begin tab-content -->
 				<div class="panel-body tab-content">
+					
+						
 					<!-- begin tab-pane -->
 					<div class="tab-pane fade  active show" id="nav-tab2-1">
 						@include('pages.admin.cek-barang.detail_barang.isi_menu.data_barang')
@@ -63,6 +71,8 @@
 						@include('pages.admin.cek-barang.detail_barang.isi_menu.riwayat_laporan')
 					</div>
 					<!-- end tab-pane -->
+
+					@endforeach
 				</div>
 				<!-- end tab-content -->
 			</div>
@@ -70,6 +80,7 @@
 		</div>
 		<!-- end col-9 -->
 	</div>
+
 	<!-- end row -->
 @endsection
 

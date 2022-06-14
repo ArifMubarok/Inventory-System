@@ -38,4 +38,9 @@ class Pengadaan extends Model
     {
         return $this->hasMany(Penempatan::class);
     }
+
+    public function laporbarang()
+    {
+        return $this->hasMany(LaporBarang::class);
+    }
 }

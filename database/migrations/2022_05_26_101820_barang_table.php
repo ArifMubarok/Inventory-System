@@ -121,5 +121,8 @@ class BarangTable extends Migration
     {
         Schema::dropIfExists('pengadaan');
         Schema::dropIfExists('penempatan');
+        Schema::dropIfExists('barang');
+        Schema::dropIfExists('riwayat_penempatan');
+        Schema::dropIfExists('opname');
     }
 }
