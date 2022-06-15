@@ -38,6 +38,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/cetak-barcode', 'CetakBarcodeController');
         });
 
+        Route::group(['namespace' => 'Laporan', 'prefix' => 'laporan', 'as' => 'laporan.'], function () {
+            Route::resource('/laporan-barang', 'LaporanBarangController');
+        });
+
         // Route::resource('/settings', 'SettingController');
     });
 });

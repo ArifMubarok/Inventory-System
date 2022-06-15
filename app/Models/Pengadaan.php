@@ -21,7 +21,8 @@ class Pengadaan extends Model
         'tanggal_pengadaan',
         'depresiasi',
         'lama_depresiasi',
-        'keterangan'
+        'keterangan',
+        'total_harga'
     ];
 
     public function databarang()

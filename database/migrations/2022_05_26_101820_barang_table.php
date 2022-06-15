@@ -20,12 +20,13 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('databarang_id');
             $table->unsignedBigInteger('supplier_id');
             $table->string('kondisi');
-            $table->integer('jumlah');
+            $table->bigInteger('jumlah');
             $table->integer('harga');
             $table->string('tanggal_pengadaan');
             $table->integer('depresiasi')->nullable();
             $table->integer('lama_depresiasi')->nullable();
             $table->string('keterangan')->nullable();
+            $table->bigInteger('total_harga')->nullable();
             $table->timestamps();
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')
