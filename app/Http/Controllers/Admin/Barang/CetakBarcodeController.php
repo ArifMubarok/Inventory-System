@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Barang;
-use App\Models\Penempatan;
-use App\Models\CetakBarcode;
 use Illuminate\Http\Request;
+use LaravelQRCode\Facades\QRCode;
 use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Barang\PenempatanDataTable;
 use App\DataTables\Admin\Barang\CetakBarcodeDataTable;
 
 class CetakBarcodeController extends Controller
@@ -27,12 +27,17 @@ class CetakBarcodeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show(PenempatanDataTable $datatable, $id)
     {
+        $file = public_path('barcode.png');
         $barcode = Barang::where('id', '=', $id)->get();
+        foreach ($barcode as $data_barang) {
+            $barcode_gen = $data_barang->penempatan->barcode;
+        }
+        $barcode_generate = QRCode::text($barcode_gen)->setOutfile($file)->png();
         return view('pages.admin.barang.cetak_barcode.cetak_barcode', [
             'barcode' => $barcode,
-            'image' => 'logo.png',
+            'barcode_generate' => $barcode_generate,
         ]);
     }
 

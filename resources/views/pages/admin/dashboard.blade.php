@@ -17,21 +17,21 @@
 
 @section('content')
 
-@include('pages.admin.isi_dashboard.header')
+@include('includes.isi_dashboard.header')
 
-@include('pages.admin.isi_dashboard.kotak')
+@include('includes.isi_dashboard.kotak')
 
 {{-- begin row --}}
 <div class="row">
   {{-- begin col --}}
   <div class="col-xl-6">
-    @include('pages.admin.isi_dashboard.lingkaran-chart')
+    @include('includes.isi_dashboard.lingkaran-chart')
   </div>
   {{-- end col --}}
 
   {{-- begin col --}}
   <div class="col-xl-6">
-    @include('pages.admin.isi_dashboard.bar-chart')
+    @include('includes.isi_dashboard.bar-chart')
   </div>
   {{-- end col --}}
 </div>
@@ -42,13 +42,13 @@
 <div class="row">
   {{-- begin col --}}
   <div class="col-xl-6">
-    @include('pages.admin.isi_dashboard.riwayat_laporan_1')
+    @include('includes.isi_dashboard.riwayat_laporan_1')
   </div>
   {{-- end col --}}
 
   {{-- begin col --}}
   <div class="col-xl-6">
-    @include('pages.admin.isi_dashboard.riwayat_laporan_2')
+    @include('includes.isi_dashboard.riwayat_laporan_2')
   </div>
   {{-- end col --}}
 </div>

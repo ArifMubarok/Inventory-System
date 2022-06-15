@@ -61,6 +61,7 @@ class BarangTable extends Migration
             $table->id();
             $table->unsignedBigInteger('penempatan_id');
             $table->integer('nilai_barang')->nullable();
+            $table->string('tanggal_depresiasi')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
@@ -99,8 +100,10 @@ class BarangTable extends Migration
         Schema::create('opname', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
+            $table->string('kondisi')->nullable();
             $table->string('tanggal_opname')->nullable();
             $table->string('keterangan')->nullable();
+            $table->timestamps();
 
             $table->foreign('barang_id')->references('id')->on('barang')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -122,5 +125,8 @@ class BarangTable extends Migration
     {
         Schema::dropIfExists('pengadaan');
         Schema::dropIfExists('penempatan');
+        Schema::dropIfExists('barang');
+        Schema::dropIfExists('riwayat_penempatan');
+        Schema::dropIfExists('opname');
     }
 }

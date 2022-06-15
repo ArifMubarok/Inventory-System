@@ -10,7 +10,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             return redirect(route('admin.dashboard'));
         });
 
-        Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+        Route::group(['prefix' => 'cek-barang', 'as' => 'cek-barang.'], function () {
+            Route::get('/', 'CekController@index')->name('index');
+            Route::post('/', 'CekController@show')->name('show');
+            Route::get('/lapor', 'CekController@lapor')->name('lapor');
+            Route::post('/lapor/store', 'CekController@kirim')->name('kirim');
+        });
+
+        Route::group(['prefix'=>'laporan-barang', 'as' => 'laporan-barang.'], function () {
+            Route::get('/', 'LaporBarangController@index')->name('index');
+            Route::get('/{lapor_barang}', 'LaporBarangController@show')->name('show');
+            Route::put('/{lapor_barang}', 'LaporBarangController@update')->name('update');
+        });
 
         Route::group(['namespace' => 'Master', 'prefix' => 'master', 'as' => 'master.'], function () {
             Route::resource('/data-kategori', 'KategoriController');

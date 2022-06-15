@@ -12,6 +12,9 @@ class Opname extends Model
 
     protected $fillable = [
         'barang_id',
+        'kondisi',
+        'tanggal_opname',
+        'keterangan',
     ];
 
     use HasFactory;
