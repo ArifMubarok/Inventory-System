@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('/lapor/store', 'CekController@kirim')->name('kirim');
         });
 
-        Route::group(['prefix'=>'laporan-barang', 'as' => 'laporan-barang.'], function () {
+        Route::group(['prefix' => 'laporan-barang', 'as' => 'laporan-barang.'], function () {
             Route::get('/', 'LaporBarangController@index')->name('index');
             Route::get('/{lapor_barang}', 'LaporBarangController@show')->name('show');
             Route::put('/{lapor_barang}', 'LaporBarangController@update')->name('update');
@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['namespace' => 'Laporan', 'prefix' => 'laporan', 'as' => 'laporan.'], function () {
             Route::resource('/laporan-barang', 'LaporanBarangController');
+            Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
         });
 
         // Route::resource('/settings', 'SettingController');
