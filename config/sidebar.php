@@ -112,23 +112,23 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/lp-barang',
+                    'url' => '/admin/laporan/laporan-barang',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Barang'
                 ],
                 [
-                    'url' => '/admin/lp-pengadaan',
+                    'url' => '/admin/laporan/laporan-pengadaan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Pengadaan'
                 ],
                 [
-                    'url' => '/admin/lp-opname',
+                    'url' => '/admin/laporan/laporan-opname',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Opname'
                 ],
                 [
-                    'url' => '/admin/lp-depresiasi',
+                    'url' => '/admin/laporan/laporan-depresiasi',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Depresiasi'
                 ],
                 [
-                    'url' => '/admin/lp-barang-nonaktif',
+                    'url' => '/admin/laporan/laporan-barang-nonaktif',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Barang Non-Aktif'
                 ],
             ]

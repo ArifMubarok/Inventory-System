@@ -20,12 +20,13 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('databarang_id');
             $table->unsignedBigInteger('supplier_id');
             $table->string('kondisi');
-            $table->integer('jumlah');
+            $table->bigInteger('jumlah');
             $table->integer('harga');
             $table->string('tanggal_pengadaan');
             $table->integer('depresiasi')->nullable();
             $table->integer('lama_depresiasi')->nullable();
             $table->string('keterangan')->nullable();
+            $table->bigInteger('total_harga')->nullable();
             $table->timestamps();
 
             $table->foreign('databarang_id')->references('id')->on('data_barang')
@@ -60,6 +61,7 @@ class BarangTable extends Migration
             $table->id();
             $table->unsignedBigInteger('penempatan_id');
             $table->integer('nilai_barang')->nullable();
+            $table->string('tanggal_depresiasi')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
@@ -74,9 +76,16 @@ class BarangTable extends Migration
 
         Schema::create('riwayat_penempatan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('penempatan_id');
+            $table->unsignedBigInteger('penempatan_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
             $table->string('tanggal_pemindahan')->nullable();
+            $table->timestamps();
+
+            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('lokasi_id')->references('id')->on('lokasi')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create('cetak_barcode', function (Blueprint $table) {
@@ -91,8 +100,10 @@ class BarangTable extends Migration
         Schema::create('opname', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
+            $table->string('kondisi')->nullable();
             $table->string('tanggal_opname')->nullable();
             $table->string('keterangan')->nullable();
+            $table->timestamps();
 
             $table->foreign('barang_id')->references('id')->on('barang')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -114,5 +125,8 @@ class BarangTable extends Migration
     {
         Schema::dropIfExists('pengadaan');
         Schema::dropIfExists('penempatan');
+        Schema::dropIfExists('barang');
+        Schema::dropIfExists('riwayat_penempatan');
+        Schema::dropIfExists('opname');
     }
 }

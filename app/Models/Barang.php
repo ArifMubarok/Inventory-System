@@ -32,4 +32,9 @@ class Barang extends Model
     {
         return $this->belongsTo(Penempatan::class, 'penempatan_id', 'penempatan_id');
     }
+
+    public function laporbarang()
+    {
+        return $this->hasMany(LaporBarang::class);
+    }
 }
