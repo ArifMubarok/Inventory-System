@@ -57,6 +57,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
         });
 
+        Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
+            Route::resource('/backup-database', 'BackupController');
+            Route::resource('/restore-database', 'RestoreController');
+        });
+
         // Route::resource('/settings', 'SettingController');
     });
 });

@@ -164,11 +164,11 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/backup',
+                    'url' => '/admin/utilitas/backup-database',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Backup Database'
                 ],
                 [
-                    'url' => '/admin/restore',
+                    'url' => '/admin/utilitas/restore-database',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Restore Database'
                 ],
             ]
