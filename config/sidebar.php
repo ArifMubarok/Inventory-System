@@ -155,37 +155,37 @@ return [
                     'url' => '/admin/settings/users',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;User'
                 ],
-                ]
-            ],
-            [
-                'icon' => 'fas fa-hashtag',
-                'title' => 'Utilitas',
-                'url' => 'javascript:;',
-                'caret' => true,
-                'sub_menu' => [
-                    [
-                        'url' => '/admin/backup',
-                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Backup Database'
-                    ],
-                    [
-                        'url' => '/admin/restore',
-                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Restore Database'
-                    ],
-                ]
-            ],
-            [
-                'icon' => 'fa fa-cogs',
-                'title' => 'Settings',
-                'url' => 'javascript:;',
-                'caret' => true,
-                'sub_menu' => [
-                    [
-                        'url' => '/admin/settings',
-                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
-                    ]
-                ]
-            ],
+            ]
         ],
+        [
+            'icon' => 'fas fa-hashtag',
+            'title' => 'Utilitas',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/utilitas/backup-database',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Backup Database'
+                ],
+                [
+                    'url' => '/admin/utilitas/restore-database',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Restore Database'
+                ],
+            ]
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Settings',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/settings',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
+                ]
+            ]
+        ],
+    ],
 
     'menu_user' => [
         [

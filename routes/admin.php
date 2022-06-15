@@ -38,6 +38,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/cetak-barcode', 'CetakBarcodeController');
         });
 
+        Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
+            Route::resource('/backup-database', 'BackupController');
+            Route::resource('/restore-database', 'RestoreController');
+        });
+
         // Route::resource('/settings', 'SettingController');
     });
 });
