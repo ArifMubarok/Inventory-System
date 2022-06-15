@@ -55,13 +55,26 @@ class PengadaanController extends Controller
             }
             if (Pengadaan::where('databarang_id', '=', $request->databarang_id)->count() == 0) {
                 $barcodePengadaan = 1;
-            }else {
+            } else {
                 $barcodePengadaan = Pengadaan::where('databarang_id', '=', $request->databarang_id)->count() + 1;
             }
             $barcodePengadaan += $request->code;
             $barcodeData = $barcodeMaster . "." . $barcodePengadaan;
 
-            Pengadaan::create($request->all());
+            //total harga
+            $total = $request->jumlah * $request->harga;
+            Pengadaan::create([
+                'databarang_id' => $request->databarang_id,
+                'supplier_id' => $request->supplier_id,
+                'kondisi' => $request->kondisi,
+                'jumlah' => $request->jumlah,
+                'harga' => $request->harga,
+                'tanggal_pengadaan' => $request->tanggal_pengadaan,
+                'depresiasi' => $request->depresiasi,
+                'lama_depresiasi' => $request->lama_depresiasi,
+                'keterangan' => $request->keterangan,
+                'total_harga' => $total,
+            ]);
             $pengadaan_id = Pengadaan::latest()->first('id');
 
             $barcodeBarang = 1;
