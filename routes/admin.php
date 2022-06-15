@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('/proses-opname', 'OpnameController');
             Route::resource('/hitung-depresiasi', 'DepresiasiController');
             Route::resource('/cetak-barcode', 'CetakBarcodeController');
+            Route::resource('/barang-nonaktif', 'BarangNonAktifController');
         });
 
         // Route::resource('/settings', 'SettingController');
