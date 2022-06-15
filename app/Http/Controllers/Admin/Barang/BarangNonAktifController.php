@@ -1,28 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Laporan;
+namespace App\Http\Controllers\Admin\Barang;
 
-use App\Models\Bagian;
-use App\Models\Lokasi;
-use App\Models\Departemen;
-use App\Models\Penempatan;
-use App\Models\Pengadaan;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Laporan\LaporanDepresiasiDataTable;
-use App\Http\Requests\Admin\DepresiasiForm;
-use App\Models\Barang;
+use App\DataTables\Admin\Barang\BarangDataTable;
+use App\DataTables\Admin\Barang\BarangNonAktifDataTable;
+use App\DataTables\Admin\Barang\PenempatanDataTable;
 
-class LaporanDepresiasiController extends Controller
+
+class BarangNonAktifController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(LaporanDepresiasiDataTable $datatable)
+    public function index(BarangNonAktifDataTable $datatable)
     {
-        return $datatable->render('pages.admin.laporan.laporan-depresiasi.index');
+        return $datatable->render('pages.admin.barang.barang_nonaktif.index');
     }
 
     /**
