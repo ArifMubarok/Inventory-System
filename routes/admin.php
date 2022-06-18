@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['namespace' => 'Laporan', 'prefix' => 'laporan', 'as' => 'laporan.'], function () {
             Route::resource('/laporan-barang', 'LaporanBarangController');
             Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
+            Route::resource('/laporan-opname', 'LaporanOpnameController');
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
