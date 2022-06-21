@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Laporan Barang')
+@section('title', 'Laporan Pengadaan')
 
 @push('css')
 <!-- datatables -->
@@ -42,8 +42,8 @@
   
   {{-- begin-panel-body --}}
   <div class="panel-body">
-    <a href="{{ route('admin.laporan.laporan-barang.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
-    <a href="{{ route('admin.laporan.laporan-barang.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+    <a href="{{ route('admin.laporan.laporan-pengadaan.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
+    <a href="{{ route('admin.laporan.laporan-pengadaan.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
   </div>
 </div>
 <!-- end panel -->
