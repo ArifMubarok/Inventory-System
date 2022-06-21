@@ -64,6 +64,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/export', 'LaporanPengadaanController@export')->name('export');
             });
             Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
+            Route::resource('/laporan-opname', 'LaporanOpnameController');
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
