@@ -35,24 +35,16 @@
   </div>
   <!-- end panel-heading -->
   <!-- begin panel-body -->
-  <form class="panel-body" action="{{ route('admin.barang.hitung-depresiasi.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
-    @csrf
+  <div class="panel-body">
     {{ $dataTable->table() }}
-    <div class="panel-body">
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-            <div class="form-group row m-b-15">
-                <div class="col-md-8">
-                    <a href="index.php?c=laporan&amp;m=depresiasi_excel&amp;bagian_id=all&amp;lokasi_id=all" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>&nbsp;
-                    <a href="index.php?c=laporan&amp;m=depresiasi_cetak&amp;bagian_id=all&amp;lokasi_id=all" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-  </form>
+  </div>
   <!-- end panel-body -->
+  
+  {{-- begin-panel-body --}}
+  <div class="panel-body">
+    <a href="{{ route('admin.laporan.laporan-depresiasi.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
+    <a href="{{ route('admin.laporan.laporan-depresiasi.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+  </div>
 </div>
 <!-- end panel -->
 @endsection

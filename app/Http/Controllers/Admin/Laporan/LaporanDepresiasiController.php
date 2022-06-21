@@ -30,6 +30,13 @@ class LaporanDepresiasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function cetak()
+    {
+        $data = Barang::where('nilai_barang', '!=', '0')->get();
+        return view('pages.admin.laporan.laporan-depresiasi.cetak', [
+            'data' => $data
+        ]);
+    }
     public function create()
     {
         //
