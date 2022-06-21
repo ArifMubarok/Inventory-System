@@ -173,18 +173,18 @@ return [
                 ],
             ]
         ],
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Settings',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => '/admin/settings',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
-                ]
-            ]
-        ],
+        // [
+        //     'icon' => 'fa fa-cogs',
+        //     'title' => 'Settings',
+        //     'url' => 'javascript:;',
+        //     'caret' => true,
+        //     'sub_menu' => [
+        //         [
+        //             'url' => '/admin/settings',
+        //             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
+        //         ]
+        //     ]
+        // ],
     ],
 
     'menu_user' => [

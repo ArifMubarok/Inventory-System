@@ -68,7 +68,7 @@ class PengadaanDataTable extends DataTable
             ->orderBy(1)
             ->parameters([
                 'responsive' => true,
-                'autowidth' => false
+                'autoWidth' => false
             ])
             ->buttons(
                 Button::make('create'),

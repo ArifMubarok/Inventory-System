@@ -49,7 +49,7 @@
             <h3>Gambar</h3>
         </div>
         <div class="form-group row m-b-15">
-            <img src="{{ asset('storage/' . $item->pengadaan->databarang->image) }}" width="260">
+            <img src= "{{ $item->pengadaan->databarang->image == 'img/no_image.png' ? asset('assets/' . $item->pengadaan->databarang->image) : asset('storage/' . $item->pengadaan->databarang->image) }}" width="260">
         </div>
     </div>
 </div>
