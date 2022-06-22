@@ -42,8 +42,8 @@
   
   {{-- begin-panel-body --}}
   <div class="panel-body">
-    <a href="" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
-    <a href="" class="btn btn-success"><i class="fa fa-print"></i> Cetak</a>
+    <a href="{{ route('admin.laporan.laporan-barang.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
+    <a href="{{ route('admin.laporan.laporan-barang.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
   </div>
 </div>
 <!-- end panel -->

@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Laporan Depresiasi')
+@section('title', 'Laporan Pengadaan')
 
 @push('css')
 <!-- datatables -->
@@ -14,12 +14,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Laporan</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Laporan<small> @yield('title')</small></h1>
+<h1 class="page-header">Master<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -42,8 +42,8 @@
   
   {{-- begin-panel-body --}}
   <div class="panel-body">
-    <a href="{{ route('admin.laporan.laporan-depresiasi.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
-    <a href="{{ route('admin.laporan.laporan-depresiasi.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+    <a href="{{ route('admin.laporan.laporan-pengadaan.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
+    <a href="{{ route('admin.laporan.laporan-pengadaan.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
   </div>
 </div>
 <!-- end panel -->

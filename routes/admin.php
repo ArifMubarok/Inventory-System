@@ -53,9 +53,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         Route::group(['namespace' => 'Laporan', 'prefix' => 'laporan', 'as' => 'laporan.'], function () {
-            Route::resource('/laporan-barang', 'LaporanBarangController');
-            Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
-            Route::resource('/laporan-opname', 'LaporanOpnameController');
+            Route::group(['prefix' => 'laporan-barang', 'as' => 'laporan-barang.'], function () {
+                Route::get('/', 'LaporanBarangController@index');
+                Route::get('/cetak', 'LaporanBarangController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanBarangController@export')->name('export');
+            });
+            Route::group(['prefix' => 'laporan-pengadaan', 'as' => 'laporan-pengadaan.'], function () {
+                Route::get('/', 'LaporanPengadaanController@index');
+                Route::get('/cetak', 'LaporanPengadaanController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanPengadaanController@export')->name('export');
+            });
+            Route::group(['prefix' => 'laporan-depresiasi', 'as' => 'laporan-depresiasi.'], function () {
+                Route::get('/', 'LaporanDepresiasiController@index');
+                Route::get('/cetak', 'LaporanDepresiasiController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanDepresiasiController@export')->name('export');
+            });
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
