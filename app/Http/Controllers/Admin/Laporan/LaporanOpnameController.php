@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Laporan;
 
+use App\Models\Opname;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Laporan\LaporanOpnameDataTable;
@@ -23,9 +24,12 @@ class LaporanOpnameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function cetak()
     {
-        //
+        $data = Opname::get();
+        return view('pages.admin.laporan.laporan-opname.cetak', [
+            'data' => $data
+        ]);
     }
 
     /**

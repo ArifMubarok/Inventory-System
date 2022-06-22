@@ -68,6 +68,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/cetak', 'LaporanDepresiasiController@cetak')->name('cetak');
                 Route::get('/export', 'LaporanDepresiasiController@export')->name('export');
             });
+            Route::group(['prefix' => 'laporan-opname', 'as' => 'laporan-opname.'], function () {
+                Route::get('/', 'LaporanOpnameController@index');
+                Route::get('/cetak', 'LaporanOpnameController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanOpnameController@export')->name('export');
+            });
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
