@@ -62,6 +62,10 @@ class DepresiasiDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false
+            ])
             // ->orderBy(2)
             ;
     }
@@ -80,12 +84,12 @@ class DepresiasiDataTable extends DataTable
                 ->addClass('text-center')
                 ->orderable(false)
                 ->searchable(false),
-            Column::make('penempatan.barcode')->title('Barcode'),
-            Column::make('penempatan.pengadaan.databarang.name')->title('Barang'),
-            Column::make('penempatan.pengadaan.depresiasi')->title('Depresiasi'),
-            Column::make('penempatan.pengadaan.lama_depresiasi')->title('Lama Depresiasi (Bln)'),
-            Column::make('penempatan.pengadaan.harga')->title('Harga Barang'),
-            Column::make('penempatan.pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
+            Column::make('penempatan.barcode')->width(50)->title('Barcode'),
+            Column::make('penempatan.pengadaan.databarang.name')->width(200)->title('Barang'),
+            Column::make('penempatan.pengadaan.depresiasi')->width(40)->title('Depresiasi'),
+            Column::make('penempatan.pengadaan.lama_depresiasi')->width(40)->title('Lama Depresiasi (Bln)'),
+            Column::make('penempatan.pengadaan.harga')->width(40)->title('Harga Barang'),
+            Column::make('penempatan.pengadaan.tanggal_pengadaan')->width(80)->title('Tanggal Pengadaan'),
             Column::make('Pilih')
                 ->exportable(false)
                 ->printable(false)

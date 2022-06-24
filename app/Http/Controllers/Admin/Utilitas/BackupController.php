@@ -1,28 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Laporan;
+namespace App\Http\Controllers\Admin\Utilitas;
 
-use App\Models\Bagian;
-use App\Models\Lokasi;
-use App\Models\Departemen;
-use App\Models\Penempatan;
-use App\Models\Pengadaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Laporan\LaporanDepresiasiDataTable;
-use App\Http\Requests\Admin\DepresiasiForm;
-use App\Models\Barang;
 
-class LaporanDepresiasiController extends Controller
+class BackupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(LaporanDepresiasiDataTable $datatable)
+    public function index()
     {
-        return $datatable->render('pages.admin.laporan.laporan-depresiasi.index');
+        return view('pages.admin.utilitas.backup.index');
     }
 
     /**
@@ -30,13 +22,6 @@ class LaporanDepresiasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function cetak()
-    {
-        $data = Barang::where('nilai_barang', '!=', '0')->get();
-        return view('pages.admin.laporan.laporan-depresiasi.cetak', [
-            'data' => $data
-        ]);
-    }
     public function create()
     {
         //

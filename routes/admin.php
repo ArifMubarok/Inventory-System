@@ -63,7 +63,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/cetak', 'LaporanPengadaanController@cetak')->name('cetak');
                 Route::get('/export', 'LaporanPengadaanController@export')->name('export');
             });
-            Route::resource('/laporan-depresiasi', 'LaporanDepresiasiController');
+            Route::group(['prefix' => 'laporan-depresiasi', 'as' => 'laporan-depresiasi.'], function () {
+                Route::get('/', 'LaporanDepresiasiController@index');
+                Route::get('/cetak', 'LaporanDepresiasiController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanDepresiasiController@export')->name('export');
+            });
+            Route::group(['prefix' => 'laporan-opname', 'as' => 'laporan-opname.'], function () {
+                Route::get('/', 'LaporanOpnameController@index');
+                Route::get('/cetak', 'LaporanOpnameController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanOpnameController@export')->name('export');
+            });
+        });
+
+        Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
+            Route::resource('/backup-database', 'BackupController');
+            Route::resource('/restore-database', 'RestoreController');
         });
 
         // Route::resource('/settings', 'SettingController');

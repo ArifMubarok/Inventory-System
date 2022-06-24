@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Laporan;
 
-use App\Models\Bagian;
-use App\Models\Lokasi;
-use App\Models\Departemen;
-use App\Models\Penempatan;
-use App\Models\Pengadaan;
+use App\Models\Opname;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Laporan\LaporanDepresiasiDataTable;
-use App\Http\Requests\Admin\DepresiasiForm;
-use App\Models\Barang;
+use App\DataTables\Admin\Laporan\LaporanOpnameDataTable;
 
-class LaporanDepresiasiController extends Controller
+class LaporanOpnameController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(LaporanDepresiasiDataTable $datatable)
+    public function index(LaporanOpnameDataTable $datatable)
     {
-        return $datatable->render('pages.admin.laporan.laporan-depresiasi.index');
+        return $datatable->render('pages.admin.laporan.laporan-opname.index');
     }
 
     /**
@@ -32,14 +26,10 @@ class LaporanDepresiasiController extends Controller
      */
     public function cetak()
     {
-        $data = Barang::where('nilai_barang', '!=', '0')->get();
-        return view('pages.admin.laporan.laporan-depresiasi.cetak', [
+        $data = Opname::get();
+        return view('pages.admin.laporan.laporan-opname.cetak', [
             'data' => $data
         ]);
-    }
-    public function create()
-    {
-        //
     }
 
     /**

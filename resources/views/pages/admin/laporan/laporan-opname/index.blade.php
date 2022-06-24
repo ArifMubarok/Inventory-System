@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Laporan Depresiasi')
+@section('title', 'Laporan Opname')
 
 @push('css')
 <!-- datatables -->
@@ -35,16 +35,24 @@
   </div>
   <!-- end panel-heading -->
   <!-- begin panel-body -->
-  <div class="panel-body">
+  <form class="panel-body" action="{{ route('admin.barang.proses-opname.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+    @csrf
     {{ $dataTable->table() }}
-  </div>
+    <div class="panel-body">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row m-b-15">
+                <div class="col-md-8">
+                    <a href="{{ route('admin.laporan.laporan-opname.export') }}" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>&nbsp;
+                    <a href="{{ route('admin.laporan.laporan-opname.cetak') }}" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </form>
   <!-- end panel-body -->
-  
-  {{-- begin-panel-body --}}
-  <div class="panel-body">
-    <a href="{{ route('admin.laporan.laporan-depresiasi.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
-    <a href="{{ route('admin.laporan.laporan-depresiasi.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
-  </div>
 </div>
 <!-- end panel -->
 @endsection

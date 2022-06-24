@@ -34,7 +34,7 @@ class CetakBarcodeController extends Controller
         foreach ($barcode as $data_barang) {
             $barcode_gen = $data_barang->penempatan->barcode;
         }
-        $barcode_generate = QRCode::text($barcode_gen)->setOutfile($file)->png();
+        $barcode_generate = QRCode::text($barcode_gen)->setOutfile($file)->setSize(7)->png();
         return view('pages.admin.barang.cetak_barcode.cetak_barcode', [
             'barcode' => $barcode,
             'barcode_generate' => $barcode_generate,

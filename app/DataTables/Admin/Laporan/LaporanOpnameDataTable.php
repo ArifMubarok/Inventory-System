@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin\Barang;
+namespace App\DataTables\Admin\Laporan;
 
 use App\Models\Opname;
 use Yajra\DataTables\Html\Button;
@@ -9,7 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class OpnameDataTable extends DataTable
+class LaporanOpnameDataTable extends DataTable
 {
     /**
      * Build DataTable class.
