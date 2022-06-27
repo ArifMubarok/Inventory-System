@@ -62,6 +62,7 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('penempatan_id');
             $table->integer('nilai_barang')->nullable();
             $table->string('tanggal_depresiasi')->nullable();
+            $table->enum('status', ['1', '0']);
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')

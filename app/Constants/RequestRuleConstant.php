@@ -21,6 +21,14 @@ class RequestRuleConstant
         ];
     }
 
+    public static function nonaktifTable()
+    {
+        return [
+            'kondisi' => 'required',
+            'keterangan' => 'required',
+        ];
+    }
+
     public static function opnameTable()
     {
         return [
