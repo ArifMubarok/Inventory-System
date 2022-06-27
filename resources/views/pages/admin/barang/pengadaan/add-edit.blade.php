@@ -55,7 +55,7 @@
       <div class="form-group">
         <label for="kondisi">Kondisi*</label>
         <select class="select2 form-control" name="kondisi">
-          <option selected>{{{ old('kondisi') ?? $data->kondisi ?? 'Pilih Status' }}}</option>
+          <option selected value="{{{ old('kondisi') ?? $data->kondisi ?? '' }}}">{{{ old('kondisi') ?? $data->kondisi ?? 'Pilih Status' }}}</option>
           <option value="baik">Baik</option>
           <option value="sedang">Sedang</option>
           <option value="rusak">Rusak</option>

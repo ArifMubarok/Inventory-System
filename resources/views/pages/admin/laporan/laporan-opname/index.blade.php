@@ -44,8 +44,8 @@
         <div class="col-md-6">
             <div class="form-group row m-b-15">
                 <div class="col-md-8">
-                    <a href="#" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>&nbsp;
-                    <a href="#" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak</a>
+                    <a href="{{ route('admin.laporan.laporan-opname.export') }}" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>&nbsp;
+                    <a href="{{ route('admin.laporan.laporan-opname.cetak') }}" target="_blank" class="btn btn-sm btn-success"><i class="fa fa-print"></i> Cetak</a>
                 </div>
             </div>
         </div>

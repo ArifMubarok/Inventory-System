@@ -80,14 +80,14 @@ class LaporanDepresiasiDataTable extends DataTable
                 ->addClass('text-center')
                 ->orderable(false)
                 ->searchable(false),
-            Column::make('penempatan.barcode')->title('Barcode'),
-            Column::make('penempatan.pengadaan.databarang.name')->title('Barang'),
-            Column::make('penempatan.pengadaan.tanggal_pengadaan')->title('Tanggal Pengadaan'),
-            Column::make('penempatan.lokasi.name')->title('Lokasi'),
-            Column::make('penempatan.pengadaan.depresiasi')->title('Depresiasi'),
-            Column::make('penempatan.pengadaan.harga')->title('Harga Barang'),
-            Column::make('penempatan.pengadaan.lama_depresiasi')->title('Lama Depresiasi (Bln)'),
-            Column::make('nilai_barang')->title('Nilai Barang'),
+            Column::make('penempatan.barcode')->width(50)->title('Barcode'),
+            Column::make('penempatan.pengadaan.databarang.name')->width(150)->title('Barang'),
+            Column::make('penempatan.pengadaan.tanggal_pengadaan')->width(80)->title('Tanggal Pengadaan'),
+            Column::make('penempatan.lokasi.name')->width(40)->title('Lokasi'),
+            Column::make('penempatan.pengadaan.depresiasi')->width(40)->title('Depresiasi'),
+            Column::make('penempatan.pengadaan.harga')->width(40)->title('Harga Barang'),
+            Column::make('penempatan.pengadaan.lama_depresiasi')->width(50)->title('Lama Depresiasi (Bln)'),
+            Column::make('nilai_barang')->width(40)->title('Nilai Barang'),
             
         ];
     }

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Bagian;
+use App\Models\Barang;
 use App\Models\Lokasi;
+use App\Models\Pengadaan;
 use App\Models\Departemen;
 use App\Models\Penempatan;
-use App\Models\Pengadaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Barang\DepresiasiDataTable;
 use App\Http\Requests\Admin\DepresiasiForm;
-use App\Models\Barang;
+use App\DataTables\Admin\Barang\DepresiasiDataTable;
 
 class DepresiasiController extends Controller
 {
@@ -55,9 +55,21 @@ class DepresiasiController extends Controller
                     $depresiasi = $item->depresiasi;
                     $harga      = $item->harga;
                     $lama_depresiasi = $item->lama_depresiasi;
+                    $tanggal_pengadaan = $item->tanggal_pengadaan;
                 }
 
-                $nilaiBarang = ($harga - $depresiasi)/$lama_depresiasi;
+                $ts1 = strtotime($tanggal_pengadaan);
+                $ts2 = strtotime($tanggal_depresiasi);
+
+                $year1 = date('Y', $ts1);
+                $year2 = date('Y', $ts2);
+
+                $month1 = date('m', $ts1);
+                $month2 = date('m', $ts2);
+
+                $jumlahBulan = (($year2 - $year1) * 12) + ($month2 - $month1);
+
+                $nilaiBarang = ($jumlahBulan * ($harga - $depresiasi))/$lama_depresiasi;
 
                 Barang::where('penempatan_id', $p_id)->update([
                     'nilai_barang' => $nilaiBarang,

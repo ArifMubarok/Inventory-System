@@ -6,6 +6,9 @@ use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Laporan\LaporanBarangDataTable;
+use App\Exports\LaporanBarangExport;
+use Maatwebsite\Excel\Excel as ExcelExcel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanBarangController extends Controller
 {
@@ -34,6 +37,6 @@ class LaporanBarangController extends Controller
 
     public function export()
     {
-        //
+        return Excel::download(new LaporanBarangExport, 'Laporan Barang.xlsx');
     }
 }
