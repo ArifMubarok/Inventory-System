@@ -203,7 +203,7 @@ trait Converter
     {
         switch (static::singularUnit($unitPrecision)) {
             case 'minute':
-                return '[Hi]';
+                return '[H_i]';
             case 'second':
                 return 'H:i:s';
             case 'm':

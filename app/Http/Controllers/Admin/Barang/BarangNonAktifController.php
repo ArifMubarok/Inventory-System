@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Barang;
+use App\Models\Departemen; 
+use App\Models\Lokasi; 
+use App\Models\Kategori; 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\NonAktifForm;
 use App\DataTables\Admin\Barang\BarangDataTable;
+use App\DataTables\Admin\Barang\BarangNonAktifAddDataTable;
 use App\DataTables\Admin\Barang\BarangNonAktifDataTable;
 use App\DataTables\Admin\Barang\PenempatanDataTable;
 
@@ -27,9 +32,16 @@ class BarangNonAktifController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(BarangNonAktifAddDataTable $datatable)
     {
-        //
+        $data = Departemen::get();
+        $lokasi = Lokasi::get();
+        $kategori = Kategori::get();
+        return $datatable->render('pages.admin.barang.barang_nonaktif.add',[
+            'data' => $data,
+            'lokasi' => $lokasi,
+            'kategori' => $kategori,
+        ]);
     }
 
     /**
@@ -38,9 +50,18 @@ class BarangNonAktifController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NonAktifForm $request)
     {
-        //
+        try {
+            foreach ($request->id as $id_barang) {
+                Barang::where('id', $id_barang)->update([
+                    'status' => '0',
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error saving data');
+        }
+        return redirect(route('admin.barang.barang-nonaktif.index'))->withInput()->withToastSucces('Success saving data');
     }
 
     /**
