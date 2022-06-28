@@ -15,6 +15,11 @@ class RiwayatPenempatan extends Model
 
     public function penempatan()
     {
-        return $this->belongsTo(Penempatan::class);
+        return $this->belongsTo(Penempatan::class, 'penempatan_id', 'penempatan_id');
+    }
+
+    public function lokasi()
+    {
+        return $this->belongsTo(Lokasi::class);
     }
 }

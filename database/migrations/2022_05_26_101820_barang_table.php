@@ -128,5 +128,6 @@ class BarangTable extends Migration
         Schema::dropIfExists('barang');
         Schema::dropIfExists('riwayat_penempatan');
         Schema::dropIfExists('opname');
+        Schema::dropIfExists('cetak_barcode');
     }
 }
