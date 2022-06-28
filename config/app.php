@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         LaravelQRCode\Providers\QRCodeServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...

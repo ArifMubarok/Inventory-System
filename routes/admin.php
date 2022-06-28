@@ -76,8 +76,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
-            Route::resource('/backup-database', 'BackupController');
-            Route::resource('/restore-database', 'RestoreController');
+            Route::get('/backup-database', 'BackupController@index')->name('backup-database');
+            Route::get('/backup', 'BackupController@backup')->name('backup');
+            
+            Route::group(['prefix'=>'restore-database', 'as'=>'restore-database.'], function(){
+                Route::get('/', 'RestoreController@index')->name('index');
+                Route::post('/restore', 'RestoreController@restore')->name('restore');
+                Route::post('/delete', 'RestoreController@delete')->name('delete');
+            });
         });
 
         // Route::resource('/settings', 'SettingController');

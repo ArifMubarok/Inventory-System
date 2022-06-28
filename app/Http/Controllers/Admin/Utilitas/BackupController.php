@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Utilitas;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class BackupController extends Controller
 {
@@ -17,69 +19,20 @@ class BackupController extends Controller
         return view('pages.admin.utilitas.backup.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function backup()
     {
-        //
-    }
+        // get name table of database for name of backup file
+        $nametb = DB::connection()->getDatabaseName();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // get date now for name of backup file
+        $tanggal = Carbon::now()->toDateTimeString('minute');
+        try {
+            // start the backup process
+            Artisan::call("backup:mysql-dump $nametb'_'$tanggal");
+            // return the results as a response to the ajax call
+            return back()->withInput()->withToastSuccess('Database Sudah Tersimpan');
+        } catch (\Throwable $e) {
+            return back()->withInput()->withToastError($e->getMessage());
+        }
     }
 }

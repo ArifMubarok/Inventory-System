@@ -31,7 +31,7 @@ class CekController extends Controller
             ]);
         } else
         {
-            return back()->withInput()->withToastError('Tidak ada Data');;
+            return back()->withInput()->withToastError('Tidak ada Data');
         }
     }
 

@@ -2,18 +2,6 @@
 
 @section('title', 'Restore Database')
 
-@push('css')
-<!-- datatables -->
-{{-- <link href="{{ asset('/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" /> --}}
-<!-- end datatables -->
-<link href="/assets/plugins/blueimp-gallery/css/blueimp-gallery.min.css" rel="stylesheet" />
-<link href="/assets/plugins/blueimp-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
-<link href="/assets/plugins/blueimp-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
-
-@endpush
-
 @section('content')
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
@@ -42,24 +30,39 @@
   <!-- end panel-heading -->
   <!-- begin panel-body -->
   <div class="panel-body">
-    <div class="note note-yellow m-b-15">
-        <div class="note-icon f-s-20">
-            <i class="fa fa-info-circle fa-2x"></i>
-        </div>
-        <div class="note-content">
-            <h4 class="m-t-5 m-b-5 p-b-2">Perhatian</h4>
-            <ul class="m-b-5 p-l-25">
-                <li>Silahkan Pilih file <strong><i>*.sql</i></strong> untuk Restore Database </li>
-            </ul>
-            <div class="mb-3">
-              <div class="col-6">
+    <div class="panel-body">
+			<div id="data-table-default_wrapper" class="dataTables_wrapper no-footer"></div>
+      <table id="data-table-default" class="table table-striped table-bordered table-td-valign-middle dataTable no-footer dtr-inline" aria-describedby="data-table-default_info">
+				<thead>
+					<tr>
+            <th class="col-0">No</th>
+            <th class="col-8">File</th>
+            <td class="col-5">Action</td>
+          </tr>
+				</thead>
+				<tbody>
+          @foreach ($backup as $item)
+          <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $item }}</td>
+            <td>
+              <form action="{{ route('admin.utilitas.restore-database.restore', $item) }}" method="post">
+                @csrf
+                <input type="hidden" name="name" value="{{ $item }}">
+                <button type="submit" class="btn btn-warning">Restore</button>
+              </form>
+              <form action="{{ route('admin.utilitas.restore-database.delete', $item) }}" method="POST">
+                @csrf
+                <input type="hidden" name="name" value="{{ $item }}">
+                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+      </tbody>
+			</table>
+		</div>
 
-                <input class="form-control" type="file" id="formFile" width="50%">
-              </div>
-            </div>
-        </div>
-    </div>
-    <button type="button" class="btn btn-primary"><i class="fas fa-upload"></i> <strong>RESTORE DATABASE</strong></button>
   </div>
   <!-- end panel-body -->
 </div>
@@ -68,28 +71,10 @@
 
 @push('scripts')
 
-<script src="/assets/plugins/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="/assets/plugins/blueimp-tmpl/js/tmpl.js"></script>
-<script src="/assets/plugins/blueimp-load-image/js/load-image.all.min.js"></script>
-<script src="/assets/plugins/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-<script src="/assets/plugins/blueimp-gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-audio.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-video.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
-<script src="/assets/plugins/blueimp-file-upload/js/jquery.fileupload-ui.js"></script>
-<!--[if (gte IE 8)&(lt IE 10)]>
-  <script src="/assets/plugins/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
-<![endif]-->
-<script src="/assets/js/demo/form-multiple-upload.demo.js"></script>
-
-{{-- <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
+<script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
 <script>
   $(document).on('delete-with-confirmation.success', function() {
     $('.buttons-reload').trigger('click')
   })
-</script> --}}
+</script>
 @endpush

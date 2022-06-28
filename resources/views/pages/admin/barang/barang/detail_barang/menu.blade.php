@@ -26,7 +26,7 @@
 		<!-- begin col -->
 		<div class="col">
 			<!-- begin panel -->
-			<div class="panel panel-default panel-with-tabs" data-sortable-id="ui-unlimited-tabs-2">
+			<div class="panel panel-default panel-with-tabs " data-sortable-id="ui-unlimited-tabs-2">
 				<!-- begin panel-heading -->
 				<div class="panel-heading p-0">
 					<!-- begin nav-tabs -->

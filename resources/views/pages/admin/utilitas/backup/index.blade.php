@@ -49,7 +49,7 @@
             </ul>
         </div>
     </div>
-    <button type="button" class="btn btn-primary"><i class="fas fa-download"></i> <strong>DOWNLOAD BACKUP DATABASE</strong></button>
+    <a href="{{ route('admin.utilitas.backup') }}" class="btn btn-primary"><i class="fas fa-download"></i> <strong>DOWNLOAD BACKUP DATABASE</strong></a>
   </div>
   <!-- end panel-body -->
 </div>

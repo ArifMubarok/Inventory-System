@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Utilitas;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 class RestoreController extends Controller
 {
@@ -14,7 +16,11 @@ class RestoreController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.utilitas.restore.index');
+        
+        $backup = Storage::disk('dbBackup')->allFiles('');
+        return view('pages.admin.utilitas.restore.index', [
+            'backup' => $backup
+        ]);
     }
 
     /**
@@ -22,64 +28,29 @@ class RestoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function restore(Request $request)
     {
-        //
+        try {
+            //menghindari error STDIN karena menggunakan Artisan::call()
+            define('STDIN',fopen("php://stdin","r"));
+            // start the backup process
+            Artisan::call("backup:mysql-restore --filename=$request->name --yes");
+            // return the results as a response to the ajax call
+            return back()->withInput()->withToastSuccess('Database Sudah diRestore');
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError($th->getMessage());
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function delete(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        try {
+             // Delete File From disk dbBackup
+             Storage::disk('dbBackup')->delete("$request->name");
+             // return the results as a response to the ajax call
+             return back()->withInput()->withToastSuccess('Database Telah diHapus');
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError($th->getMessage());
+        }
     }
 }
