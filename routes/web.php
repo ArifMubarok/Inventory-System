@@ -27,4 +27,4 @@ Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 });
 
-// require __DIR__ . '/demo.php';
+require __DIR__ . '/demo.php';
