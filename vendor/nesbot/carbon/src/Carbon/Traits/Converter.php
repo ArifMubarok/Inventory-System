@@ -189,7 +189,7 @@ trait Converter
      */
     public function toDateTimeString($unitPrecision = 'second')
     {
-        return $this->rawFormat('Y-m-d '.static::getTimeFormatByPrecision($unitPrecision));
+        return $this->rawFormat('Y-m-d'.static::getTimeFormatByPrecision($unitPrecision));
     }
 
     /**
@@ -203,7 +203,7 @@ trait Converter
     {
         switch (static::singularUnit($unitPrecision)) {
             case 'minute':
-                return 'H:i';
+                return '[H_i]';
             case 'second':
                 return 'H:i:s';
             case 'm':
@@ -628,7 +628,7 @@ trait Converter
             $period->setDateInterval($interval);
         }
 
-        if (\is_int($end) || \is_string($end) && ctype_digit($end)) {
+        if (\is_int($end) || (\is_string($end) && ctype_digit($end))) {
             $period->setRecurrences($end);
         } elseif ($end) {
             $period->setEndDate($end);

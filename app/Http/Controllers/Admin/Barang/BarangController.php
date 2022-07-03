@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Barang\BarangDataTable;
 use App\DataTables\Admin\Barang\PenempatanDataTable;
+use App\Models\RiwayatPenempatan;
 
 class BarangController extends Controller
 {
@@ -29,8 +30,14 @@ class BarangController extends Controller
     public function show(PenempatanDataTable $datatable, $id)
     {
         $data_barang = Barang::where('id', '=', $id)->get();
+        foreach ($data_barang as $item) {
+            $penempatan_id = $item->penempatan->penempatan_id;
+        }
+        $riwayat_penempatan = RiwayatPenempatan::where('penempatan_id', $penempatan_id)->get();
+        // dd($riwayat_penempatan);
         return view('pages.admin.barang.barang.detail_barang.menu', [
-            'data_barang' => $data_barang
+            'data_barang' => $data_barang,
+            'riwayat_penempatan' => $riwayat_penempatan
         ]);
     }
 }

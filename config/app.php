@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +231,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

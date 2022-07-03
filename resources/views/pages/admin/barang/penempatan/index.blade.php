@@ -22,12 +22,11 @@
 <h1 class="page-header">Barang<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
-
 <!-- begin panel -->
 <div class="panel panel-inverse">
   <!-- begin panel-heading -->
   <div class="panel-heading">
-    <h4 class="panel-title">DataTable - @yield('title')</h4>
+    <h4 class="panel-title">@yield('title')</h4>
     <div class="panel-heading-btn">
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
       <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
@@ -53,7 +52,11 @@
                   @foreach ($data as $item)
                   <optgroup label="{{ $item->name }}">
                     @foreach ($item->bagian as $items)
-                    <option value="{{ $items->id }}">{{ $items->name }}</option>
+                      @if ($items->status_aktif == 'non-aktif')
+                        <option value="{{ $items->id }}" disabled class="font-italic" aria-disabled="true">{{ $items->name }}</option>
+                        @else
+                        <option value="{{ $items->id }}">{{ $items->name }}</option>
+                      @endif
                     @endforeach
                   </optgroup>
                   

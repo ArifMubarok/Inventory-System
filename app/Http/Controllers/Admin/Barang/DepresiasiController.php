@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Bagian;
+use App\Models\Barang;
 use App\Models\Lokasi;
+use App\Models\Pengadaan;
 use App\Models\Departemen;
 use App\Models\Penempatan;
-use App\Models\Pengadaan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Barang\DepresiasiDataTable;
 use App\Http\Requests\Admin\DepresiasiForm;
-use App\Models\Barang;
+use App\DataTables\Admin\Barang\DepresiasiDataTable;
 
 class DepresiasiController extends Controller
 {
@@ -43,27 +43,42 @@ class DepresiasiController extends Controller
      */
     public function store(DepresiasiForm $request)
     {
-        // $data = Pengadaan::where('databarang_id', $request->databarang_id)->get();
-        // return $data;
-        // return $request->penempatan_id;
-        $penempatan = Penempatan::where('penempatan_id', $request->penempatan_id)->get();
-        foreach ($penempatan as $pengadaan) {
-            $pengadaans = Pengadaan::where('id', $pengadaan->pengadaan_id)->get();
-        }
-        
-        foreach ($pengadaans as $item) {
-            $depresiasi = $item->depresiasi;
-            $harga      = $item->harga;
-            $lama_depresiasi = $item->lama_depresiasi;
-        }
+        $tanggal_depresiasi = date('d-m-Y');
+        try {
+            foreach ($request->penempatan_id as $p_id) {
+                $penempatan = Penempatan::where('penempatan_id', $p_id)->get();
+                foreach ($penempatan as $pengadaan) {
+                    $pengadaans = Pengadaan::where('id', $pengadaan->pengadaan_id)->get();
+                }
+            
+                foreach ($pengadaans as $item) {
+                    $depresiasi = $item->depresiasi;
+                    $harga      = $item->harga;
+                    $lama_depresiasi = $item->lama_depresiasi;
+                    $tanggal_pengadaan = $item->tanggal_pengadaan;
+                }
 
-        //proses hitung
-        $nilaiBarang = ($harga - $depresiasi)/$lama_depresiasi;
+                $ts1 = strtotime($tanggal_pengadaan);
+                $ts2 = strtotime($tanggal_depresiasi);
 
-        //update table barang
-        Barang::where('penempatan_id', $request->penempatan_id)->update([
-            'nilai_barang' => $nilaiBarang
-        ]);
+                $year1 = date('Y', $ts1);
+                $year2 = date('Y', $ts2);
+
+                $month1 = date('m', $ts1);
+                $month2 = date('m', $ts2);
+
+                $jumlahBulan = (($year2 - $year1) * 12) + ($month2 - $month1);
+
+                $nilaiBarang = ($jumlahBulan * ($harga - $depresiasi))/$lama_depresiasi;
+
+                Barang::where('penempatan_id', $p_id)->update([
+                    'nilai_barang' => $nilaiBarang,
+                    'tanggal_depresiasi' => $tanggal_depresiasi
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Error');
+        }
         
         return view('pages.admin.barang.depresiasi.detail');
     }

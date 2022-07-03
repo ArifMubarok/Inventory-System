@@ -6,17 +6,23 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'c,r,u,d'
         ],
-        'manager' => [
+        'sarpras' => [
             'users' => 'c,r,u',
             'profile' => 'r,u'
         ],
-        'regular_user' => [
+        'user' => [
             'profile' => 'r,u'
         ]
     ],
     'user_roles' => [
         'admin' => [
             ['name' => "Admin", "email" => "admin@admin.com", "password" => 'password'],
+        ],
+        'sarpras' => [
+            ['name' => "Sarpras", "email" => "sarpras@sarpras.com", "password" => 'password'],
+        ],
+        'user' => [
+            ['name' => "User", "email" => "user@user.com", "password" => 'password'],
         ],
     ],
     'permissions_map' => [

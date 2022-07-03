@@ -41,8 +41,8 @@ class BarangDataTable extends DataTable
      */
     public function query(Barang $model)
     {
-        return $model->with(
-            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
+        return $model->where('status', '1')->with(
+            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id,kondisi',
             'penempatan.pengadaan.databarang:id,name,merk_id',
             'penempatan.pengadaan.databarang.merk:id,nama_merk',
             'penempatan.bagian.departemen:id,name',
@@ -59,11 +59,15 @@ class BarangDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('barang-table')
+            ->setTableId('table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             // ->orderBy(2)
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false
+            ])
             ->buttons(
                 Button::make('create'),
                 Button::make('export'),
@@ -93,7 +97,7 @@ class BarangDataTable extends DataTable
             Column::make('penempatan.bagian.departemen.name')->title('Departemen'),
             Column::make('penempatan.bagian.name')->title('Bagian'),
             Column::make('penempatan.lokasi.name')->title('Lokasi'),
-            Column::make('penempatan.pengadaan.kondisi')->title('Kondisi'),
+            Column::make('penempatan.kondisi')->title('Kondisi'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

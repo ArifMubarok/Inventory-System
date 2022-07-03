@@ -31,14 +31,6 @@ class PengadaanDataTable extends DataTable
                 $btn = $btn . '<a href="' . route('admin.barang.pengadaan-barang.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
                 return $btn;
-            })
-            ->editColumn('databarang', function ($row) {
-                $display = $row->databarang->where('id', $row->databarang->id)->pluck('name')->toArray();
-                return implode(', ', $display);
-            })
-            ->editColumn('supplier', function ($row) {
-                $display = $row->supplier->where('id', $row->supplier->id)->pluck('nama_supplier')->toArray();
-                return implode(', ', $display);
             });
     }
 
@@ -68,7 +60,7 @@ class PengadaanDataTable extends DataTable
             ->orderBy(1)
             ->parameters([
                 'responsive' => true,
-                'autowidth' => false
+                'autoWidth' => false
             ])
             ->buttons(
                 Button::make('create'),
@@ -93,11 +85,11 @@ class PengadaanDataTable extends DataTable
                 ->orderable(false)
                 ->searchable(false),
             Column::make('id')->hidden(true)->printable(false),
-            Column::make('databarang')
+            Column::make('databarang.name')
                 ->orderable(false)
                 ->searchable(false)
                 ->title('Barang'),
-            Column::make('supplier')
+            Column::make('supplier.nama_supplier')
                 ->orderable(false)
                 ->searchable(false)
                 ->title('Supplier'),

@@ -18,7 +18,6 @@ class BarangSeeder extends Seeder
         Pengadaan::create([
             'databarang_id' => '1',
             'supplier_id' => '1',
-            'kondisi' => 'baik',
             'jumlah' => '3',
             'harga' => '14000',
             'tanggal_pengadaan' => '02-06-2022',
@@ -27,7 +26,6 @@ class BarangSeeder extends Seeder
         Pengadaan::create([
             'databarang_id' => '2',
             'supplier_id' => '1',
-            'kondisi' => 'baik',
             'jumlah' => '3',
             'harga' => '35000',
             'tanggal_pengadaan' => date('d-m-Y'),
@@ -37,6 +35,7 @@ class BarangSeeder extends Seeder
             'pengadaan_id' => '1',
             'bagian_id' => '1',
             'lokasi_id' => '1',
+            'kondisi' => 'baik',
             'tanggal_penempatan' => '02-06-2022',
             'barcode' => 'A0001.1.1',
             'status_ditempatkan' => '1',
@@ -44,6 +43,7 @@ class BarangSeeder extends Seeder
 
         Penempatan::create([
             'pengadaan_id' => '2',
+            'kondisi' => 'baik',
             'tanggal_penempatan' => '02-06-2022',
             'status_ditempatkan' => '1',
             'barcode' => 'A0002.1.1',

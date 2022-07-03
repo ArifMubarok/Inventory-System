@@ -24,8 +24,8 @@ class PenempatanController extends Controller
     public function index(PenempatanDataTable $datatable)
     {
         // dd(Penempatan::with('pengadaan.databarang.kategori:id,name')->pluck('pengadaan.databarang.kategori.name'));
-        $data = Departemen::get();
-        $lokasi = Lokasi::get();
+        $data = Departemen::where('status_aktif', '=', 'aktif')->get();
+        $lokasi = Lokasi::where('status_aktif', '=', 'aktif')->get();
         return $datatable->render('pages.admin.barang.penempatan.index', [
             'data' => $data,
             'lokasi' => $lokasi
@@ -61,12 +61,13 @@ class PenempatanController extends Controller
                 Barang::create([
                     'penempatan_id' => $penempatan
                 ]);
-
                 RiwayatPenempatan::create([
                     'penempatan_id' => $penempatan,
-                    'lokasi_id' => $request->lokasi_id,
+                    'lokasi_id' => $request->lokasi_id
                 ]);
-
+                // CetakBarcode::create([
+                //     'penempatan_id' => $penempatan
+                // ]);
                 CetakBarcode::create([
                     'penempatan_id' => $penempatan,
                     'lokasi_id' => $request->lokasi_id,

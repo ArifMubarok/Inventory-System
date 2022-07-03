@@ -4,6 +4,40 @@ namespace App\Constants;
 
 class RequestRuleConstant
 {
+    public static function ValidasiLaporanBarangForm()
+    {
+        return[
+            'status' => 'required',
+            'keterangan' => 'required',
+        ];
+    }
+
+    public static function LaporTableForm()
+    {
+        return [
+            'barang_id' => 'required',
+            'laporan' => 'required',
+            'judul_laporan' => 'required',
+        ];
+    }
+
+    public static function nonaktifTable()
+    {
+        return [
+            'kondisi' => 'required',
+            'keterangan' => 'required',
+        ];
+    }
+
+    public static function opnameTable()
+    {
+        return [
+            'kondisi' => 'required',
+            'tanggal_opname' => 'required',
+            'keterangan' => 'required'
+        ];
+    }
+    
     public static function mutasiLokasiTable()
     {
         return [

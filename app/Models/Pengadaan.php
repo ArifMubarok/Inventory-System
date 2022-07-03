@@ -15,13 +15,13 @@ class Pengadaan extends Model
     protected $fillable = [
         'databarang_id',
         'supplier_id',
-        'kondisi',
         'jumlah',
         'harga',
         'tanggal_pengadaan',
         'depresiasi',
         'lama_depresiasi',
-        'keterangan'
+        'keterangan',
+        'total_harga'
     ];
 
     public function databarang()
@@ -37,5 +37,10 @@ class Pengadaan extends Model
     public function penempatan()
     {
         return $this->hasMany(Penempatan::class);
+    }
+
+    public function laporbarang()
+    {
+        return $this->hasMany(LaporBarang::class);
     }
 }
