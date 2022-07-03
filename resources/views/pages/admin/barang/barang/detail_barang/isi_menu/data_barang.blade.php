@@ -39,7 +39,7 @@
         <div class="form-group row m-b-15">
             <label class="col-form-label col-md-4 offset-md-1">Kondisi</label>
             <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->penempatan->pengadaan->kondisi }}" readonly />
+                <input type="text" class="form-control m-b-5" value="{{ $item->penempatan->kondisi }}" readonly />
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
         <div class="form-group row m-b-15">
             <label class="col-form-label col-md-4 offset-md-1">Kondisi</label>
             <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->penempatan->pengadaan->kondisi }}" readonly />
+                <input type="text" class="form-control m-b-5" value="{{ $item->penempatan->kondisi }}" readonly />
             </div>
         </div>
     </div>
