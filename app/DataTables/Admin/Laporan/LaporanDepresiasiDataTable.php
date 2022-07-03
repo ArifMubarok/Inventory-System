@@ -25,11 +25,11 @@ class LaporanDepresiasiDataTable extends DataTable
                 return $row->id;
             })
             ->addIndexColumn();
-            // ->editColumn('Pilih', function ($row) {
-            //     $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" id="checkbox1"/>';
-            //     return $btn;
-            // })
-            // ->rawColumns(['Pilih']);
+        // ->editColumn('Pilih', function ($row) {
+        //     $btn = '<input class="cb-child" type="checkbox" name="penempatan_id[]" value="' . $row->penempatan_id . '" id="checkbox1"/>';
+        //     return $btn;
+        // })
+        // ->rawColumns(['Pilih']);
     }
 
     /**
@@ -47,7 +47,7 @@ class LaporanDepresiasiDataTable extends DataTable
             'penempatan.bagian.departemen:id,name',
             'penempatan.bagian:id,name,departemen_id',
             'penempatan.lokasi:id,name',
-            )->where('nilai_barang', '!=', '0')->newQuery();
+        )->where('nilai_barang', '!=', '0')->newQuery();
     }
 
     /**
@@ -63,7 +63,10 @@ class LaporanDepresiasiDataTable extends DataTable
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
             // ->orderBy(2)
-            ;
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false
+            ]);
     }
 
     /**
@@ -88,7 +91,7 @@ class LaporanDepresiasiDataTable extends DataTable
             Column::make('penempatan.pengadaan.harga')->width(40)->title('Harga Barang'),
             Column::make('penempatan.pengadaan.lama_depresiasi')->width(50)->title('Lama Depresiasi (Bln)'),
             Column::make('nilai_barang')->width(40)->title('Nilai Barang'),
-            
+
         ];
     }
 

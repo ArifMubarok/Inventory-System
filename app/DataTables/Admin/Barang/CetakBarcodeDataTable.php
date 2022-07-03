@@ -2,7 +2,7 @@
 
 namespace App\DataTables\Admin\Barang;
 
-use App\Models\CetakBarcode;
+use App\Models\Barang;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -39,10 +39,10 @@ class CetakBarcodeDataTable extends DataTable
      * @param \App\App\Models\CetakBarcodeDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(CetakBarcode $model)
+    public function query(Barang $model)
     {
-        return $model->with(
-            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
+        return $model->where('status', '1')->with(
+            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id,kondisi',
             'penempatan.pengadaan.databarang:id,name,merk_id',
             'penempatan.pengadaan.databarang.merk:id,nama_merk',
             'penempatan.bagian.departemen:id,name',
@@ -97,7 +97,7 @@ class CetakBarcodeDataTable extends DataTable
             Column::make('penempatan.bagian.departemen.name')->title('Departemen'),
             Column::make('penempatan.bagian.name')->title('Bagian'),
             Column::make('penempatan.lokasi.name')->title('Lokasi'),
-            Column::make('penempatan.pengadaan.kondisi')->title('Kondisi'),
+            Column::make('penempatan.kondisi')->title('Kondisi'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

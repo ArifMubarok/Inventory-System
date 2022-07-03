@@ -66,7 +66,6 @@ class PengadaanController extends Controller
             Pengadaan::create([
                 'databarang_id' => $request->databarang_id,
                 'supplier_id' => $request->supplier_id,
-                'kondisi' => $request->kondisi,
                 'jumlah' => $request->jumlah,
                 'harga' => $request->harga,
                 'tanggal_pengadaan' => $request->tanggal_pengadaan,
@@ -85,7 +84,8 @@ class PengadaanController extends Controller
                 $dataPenempatan = ([
                     'pengadaan_id' => $pengadaan_id->id,
                     'status_ditempatkan' => '1',
-                    'barcode' => $barcode
+                    'barcode' => $barcode,
+                    'kondisi' => $request->kondisi
                 ]);
                 Penempatan::create($dataPenempatan);
                 $barcodeBarang++;

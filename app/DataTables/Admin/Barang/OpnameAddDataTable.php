@@ -40,8 +40,8 @@ class OpnameAddDataTable extends DataTable
      */
     public function query(Barang $model)
     {
-        return $model->with(
-            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
+        return $model->where('status', '1')->with(
+            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id,kondisi',
             'penempatan.pengadaan.databarang:id,name,merk_id',
             'penempatan.pengadaan.databarang.merk:id,nama_merk',
             'penempatan.bagian.departemen:id,name',
@@ -96,7 +96,7 @@ class OpnameAddDataTable extends DataTable
             Column::make('penempatan.bagian.departemen.name')->title('Departemen'),
             Column::make('penempatan.bagian.name')->title('Bagian'),
             Column::make('penempatan.lokasi.name')->title('Lokasi'),
-            Column::make('penempatan.pengadaan.kondisi')->title('Kondisi'),
+            Column::make('penempatan.kondisi')->title('Kondisi'),
             Column::make('Pilih')
                 ->exportable(false)
                 ->printable(false)

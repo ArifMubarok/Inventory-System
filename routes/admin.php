@@ -73,13 +73,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
                 Route::get('/cetak', 'LaporanOpnameController@cetak')->name('cetak');
                 Route::get('/export', 'LaporanOpnameController@export')->name('export');
             });
+            Route::group(['prefix' => 'laporan-barang-nonaktif', 'as' => 'laporan-barang-nonaktif.'], function () {
+                Route::get('/', 'LaporanBarangNonaktifController@index');
+                Route::get('/cetak', 'LaporanBarangNonaktifController@cetak')->name('cetak');
+                Route::get('/export', 'LaporanBarangNonaktifController@export')->name('export');
+            });
         });
 
         Route::group(['namespace' => 'Utilitas', 'prefix' => 'utilitas', 'as' => 'utilitas.'], function () {
             Route::get('/backup-database', 'BackupController@index')->name('backup-database');
             Route::get('/backup', 'BackupController@backup')->name('backup');
-            
-            Route::group(['prefix'=>'restore-database', 'as'=>'restore-database.'], function(){
+
+            Route::group(['prefix' => 'restore-database', 'as' => 'restore-database.'], function () {
                 Route::get('/', 'RestoreController@index')->name('index');
                 Route::post('/restore', 'RestoreController@restore')->name('restore');
                 Route::post('/delete', 'RestoreController@delete')->name('delete');
