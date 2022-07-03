@@ -40,7 +40,7 @@ class DepresiasiDataTable extends DataTable
      */
     public function query(Barang $model)
     {
-        return $model->with(
+        return $model->where('status', '1')->with(
             'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id',
             'penempatan.pengadaan.databarang:id,name,merk_id',
             'penempatan.pengadaan.databarang.merk:id,nama_merk',
@@ -67,7 +67,7 @@ class DepresiasiDataTable extends DataTable
                 'autoWidth' => false
             ])
             // ->orderBy(2)
-            ;
+        ;
     }
 
     /**
