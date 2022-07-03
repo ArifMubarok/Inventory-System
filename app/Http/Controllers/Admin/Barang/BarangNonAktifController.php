@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Admin\Barang;
 
 use App\Models\Barang;
-use App\Models\Departemen; 
-use App\Models\Lokasi; 
-use App\Models\Kategori; 
+use App\Models\Lokasi;
+use App\Models\Kategori;
+use App\Models\Departemen;
+use App\Models\Penempatan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NonAktifForm;
 use App\DataTables\Admin\Barang\BarangDataTable;
-use App\DataTables\Admin\Barang\BarangNonAktifAddDataTable;
-use App\DataTables\Admin\Barang\BarangNonAktifDataTable;
 use App\DataTables\Admin\Barang\PenempatanDataTable;
+use App\DataTables\Admin\Barang\BarangNonAktifDataTable;
+use App\DataTables\Admin\Barang\BarangNonAktifAddDataTable;
 
 
 class BarangNonAktifController extends Controller
@@ -37,7 +38,7 @@ class BarangNonAktifController extends Controller
         $data = Departemen::get();
         $lokasi = Lokasi::get();
         $kategori = Kategori::get();
-        return $datatable->render('pages.admin.barang.barang_nonaktif.add',[
+        return $datatable->render('pages.admin.barang.barang_nonaktif.add', [
             'data' => $data,
             'lokasi' => $lokasi,
             'kategori' => $kategori,
@@ -56,6 +57,13 @@ class BarangNonAktifController extends Controller
             foreach ($request->id as $id_barang) {
                 Barang::where('id', $id_barang)->update([
                     'status' => '0',
+                    'keterangan' => $request->keterangan
+                ]);
+
+                $barang = Barang::findOrFail($id_barang);
+                $penempatan_id = $barang->penempatan_id;
+                Penempatan::where('penempatan_id', $penempatan_id)->update([
+                    'kondisi' => $request->kondisi
                 ]);
             }
         } catch (\Throwable $th) {

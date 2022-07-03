@@ -15,7 +15,6 @@ class Pengadaan extends Model
     protected $fillable = [
         'databarang_id',
         'supplier_id',
-        'kondisi',
         'jumlah',
         'harga',
         'tanggal_pengadaan',

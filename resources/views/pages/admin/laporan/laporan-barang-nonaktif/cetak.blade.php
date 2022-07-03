@@ -1,5 +1,5 @@
 @extends('layouts.bootstrap')
-@section('title', 'Laporan Pengadaan')
+@section('title', 'Laporan Barang Non-Aktif')
 
 @section('content')
 
@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <div class="col">
-                @include('pages.admin.laporan.laporan-pengadaan.table')
+                @include('pages.admin.laporan.laporan-barang-nonaktif.table')
             </div>
         </div>
         {{-- begin tanda tangan --}}

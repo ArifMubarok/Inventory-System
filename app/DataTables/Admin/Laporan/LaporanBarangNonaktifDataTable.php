@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin\Barang;
+namespace App\DataTables\Admin\Laporan;
 
 use App\Models\Barang;
 use Yajra\DataTables\Html\Button;
@@ -9,7 +9,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Html\Editor\Editor;
 
-class BarangDataTable extends DataTable
+class LaporanBarangNonaktifDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -24,29 +24,23 @@ class BarangDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             })
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-                $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.barang.barang.show', $row->id) . '" class="btn btn-info buttons-edit" ><i class="fas fa-search"></i></a>';
-                $btn = $btn . '</div>';
-                return $btn;
-            });
+            ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Barang $model
+     * @param \App\App\Models\LaporanBarangNonaktif $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Barang $model)
     {
-        return $model->where('status', '1')->with(
-            'penempatan:penempatan_id,barcode,pengadaan_id,bagian_id,lokasi_id,kondisi',
-            'penempatan.pengadaan.databarang:id,name,merk_id',
+        return $model->where('status', '0')->with(
+            'penempatan:penempatan_id,pengadaan_id,barcode,bagian_id,lokasi_id,kondisi',
+            'penempatan.pengadaan.databarang:id,merk_id,name',
             'penempatan.pengadaan.databarang.merk:id,nama_merk',
+            'penempatan.bagian:id,departemen_id,name',
             'penempatan.bagian.departemen:id,name',
-            'penempatan.bagian:id,name,departemen_id',
             'penempatan.lokasi:id,name',
         )->newQuery();
     }
@@ -59,11 +53,11 @@ class BarangDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('table')
+            ->setTableId('laporanbarangnonaktif-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-            // ->orderBy(2)
+            // ->orderBy(1)
             ->parameters([
                 'responsive' => true,
                 'autoWidth' => false
@@ -85,7 +79,6 @@ class BarangDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->hidden(true)->printable(false),
             Column::make('DT_RowIndex')->title('No')
                 ->width(20)
                 ->addClass('text-center')
@@ -98,11 +91,7 @@ class BarangDataTable extends DataTable
             Column::make('penempatan.bagian.name')->title('Bagian'),
             Column::make('penempatan.lokasi.name')->title('Lokasi'),
             Column::make('penempatan.kondisi')->title('Kondisi'),
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
+            Column::make('keterangan'),
         ];
     }
 
@@ -113,6 +102,6 @@ class BarangDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Barang_' . date('YmdHis');
+        return 'LaporanBarangNonaktif_' . date('YmdHis');
     }
 }

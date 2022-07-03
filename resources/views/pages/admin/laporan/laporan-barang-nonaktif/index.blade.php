@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Cetak Barcode')
+@section('title', 'Laporan Barang Non-Aktif')
 
 @push('css')
 <!-- datatables -->
@@ -14,12 +14,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Barang</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Barang<small> @yield('title')</small></h1>
+<h1 class="page-header">Laporan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -39,6 +39,12 @@
     {{ $dataTable->table() }}
   </div>
   <!-- end panel-body -->
+  
+  {{-- begin-panel-body --}}
+  <div class="panel-body">
+    <a href="{{ route('admin.laporan.laporan-barang-nonaktif.export') }}" class="btn btn-info"><i class="fa fa-file-excel"></i> Ekspor</a>
+    <a href="{{ route('admin.laporan.laporan-barang-nonaktif.cetak') }}" class="btn btn-success" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+  </div>
 </div>
 <!-- end panel -->
 @endsection

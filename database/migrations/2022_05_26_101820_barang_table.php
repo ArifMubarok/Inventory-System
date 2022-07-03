@@ -19,7 +19,6 @@ class BarangTable extends Migration
             $table->id();
             $table->unsignedBigInteger('databarang_id');
             $table->unsignedBigInteger('supplier_id');
-            $table->string('kondisi');
             $table->bigInteger('jumlah');
             $table->integer('harga');
             $table->string('tanggal_pengadaan');
@@ -42,6 +41,7 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('pengadaan_id');
             $table->unsignedBigInteger('bagian_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
+            $table->string('kondisi');
             $table->string('tanggal_penempatan')->nullable();
             $table->string('barcode')->nullable();
             $table->enum('status_ditempatkan', ['0', '1']);
@@ -63,6 +63,7 @@ class BarangTable extends Migration
             $table->integer('nilai_barang')->nullable();
             $table->string('tanggal_depresiasi')->nullable();
             $table->enum('status', ['1', '0']);
+            $table->string('keterangan')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
