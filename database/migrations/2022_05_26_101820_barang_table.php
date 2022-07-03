@@ -90,19 +90,10 @@ class BarangTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 
-        Schema::create('cetak_barcode', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('penempatan_id');
-            $table->timestamps();
-
-            $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
-                ->onUpdate('cascade')->onDelete('cascade');
-        });
 
         Schema::create('opname', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('barang_id');
-            $table->string('kondisi')->nullable();
             $table->string('tanggal_opname')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
@@ -130,6 +121,5 @@ class BarangTable extends Migration
         Schema::dropIfExists('barang');
         Schema::dropIfExists('riwayat_penempatan');
         Schema::dropIfExists('opname');
-        Schema::dropIfExists('cetak_barcode');
     }
 }
