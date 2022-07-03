@@ -48,7 +48,7 @@
         <div class="stats-icon"><i class="fa fa-cubes"></i></div>
         <div class="stats-info">
           <h4>TOTAL BARANG</h4>
-          <p>{{ $totbar }}</p>	
+          <p>{{ $totbar->count() }}</p>	
         </div>
         {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>

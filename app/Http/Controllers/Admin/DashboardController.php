@@ -17,8 +17,9 @@ class DashboardController extends Controller
 {
     public function index(dashboardRiwayatLaporanDataTable $datatable)
     {
+        
         $master = DataBarang::count();
-        $totbar = Barang::count();
+        $totbar = Barang::get();
         return $datatable->render('pages.admin.dashboard', [
             'master' => $master,
             'totbar' => $totbar,
