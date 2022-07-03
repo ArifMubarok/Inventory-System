@@ -4,6 +4,7 @@
 /storage/logs/
 .env
 .env.backup
+.gitlab-ci.yml
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
