@@ -20,7 +20,7 @@
         <div class="stats-icon"><i class="fa fa-check-circle"></i></div>
         <div class="stats-info">
           <h4>BARANG AKTIF</h4>
-          <p>0</p>	
+          <p>{{ $aktif }}</p>	
         </div>
         {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -34,7 +34,7 @@
         <div class="stats-icon"><i class="fa fa-ban"></i></div>
         <div class="stats-info">
           <h4>BARANG NON-AKTIF</h4>
-          <p>0</p>	
+          <p>{{ $nonaktif }}</p>	
         </div>
         {{-- <div class="stats-link">
           <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
