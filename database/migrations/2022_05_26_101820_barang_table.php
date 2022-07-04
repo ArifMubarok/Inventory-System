@@ -81,6 +81,7 @@ class BarangTable extends Migration
             $table->unsignedBigInteger('penempatan_id')->nullable();
             $table->unsignedBigInteger('lokasi_id')->nullable();
             $table->string('tanggal_pemindahan')->nullable();
+            $table->string('tanggal_penempatan')->nullable();
             $table->timestamps();
 
             $table->foreign('penempatan_id')->references('penempatan_id')->on('penempatan')
