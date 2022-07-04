@@ -111,7 +111,6 @@ class LaporBarangDataTable extends DataTable
                     ->orderBy(0)
                     ->buttons(
                         Button::make('reload'),
-                        Button::make('reset')
                     );
     }
 

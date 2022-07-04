@@ -21,22 +21,6 @@
 
 @include('includes.isi_dashboard.kotak')
 
-{{-- begin row --}}
-<div class="row">
-  {{-- begin col --}}
-  <div class="col-xl-6">
-    @include('includes.isi_dashboard.lingkaran-chart')
-  </div>
-  {{-- end col --}}
-
-  {{-- begin col --}}
-  <div class="col-xl-6">
-    @include('includes.isi_dashboard.bar-chart')
-  </div>
-  {{-- end col --}}
-</div>
-{{-- end row --}}
-
 
 {{-- begin row --}}
 <div class="row">
