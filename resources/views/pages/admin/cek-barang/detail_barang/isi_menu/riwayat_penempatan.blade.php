@@ -1,5 +1,7 @@
 @foreach ($riwayat_penempatan as $rp)
-{{ $cek = $rp->lokasi->name }}
+@php
+   $cek = $rp->lokasi->name
+@endphp
 @endforeach
 @if (isset($cek))
 <div class="row">

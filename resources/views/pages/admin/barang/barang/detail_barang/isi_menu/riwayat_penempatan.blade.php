@@ -32,10 +32,3 @@
         </div>
     </div>
 </div>
-
-{{-- <form class="panel-body" action="{{ route('admin.barang.penempatan-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
-    @csrf
-    {{ $dataTable->table() }}
-</form> --}}
-
-

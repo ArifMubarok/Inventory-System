@@ -15,7 +15,15 @@
         <div class="form-group row m-b-15">
             <label class="col-form-label col-md-4 offset-md-1">Tanggal Pengadaan</label>
             <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->penempatan->pengadaan->tanggal_pengadaan }}" readonly />
+
+                {{-- date format --}}
+                @php
+                $time = strtotime($item->penempatan->pengadaan->tanggal_pengadaan);
+                $new = date('d M Y', $time)
+                @endphp
+                {{-- end date format --}}
+
+                <input type="text" class="form-control m-b-5" value="{{$new}}" readonly />
             </div>
         </div>
         <div class="form-group row m-b-15">
