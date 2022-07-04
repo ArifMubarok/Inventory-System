@@ -16,11 +16,13 @@
 @section('content')
 	<!-- begin breadcrumb -->
 	@foreach ($barang as $item)
-	<form action="{{ route('admin.cek-barang.lapor') }}" method="get">
-		@csrf
-		<input type="text" name="barcode" value="{{ $item->barcode }}"  hidden>
-		<button type="submit" class="btn btn-danger float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-comment"></i>Lapor</button>
-	</form>
+	@if (isset($item->bagian))
+		<form action="{{ route('admin.cek-barang.lapor') }}" method="get">
+			@csrf
+			<input type="text" name="barcode" value="{{ $item->barcode }}"  hidden>
+			<button type="submit" class="btn btn-danger float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-comment"></i>Lapor</button>
+		</form>
+	@endif
 	<a href="{{ route('admin.cek-barang.index') }}" class="btn btn-primary float-xl-right mr-2"><i class="fas fa-lg fa-fw m-r-10 fa-search"></i>Cek Barang</a>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->

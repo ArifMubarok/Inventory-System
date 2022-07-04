@@ -78,7 +78,7 @@
               </div>
               <label class="col-form-label col-md-2">Kondisi</label>
               <div class="col-md-4">
-                <input type="text" readonly="" class="form-control m-b-5" value="{{ $item->pengadaan->kondisi }}">
+                <input type="text" readonly="" class="form-control m-b-5" value="{{ $item->kondisi }}">
               </div>
             </div>  
           </div>

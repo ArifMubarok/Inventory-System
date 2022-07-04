@@ -34,73 +34,7 @@
     </div>
   </div>
   <!-- end panel-heading -->
-  {{-- begin form --}}
-  <form class="panel-body" action="" id="form" name="form" method="GET" data-parsley-validate="true">
-    @csrf
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-6">
-            <div class="form-group row m-b-15">
-              <label class="col-form-label col-md-4"><strong>Departemen dan Bagian*</strong></label>
-              <div class="col-md-8">
-                <select id="bagian-sel" name="bagian_id" class="form-control">
-                  
-                  @foreach ($departemen as $item)
-                  <optgroup label="{{ $item->name }}">
-                    @foreach ($item->bagian as $items)
-                    <option value="{{ $items->id }}">{{ $items->name }}</option>
-                    @endforeach
-                  </optgroup>
-                  
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="form-group row m-b-15">
-              <label class="col-form-label col-md-4"><strong>Lokasi*</strong></label>
-              <div class="col-md-8">
-                <select id="lokasi_sel" name="lokasi_id" class="form-control">
-                  @foreach ($lokasi as $itemss)
-                  <option value="{{ $itemss->id }}">{{ $itemss->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="form-group row m-b-15">
-              <label class="col-form-label col-md-4"></label>
-              <div class="col-md-8">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-dot-circle"></i> Filter</button>
-                <button type="reset" class="btn btn-warning"><i class="fa fa-undo"></i> Reset</button>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4"><strong>Kategori*</strong></label>
-            <div class="col-md-8">
-              <select id="kategori_id" name="kategori_id" class="form-control">
-                  @foreach ($kategori as $kategori)
-                  <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
-                  @endforeach
-              </select>
-            </div>
-          </div>
-          <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4"><strong>Kondisi*</strong></label>
-            <div class="col-md-8">
-              <select id="kondisi" name="kondisi" class="form-control">
-                <option value="all">Semua</option>
-                <option value="baik">Baik</option>
-                <option value="sedang">Sedang</option>
-                <option value="rusak">Rusak</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-  {{-- end form --}}
+  
   <!-- begin panel-body -->
   <form class="panel-body" action="{{ route('admin.barang.mutasi-lokasi.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
     @csrf
