@@ -65,13 +65,6 @@ class PenempatanController extends Controller
                     'penempatan_id' => $penempatan,
                     'lokasi_id' => $request->lokasi_id
                 ]);
-                // CetakBarcode::create([
-                //     'penempatan_id' => $penempatan
-                // ]);
-                CetakBarcode::create([
-                    'penempatan_id' => $penempatan,
-                    'lokasi_id' => $request->lokasi_id,
-                ]);
             }
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error');
