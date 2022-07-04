@@ -19,10 +19,14 @@ class DashboardController extends Controller
     {
         
         $master = DataBarang::count();
+        $aktif = Barang::where('status', '1')->count();
+        $nonaktif = Barang::where('status', '0')->count();
         $totbar = Barang::get();
         return $datatable->render('pages.admin.dashboard', [
             'master' => $master,
             'totbar' => $totbar,
+            'aktif' => $aktif,
+            'nonaktif' => $nonaktif
         ]);
     }
 }
