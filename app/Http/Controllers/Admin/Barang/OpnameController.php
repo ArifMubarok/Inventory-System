@@ -62,10 +62,16 @@ class OpnameController extends Controller
             foreach ($request->id as $opname) {
                 Opname::create([
                     'barang_id' => $opname,
-                    'kondisi' => $request->kondisi,
                     'tanggal_opname' => $request->tanggal_opname,
                     'keterangan' => $request->keterangan
                 ]);
+
+                $id_barang = Barang::findOrFail($opname);
+                $id_penempatan = $id_barang->penempatan_id;
+                $penempatan = Penempatan::where('penempatan_id', $id_penempatan)->update([
+                    'kondisi' => $request->kondisi
+                ]);
+                // dd($penempatan);
             }
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Error saving data');
