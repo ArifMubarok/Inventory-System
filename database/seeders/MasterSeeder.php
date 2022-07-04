@@ -20,16 +20,40 @@ class MasterSeeder extends Seeder
     public function run()
     {
         Kategori::create([
+            'name' => 'Alat Kebersihan',
+            'status' => '1',
+        ]);
+        Kategori::create([
+            'name' => 'Alat Tulis Kantor',
+            'status' => '1',
+        ]);
+        Kategori::create([
+            'name' => 'Benda Bergerak',
+            'status' => '1',
+        ]);
+        Kategori::create([
+            'name' => 'Benda Tidak Bergerak',
+            'status' => '1',
+        ]);
+        Kategori::create([
             'name' => 'Elektronik',
             'status' => '1',
         ]);
         Kategori::create([
-            'name' => 'Minuman',
+            'name' => 'Peralatan',
+            'status' => '1',
+        ]);
+        Kategori::create([
+            'name' => 'Perlengkapan',
             'status' => '1',
         ]);
 
         Satuan::create([
-            'nama_satuan' => 'Rim',
+            'nama_satuan' => 'Buah',
+            'status' => '1',
+        ]);
+        Satuan::create([
+            'nama_satuan' => 'Unit',
             'status' => '1',
         ]);
 
@@ -43,29 +67,39 @@ class MasterSeeder extends Seeder
             'keterangan' => 'Supplier peralatan kamar',
             'status' => '1',
         ]);
+        Supplier::create([
+            'nama_supplier' => 'NA',
+            'alamat' => 'NA',
+            'kota' => 'NA',
+            'fax' => 'NA',
+            'email' => 'NA',
+            'cp' => 'NA',
+            'keterangan' => 'NA',
+            'status' => '1',
+        ]);
 
         Merk::create([
-            'nama_merk' => 'Aqua',
+            'nama_merk' => 'NA',
             'status' => '1'
         ]);
 
         DataBarang::create([
-            'name' => 'Aqua',
-            'satuan_id' => '1',
+            'name' => 'Epson L3110',
+            'satuan_id' => '2',
             'merk_id' => '1',
-            'kategori_id' => '1',
-            'keterangan' => 'Aqua Databarang',
-            'barcode' => 'A0001',
+            'kategori_id' => '5',
+            'keterangan' => 'Printer',
+            'barcode' => 'E002',
             
         ]);
 
         DataBarang::create([
-            'name' => 'Galon',
-            'satuan_id' => '1',
+            'name' => 'PC Intel Core i5 RAM 4GB HD 1TB',
+            'satuan_id' => '2',
             'merk_id' => '1',
-            'kategori_id' => '2',
-            'keterangan' => 'Aqua Databarang',
-            'barcode' => 'A0002',
+            'kategori_id' => '5',
+            'keterangan' => 'Personal Computer',
+            'barcode' => 'E001',
             
         ]);
     }
