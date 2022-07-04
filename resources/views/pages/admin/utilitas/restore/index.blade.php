@@ -35,9 +35,9 @@
       <table id="data-table-default" class="table table-striped table-bordered table-td-valign-middle dataTable no-footer dtr-inline" aria-describedby="data-table-default_info">
 				<thead>
 					<tr>
-            <th class="col-0">No</th>
-            <th class="col-8">File</th>
-            <td class="col-5">Action</td>
+            <th style="width: 2%">No</th>
+            <th style="width: 86%">File</th>
+            <td style="width: 12%">Action</td>
           </tr>
 				</thead>
 				<tbody>
@@ -46,12 +46,12 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item }}</td>
             <td>
-              <form action="{{ route('admin.utilitas.restore-database.restore', $item) }}" method="post">
+              <form action="{{ route('admin.utilitas.restore-database.restore', $item) }}" method="post" class="d-inline">
                 @csrf
                 <input type="hidden" name="name" value="{{ $item }}">
                 <button type="submit" class="btn btn-warning">Restore</button>
               </form>
-              <form action="{{ route('admin.utilitas.restore-database.delete', $item) }}" method="POST">
+              <form action="{{ route('admin.utilitas.restore-database.delete', $item) }}" method="POST" class="d-inline">
                 @csrf
                 <input type="hidden" name="name" value="{{ $item }}">
                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>

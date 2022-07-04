@@ -51,14 +51,17 @@ class MutasiLokasiController extends Controller
     {
         $tanggal_pemindahan = date('d-m-Y');
         try {
-            Penempatan::where('penempatan_id', $request->penempatan_id)->update([
-                'lokasi_id' => $request->lokasi_id,
-            ]);
             foreach ($request->penempatan_id as $item) {
+                Penempatan::where('penempatan_id', $item)->update([
+                    'lokasi_id' => $request->lokasi_id,
+                ]);
+                $riwayat = RiwayatPenempatan::where('penempatan_id', $item)->latest()->first()->update([
+                    'tanggal_pemindahan' => $tanggal_pemindahan,
+                ]);
                 RiwayatPenempatan::create([
                     'penempatan_id' => $item,
                     'lokasi_id' => $request->lokasi_id,
-                    'tanggal_pemindahan' => $tanggal_pemindahan,
+                    'tanggal_penempatan' => $tanggal_pemindahan,
                 ]);
             }
         } catch (\Throwable $th) {

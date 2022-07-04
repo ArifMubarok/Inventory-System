@@ -22,7 +22,7 @@
                             <td>{{ $r_penempatan->penempatan->bagian->departemen->name }}</td>
                             <td>{{ $r_penempatan->penempatan->bagian->name }}</td>
                             <td>{{ $r_penempatan->lokasi->name }}</td>
-                            <td>{{ $r_penempatan->penempatan->tanggal_penempatan }}</td>
+                            <td>{{ $r_penempatan->tanggal_penempatan }}</td>
                             <td>{{ $r_penempatan->tanggal_pemindahan }}</td>
                         </tr>
                         @endforeach
@@ -32,10 +32,3 @@
         </div>
     </div>
 </div>
-
-{{-- <form class="panel-body" action="{{ route('admin.barang.penempatan-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
-    @csrf
-    {{ $dataTable->table() }}
-</form> --}}
-
-
