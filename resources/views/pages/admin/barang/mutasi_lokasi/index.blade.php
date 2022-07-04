@@ -34,6 +34,7 @@
     </div>
   </div>
   <!-- end panel-heading -->
+  
   <!-- begin panel-body -->
   <form class="panel-body" action="{{ route('admin.barang.mutasi-lokasi.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
     @csrf

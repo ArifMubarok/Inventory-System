@@ -5,11 +5,8 @@ namespace App\Http\Requests\Admin;
 use App\Constants\RequestRuleConstant;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class OpnameForm extends FormRequest
 {
-    protected $stopOnFirstFailur = true;
-
     /**
      * Determine if the user is authorized to make this request.
      *

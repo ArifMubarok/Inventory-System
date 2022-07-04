@@ -5,7 +5,6 @@ namespace App\Http\Requests\Admin;
 use App\Constants\RequestRuleConstant;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class LaporForm extends FormRequest
 {
     /**
