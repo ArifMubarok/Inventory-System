@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Barang;
 use App\Models\Penempatan;
+use App\Models\LaporBarang;
 use Illuminate\Http\Request;
+use App\Models\RiwayatPenempatan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LaporForm;
-use App\Models\LaporBarang;
-use Carbon\Carbon;
 
 class CekController extends Controller
 {
@@ -25,9 +26,14 @@ class CekController extends Controller
     public function show(Request $request)
     {
         $barang = Penempatan::where('barcode', '=', $request->barcode)->get();
+        foreach ($barang as $b) {
+            $penempatan_id = $b->penempatan_id; 
+        }
+        $riwayat_penempatan = RiwayatPenempatan::where('penempatan_id', $penempatan_id)->get();
         if ($barang->toArray() != null) {
             return view('pages.admin.cek-barang.detail_barang.menu', [
-                'barang' => $barang
+                'barang' => $barang,
+                'riwayat_penempatan' => $riwayat_penempatan
             ]);
         } else
         {

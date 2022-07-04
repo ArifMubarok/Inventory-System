@@ -62,7 +62,7 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="satuan_id">Tanggal Pengadaan</label>
+        <label for="satuan_id">Tanggal Pengadaan*</label>
         <div class="row">
           <div class="col-md-12">
             <input type="text" name="tanggal_pengadaan" class="form-control date-picker" placeholder="Tanggal Pengadaan" value="{{{ old('tanggal_pengadaan') ?? (isset($data->tanggal_pengadaan) ? $data->tanggal_pengadaan : null) ?? null }}}" />
@@ -71,11 +71,11 @@
       </div>
       <div class="form-group">
         <label for="depresiasi">Depresiasi</label>
-        <input type="number" name="depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('depresiasi') ?? $data->depresiasi ?? null }}}">
+        <input type="number" name="depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('depresiasi') ?? $data->depresiasi ?? 0 }}}">
       </div>
       <div class="form-group">
         <label for="lama_depresiasi">Lama Depresiasi (Bln)</label>
-        <input type="number" name="lama_depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('lama_depresiasi') ?? $data->lama_depresiasi ?? null }}}">
+        <input type="number" name="lama_depresiasi" class="form-control" autofocus data-parsley-required="false" value="{{{ old('lama_depresiasi') ?? $data->lama_depresiasi ?? 0 }}}">
       </div>
       <div class="form-group">
         <label for="keteranga">Keterangan</label>

@@ -134,7 +134,7 @@
   <!-- end panel -->
   @endforeach
 </form>
-<a href="javascript:history.back(-1);" class="btn btn-success">
+<a href="{{ route('admin.laporan-barang.index') }}" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
 
