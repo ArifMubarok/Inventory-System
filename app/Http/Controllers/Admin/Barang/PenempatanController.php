@@ -63,7 +63,8 @@ class PenempatanController extends Controller
                 ]);
                 RiwayatPenempatan::create([
                     'penempatan_id' => $penempatan,
-                    'lokasi_id' => $request->lokasi_id
+                    'lokasi_id' => $request->lokasi_id,
+                    'tanggal_penempatan' => $request->tanggal_penempatan
                 ]);
             }
         } catch (\Throwable $th) {
