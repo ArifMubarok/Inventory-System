@@ -65,33 +65,40 @@
 
 {{-- begin row --}}
 <div class="row">
-    <div class="col-md-6">
-        <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4 offset-md-1">Departemen</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->bagian->departemen->name }}" readonly />
+    @if (isset($item->bagian))
+        <div class="col-md-6">
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-4 offset-md-1">Departemen</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control m-b-5" value="{{ $item->bagian->departemen->name }}" readonly />
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-4 offset-md-1">Bagian</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control m-b-5" value="{{ $item->bagian->name }}" readonly />
+                </div>
             </div>
         </div>
-        <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4 offset-md-1">Bagian</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->bagian->name }}" readonly />
+        <div class="col-md-6">
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-4 offset-md-1">Lokasi</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control m-b-5" value="{{ $item->lokasi->name }}" readonly />
+                </div>
+            </div>
+            <div class="form-group row m-b-15">
+                <label class="col-form-label col-md-4 offset-md-1">Kondisi</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control m-b-5" value="{{ $item->kondisi }}" readonly />
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4 offset-md-1">Lokasi</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->lokasi->name }}" readonly />
-            </div>
+    @else
+        <div class="col-md-6">
+            Barang belum ditempatkan
         </div>
-        <div class="form-group row m-b-15">
-            <label class="col-form-label col-md-4 offset-md-1">Kondisi</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control m-b-5" value="{{ $item->kondisi }}" readonly />
-            </div>
-        </div>
-    </div>
+    @endif
+    
 </div>
 {{-- end row --}}

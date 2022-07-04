@@ -1,3 +1,7 @@
+@foreach ($riwayat_penempatan as $rp)
+{{ $cek = $rp->lokasi->name }}
+@endforeach
+@if (isset($cek))
 <div class="row">
     <div class="col-md-12">
         <div class="form-group row m-b-15">
@@ -13,29 +17,48 @@
                             <th>Tanggal Penempatan</th>
                             <th>Tanggal Pemindahan</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($riwayat_penempatan as $r_penempatan)
-                        <tr>
-                            {{-- @dump($r_penempatan) --}}
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $r_penempatan->penempatan->bagian->departemen->name }}</td>
-                            <td>{{ $r_penempatan->penempatan->bagian->name }}</td>
-                            <td>{{ $r_penempatan->lokasi->name }}</td>
-                            <td>{{ $r_penempatan->penempatan->tanggal_penempatan }}</td>
-                            <td>{{ $r_penempatan->tanggal_pemindahan }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($riwayat_penempatan as $r_penempatan)
+                            <tr>
+                                {{-- @dump($r_penempatan) --}}
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $r_penempatan->penempatan->bagian->departemen->name }}</td>
+                                <td>{{ $r_penempatan->penempatan->bagian->name }}</td>
+                                <td>{{ $r_penempatan->lokasi->name }}</td>
+                                <td>{{ $r_penempatan->penempatan->tanggal_penempatan }}</td>
+                                <td>{{ $r_penempatan->tanggal_pemindahan }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-{{-- <form class="panel-body" action="{{ route('admin.barang.penempatan-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
-    @csrf
-    {{ $dataTable->table() }}
-</form> --}}
-
-
+    @else
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row m-b-15">
+                <h3 class="pull-left">Riwayat Penempatan</h3>
+            </div>
+        </div>
+    </div>
+    
+    {{-- begin row --}}
+    <div class="row">
+        <div class="col">
+            Belum ada data.
+        </div>
+    </div>
+    {{-- end row --}}
+    @endif
+    
+    
+    {{-- <form class="panel-body" action="{{ route('admin.barang.penempatan-barang.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+        @csrf
+        {{ $dataTable->table() }}
+    </form> --}}
+    
+    
+    

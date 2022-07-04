@@ -25,18 +25,17 @@ class CekController extends Controller
 
     public function show(Request $request)
     {
-        $barang = Penempatan::where('barcode', '=', $request->barcode)->get();
-        foreach ($barang as $b) {
-            $penempatan_id = $b->penempatan_id; 
-        }
-        $riwayat_penempatan = RiwayatPenempatan::where('penempatan_id', $penempatan_id)->get();
-        if ($barang->toArray() != null) {
+        try {
+            $barang = Penempatan::where('barcode', '=', $request->barcode)->get();
+            foreach ($barang as $b) {
+                $penempatan_id = $b->penempatan_id; 
+            }
+            $riwayat_penempatan = RiwayatPenempatan::where('penempatan_id', $penempatan_id)->get();
             return view('pages.admin.cek-barang.detail_barang.menu', [
                 'barang' => $barang,
                 'riwayat_penempatan' => $riwayat_penempatan
             ]);
-        } else
-        {
+        } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Tidak ada Data');
         }
     }
