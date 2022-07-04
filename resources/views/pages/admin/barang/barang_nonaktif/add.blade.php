@@ -33,7 +33,10 @@
     </div>
     <!-- end panel-heading -->
 
-    
+    <!-- begin panel-body -->
+    <div class="panel-body">
+      
+
       <form action="{{ route('admin.barang.barang-nonaktif.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
         @csrf
       <div class="panel-body">
