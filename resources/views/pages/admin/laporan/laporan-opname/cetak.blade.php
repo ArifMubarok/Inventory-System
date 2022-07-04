@@ -22,40 +22,14 @@
             </table>
         </div>
         <hr style="display: block; color:black">
+        <div class="row text-center">
+            <h4>@yield('title')</h4>
+            <br>
+            <br>
+        </div>
         <div class="row">
             <div class="col">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Barcode</th>
-                            <th>Barang</th>
-                            <th>Tanggal Opname</th>
-                            <th>Merk</th>
-                            <th>Departemen</th>
-                            <th>Bagian</th>
-                            <th>Lokasi</th>
-                            <th>Kondisi</th>
-                            <th>Keterangan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $dataopname)
-                        <tr>
-                            <td class="col-0">{{ $loop->iteration }}</td>
-                            <td class="col-2">{{ $dataopname->barang->penempatan->barcode }}</td>
-                            <td class="col-4">{{ $dataopname->barang->penempatan->pengadaan->databarang->name }}</td>
-                            <td class="col-2">{{ $dataopname->tanggal_opname }}</td>
-                            <td class="col-1">{{ $dataopname->barang->penempatan->pengadaan->databarang->merk->nama_merk }}</td>
-                            <td class="col-2">{{ $dataopname->barang->penempatan->bagian->departemen->name }}</td>
-                            <td class="col-1">{{ $dataopname->barang->penempatan->bagian->name }}</td>
-                            <td class="col-1">{{ $dataopname->barang->penempatan->lokasi->name }}</td>
-                            <td class="col-1">{{ $dataopname->barang->penempatan->pengadaan->kondisi }}</td>
-                            <td class="col-1">{{ $dataopname->keterangan }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                @include('pages.admin.laporan.laporan-opname.table')
             </div>
         </div>
         {{-- begin tanda tangan --}}
