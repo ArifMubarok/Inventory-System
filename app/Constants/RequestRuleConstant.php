@@ -93,7 +93,7 @@ class RequestRuleConstant
             'merk_id' => 'required',
             'kategori_id' => 'required',
             'barcode' => 'required|min:3',
-            'image' => 'required|file|image|max:3072'
+            'image' => 'file|image|max:3072'
         ];
     }
 

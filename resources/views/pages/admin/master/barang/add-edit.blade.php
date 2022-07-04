@@ -60,7 +60,7 @@
       </div>
       <div class="form-group">
         <label for="image">Foto</label>
-        <input type="file" name="image" class="form-control" data-parsley-required="true" value="{{{ old('image') ?? $data->image ?? null }}}">
+        <input type="file" name="image" class="form-control" value="{{{ old('image') ?? $data->image ?? null }}}">
       </div>
       
       
