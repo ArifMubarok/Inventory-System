@@ -66,7 +66,9 @@ class LaporanDepresiasiDataTable extends DataTable
             ->parameters([
                 'responsive' => true,
                 'autoWidth' => false
-            ]);
+            ])
+            ->buttons(
+                Button::make('reload'));
     }
 
     /**

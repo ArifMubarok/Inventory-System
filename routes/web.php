@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return redirect('/admin');
+// })->middleware('auth');
+
 Route::get('/', function () {
-    return redirect('/admin');
-})->middleware('auth');
+    return redirect(route('dashboard'));
+});
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('auth');
 
 Route::get('/token', function () {
     return csrf_token();
@@ -27,4 +33,6 @@ Route::get('/edit-profile', 'ProfileController@edit')->name('edit-profile');
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 });
 
+require __DIR__ . '/user.php';
+require __DIR__ . '/sarpras.php';
 // require __DIR__ . '/demo.php';

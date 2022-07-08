@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\DataTables\Admin\LaporBarangDataTable;
 use App\DataTables\dashboardRiwayatLaporanDataTable;
@@ -17,12 +17,11 @@ class DashboardController extends Controller
 {
     public function index(dashboardRiwayatLaporanDataTable $datatable)
     {
-        
         $master = DataBarang::count();
         $aktif = Barang::where('status', '1')->count();
         $nonaktif = Barang::where('status', '0')->count();
         $totbar = Barang::get();
-        return $datatable->render('pages.admin.dashboard', [
+        return $datatable->render('pages.dashboard', [
             'master' => $master,
             'totbar' => $totbar,
             'aktif' => $aktif,

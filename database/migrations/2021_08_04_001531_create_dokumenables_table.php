@@ -13,11 +13,11 @@ class CreateDokumenablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumenables', function (Blueprint $table) {
-            $table->bigInteger('dokumen_id');
-            $table->bigInteger('dokumenable_id');
-            $table->text('dokumenable_type');
-        });
+        // Schema::create('dokumenables', function (Blueprint $table) {
+        //     $table->bigInteger('dokumen_id');
+        //     $table->bigInteger('dokumenable_id');
+        //     $table->text('dokumenable_type');
+        // });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateDokumenablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumenables');
+        // Schema::dropIfExists('dokumenables');
     }
 }

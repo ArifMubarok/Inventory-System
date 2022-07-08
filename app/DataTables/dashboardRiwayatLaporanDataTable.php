@@ -90,8 +90,7 @@ class dashboardRiwayatLaporanDataTable extends DataTable
                     ])
                     ->orderBy(0)
                     ->buttons(
-                        Button::make('reload'),
-                        Button::make('reset')
+                        Button::make('reload')
                     );
     }
 
@@ -109,13 +108,17 @@ class dashboardRiwayatLaporanDataTable extends DataTable
                 ->addClass('text-center')
                 ->orderable(false)
                 ->searchable(false),
-            Column::make('barang.penempatan.barcode')->title('Barcode'),
-            Column::make('barang.penempatan.pengadaan.databarang.name')->title('Barang'),
+            Column::make('barang.penempatan.barcode')->title('Barcode')
+                ->orderable(false),
+            Column::make('barang.penempatan.pengadaan.databarang.name')->title('Barang')
+                ->orderable(false),
             Column::make('judul_laporan')->title('Judul Laporan'),
             Column::make('laporan'),
             Column::make('status'),
             Column::make('pelapor')->title('Dilaporkan Oleh'),
-            Column::make('tanggal')->title('Tgl Laporan')->searchable(false),
+            Column::make('tanggal')->title('Tgl Laporan')
+                ->searchable(false)
+                ->orderable(false),
         ];
     }
 

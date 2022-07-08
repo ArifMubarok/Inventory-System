@@ -28,7 +28,12 @@ class UserController extends Controller
         return DB::transaction(function () use ($request) {
             $msg = "Data Tersimpan";
             try {
-                $data = User::createFromRequest($request);
+                $data = User::create([
+                    'name' => $request->user_name,
+                    'email' => $request->user_email,
+                    'role' => $request->user_roles[0],
+                    'password' => $request->user_password
+                ]);
                 if (!empty($request->user_password)) {
                     $data->password = Hash::make($request->user_password);
                 }

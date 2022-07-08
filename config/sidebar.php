@@ -16,7 +16,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin/dashboard',
+            'url' => '/dashboard',
             'caret' => false
         ],
         // [
@@ -187,81 +187,120 @@ return [
         // ],
     ],
 
-    'menu_user' => [
+    'menu_sarpras' => [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/',
+            'url' => '/dashboard',
             'caret' => false
-            // ], [
-            //     'icon' => 'fa fa-envelope',
-            //     'title' => 'SIM',
-            //     'url' => '#',
-            //     'caret' => false
-        ], [
-            'icon' => 'fa fa-file-alt',
-            'title' => 'SKCK',
-            'url' => '/permohonan-skck',
-            'caret' => false
-        ], [
-            'icon' => 'fa fa-list-alt',
-            'title' => 'SPKT',
+        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Pengguna',
+        //     'url' => '/admin/users',
+        //     'caret' => false,
+        // ],
+        [
+            'icon' => 'fas fa-search',
+            'title' => 'Cek Barang',
+            'url' => '/sarpras/cek-barang',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fas fa-edit',
+            'title' => 'Laporan Barang',
+            'url' => '/sarpras/laporan-barang',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fas fa-cubes',
+            'title' => 'Barang',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => 'javascript:;',
-                    'title' => 'Perizinan',
-                    'sub_menu' => [
-                        [
-                            'url' => '/permohonan-ijin-demo',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penyampaian Pendapat',
-                        ], [
-                            'url' => '/permohonan-ijin-keramaian',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keramaian'
-                        ],
-                    ]
-                ], [
-                    'url' => 'javascript:;',
-                    'title' => 'Pengaduan',
-                    'sub_menu' => [
-                        [
-                            'url' => '/laporan-pengaduan-umum',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Aduan Umum',
-                        ], [
-                            'url' => '/laporan-pengaduan-propam',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Aduan Propam'
-                        ], [
-                            'url' => '/laporan-orang-hilang',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Orang Hilang'
-                        ], [
-                            'url' => '/laporan-orang-asing',
-                            'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Orang Asing'
-                        ]
-                    ]
-                ], [
-                    'url' => 'javascript:;',
-                    'title' => 'Pengawalan',
-                    'url' => '/permohonan-pengawalan',
-                    'caret' => false
-                ], [
-                    'url' => 'javascript:;',
-                    'title' => 'Kehilangan Barang',
-                    'url' => '/laporan-kehilangan-barang',
-                    'caret' => false
-                ]
+                    'url' => '/sarpras/barang/pengadaan-barang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pengadaan Barang'
+                ],
+                [
+                    'url' => '/sarpras/barang/penempatan-barang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penempatan Barang'
+                ],
+                [
+                    'url' => '/sarpras/barang/barang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Barang'
+                ],
+                [
+                    'url' => '/sarpras/barang/cetak-barcode',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Cetak Barcode'
+                ],
+                [
+                    'url' => '/sarpras/barang/mutasi-lokasi',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Mutasi Lokasi'
+                ],
+                [
+                    'url' => '/sarpras/barang/proses-opname',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Proses Opname'
+                ],
+                [
+                    'url' => '/sarpras/barang/hitung-depresiasi',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Hitung Depresiasi'
+                ],
+                [
+                    'url' => '/sarpras/barang/barang-nonaktif',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Barang Non-Aktif'
+                ],
             ]
-        ], [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Ganti Password',
-            'url' => '#',
+        ],
+        [
+            'icon' => 'fas fa-print',
+            'title' => 'Laporan',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/sarpras/laporan/laporan-barang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Barang'
+                ],
+                [
+                    'url' => '/sarpras/laporan/laporan-pengadaan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Pengadaan'
+                ],
+                [
+                    'url' => '/sarpras/laporan/laporan-opname',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Opname'
+                ],
+                [
+                    'url' => '/sarpras/laporan/laporan-depresiasi',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Depresiasi'
+                ],
+                [
+                    'url' => '/sarpras/laporan/laporan-barang-nonaktif',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Barang Non-Aktif'
+                ],
+            ]
+        ],
+    ],
+
+    'menu_user' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/dashboard',
             'caret' => false
-        ], [
-            'icon' => 'fa fa-sign-out-alt',
-            'title' => 'Logout',
-            'url' => '#',
-            'caret' => false
-        ]
+        ],
+        [
+            'icon' => 'fas fa-search',
+            'title' => 'Cek Barang',
+            'url' => '/user/cek-barang',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fas fa-edit',
+            'title' => 'Laporan Barang',
+            'url' => '/user/laporan-barang',
+            'caret' => false,
+        ],
     ],
 
 

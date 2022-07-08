@@ -66,6 +66,9 @@ class DepresiasiDataTable extends DataTable
                 'responsive' => true,
                 'autoWidth' => false
             ])
+            ->buttons(
+                Button::make('reload'),
+            )
             // ->orderBy(2)
         ;
     }

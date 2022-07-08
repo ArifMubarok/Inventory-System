@@ -17,8 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/admin/dashboard';
-    public const ADMIN_HOME = '/admin';
+    public const HOME = '/dashboard';
+    // public const ADMIN_HOME = '/admin';
+    // public const HOME = '/login';
 
     /**
      * The controller namespace for the application.
@@ -47,6 +48,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('admin')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware('user')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/user.php'));
 
             // Route::middleware('user')
             //     ->namespace($this->namespace)

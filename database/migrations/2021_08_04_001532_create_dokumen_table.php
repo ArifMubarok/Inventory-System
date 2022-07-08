@@ -13,12 +13,12 @@ class CreateDokumenTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumen', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->text('public_url');
-            $table->timestamps();
-        });
+        // Schema::create('dokumen', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nama');
+        //     $table->text('public_url');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateDokumenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumen');
+        // Schema::dropIfExists('dokumen');
     }
 }

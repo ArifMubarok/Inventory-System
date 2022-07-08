@@ -16,13 +16,13 @@ return [
     ],
     'user_roles' => [
         'admin' => [
-            ['name' => "Admin", "email" => "admin@admin.com", "password" => 'password'],
+            ['name' => "Admin", "email" => "admin@admin.com", "password" => 'password', 'role' => "1"],
         ],
         'sarpras' => [
-            ['name' => "Sarpras", "email" => "sarpras@sarpras.com", "password" => 'password'],
+            ['name' => "Sarpras", "email" => "sarpras@sarpras.com", "password" => 'password', 'role' => "2"],
         ],
         'user' => [
-            ['name' => "User", "email" => "user@user.com", "password" => 'password'],
+            ['name' => "User", "email" => "user@user.com", "password" => 'password', 'role' => "3"],
         ],
     ],
     'permissions_map' => [

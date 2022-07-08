@@ -59,10 +59,6 @@ class LaporanPengadaanDataTable extends DataTable
                 'autoWidth' => false
             ])
             ->buttons(
-                Button::make('create'),
-                Button::make('export'),
-                Button::make('print'),
-                Button::make('reset'),
                 Button::make('reload')
             );
     }

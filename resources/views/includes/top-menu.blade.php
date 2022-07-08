@@ -44,40 +44,115 @@
 				return $subMenu;
 			}
 			
-			foreach (config('sidebar.menu') as $key => $menu) {
-				$GLOBALS['parent_active'] = '';
-				
-				$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
-				$hasCaret = (!empty($menu['caret'])) ? '<b class="caret"></b>' : '';
-				$hasIcon = (!empty($menu['icon'])) ? '<i class="'. $menu['icon'] .'"></i>' : '';
-				$hasImg = (!empty($menu['img'])) ? '<div class="icon-img"><img src="'. $menu['img'] .'" /></div>' : '';
-				$hasLabel = (!empty($menu['label'])) ? '<span class="label label-theme m-l-5">'. $menu['label'] .'</span>' : '';
-				$hasTitle = (!empty($menu['title'])) ? '<span>'. $menu['title'] . $hasLabel .'</span>' : '';
-				$hasBadge = (!empty($menu['badge'])) ? '<span class="badge pull-right">'. $menu['badge'] .'</span>' : '';
-				
-				$subMenu = '';
-				
-				if (!empty($menu['sub_menu'])) {
-					$GLOBALS['sub_level'] = 0;
-					$subMenu .= '<ul class="sub-menu">';
-					$subMenu .= renderHeaderSubMenu($menu['sub_menu'], $currentUrl);
-					$subMenu .= '</ul>';
+			if (auth()->user()->role == 1) {
+				foreach (config('sidebar.menu') as $key => $menu) {
+					$GLOBALS['parent_active'] = '';
+					
+					$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
+					$hasCaret = (!empty($menu['caret'])) ? '<b class="caret"></b>' : '';
+					$hasIcon = (!empty($menu['icon'])) ? '<i class="'. $menu['icon'] .'"></i>' : '';
+					$hasImg = (!empty($menu['img'])) ? '<div class="icon-img"><img src="'. $menu['img'] .'" /></div>' : '';
+					$hasLabel = (!empty($menu['label'])) ? '<span class="label label-theme m-l-5">'. $menu['label'] .'</span>' : '';
+					$hasTitle = (!empty($menu['title'])) ? '<span>'. $menu['title'] . $hasLabel .'</span>' : '';
+					$hasBadge = (!empty($menu['badge'])) ? '<span class="badge pull-right">'. $menu['badge'] .'</span>' : '';
+					
+					$subMenu = '';
+					
+					if (!empty($menu['sub_menu'])) {
+						$GLOBALS['sub_level'] = 0;
+						$subMenu .= '<ul class="sub-menu">';
+						$subMenu .= renderHeaderSubMenu($menu['sub_menu'], $currentUrl);
+						$subMenu .= '</ul>';
+					}
+					$active = ($currentUrl == $menu['url']) ? 'active' : '';
+					$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
+					echo '
+						<li class="'. $hasSub .' '. $active .'">
+							<a href="'. $menu['url'] .'">
+								'. $hasImg .'
+								'. $hasIcon .'
+								'. $hasTitle .'
+								'. $hasBadge .'
+								'. $hasCaret .'
+							</a>
+							'. $subMenu .'
+						</li>
+					';
 				}
-				$active = ($currentUrl == $menu['url']) ? 'active' : '';
-				$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
-				echo '
-					<li class="'. $hasSub .' '. $active .'">
-						<a href="'. $menu['url'] .'">
-							'. $hasImg .'
-							'. $hasIcon .'
-							'. $hasTitle .'
-							'. $hasBadge .'
-							'. $hasCaret .'
-						</a>
-						'. $subMenu .'
-					</li>
-				';
 			}
+			if (auth()->user()->role == 2) {
+				foreach (config('sidebar.menu_sarpras') as $key => $menu) {
+					$GLOBALS['parent_active'] = '';
+					
+					$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
+					$hasCaret = (!empty($menu['caret'])) ? '<b class="caret"></b>' : '';
+					$hasIcon = (!empty($menu['icon'])) ? '<i class="'. $menu['icon'] .'"></i>' : '';
+					$hasImg = (!empty($menu['img'])) ? '<div class="icon-img"><img src="'. $menu['img'] .'" /></div>' : '';
+					$hasLabel = (!empty($menu['label'])) ? '<span class="label label-theme m-l-5">'. $menu['label'] .'</span>' : '';
+					$hasTitle = (!empty($menu['title'])) ? '<span>'. $menu['title'] . $hasLabel .'</span>' : '';
+					$hasBadge = (!empty($menu['badge'])) ? '<span class="badge pull-right">'. $menu['badge'] .'</span>' : '';
+					
+					$subMenu = '';
+					
+					if (!empty($menu['sub_menu'])) {
+						$GLOBALS['sub_level'] = 0;
+						$subMenu .= '<ul class="sub-menu">';
+						$subMenu .= renderHeaderSubMenu($menu['sub_menu'], $currentUrl);
+						$subMenu .= '</ul>';
+					}
+					$active = ($currentUrl == $menu['url']) ? 'active' : '';
+					$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
+					echo '
+						<li class="'. $hasSub .' '. $active .'">
+							<a href="'. $menu['url'] .'">
+								'. $hasImg .'
+								'. $hasIcon .'
+								'. $hasTitle .'
+								'. $hasBadge .'
+								'. $hasCaret .'
+							</a>
+							'. $subMenu .'
+						</li>
+					';
+				}
+			}
+			if (auth()->user()->role == 3) {
+				foreach (config('sidebar.menu_user') as $key => $menu) {
+					$GLOBALS['parent_active'] = '';
+					
+					$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';
+					$hasCaret = (!empty($menu['caret'])) ? '<b class="caret"></b>' : '';
+					$hasIcon = (!empty($menu['icon'])) ? '<i class="'. $menu['icon'] .'"></i>' : '';
+					$hasImg = (!empty($menu['img'])) ? '<div class="icon-img"><img src="'. $menu['img'] .'" /></div>' : '';
+					$hasLabel = (!empty($menu['label'])) ? '<span class="label label-theme m-l-5">'. $menu['label'] .'</span>' : '';
+					$hasTitle = (!empty($menu['title'])) ? '<span>'. $menu['title'] . $hasLabel .'</span>' : '';
+					$hasBadge = (!empty($menu['badge'])) ? '<span class="badge pull-right">'. $menu['badge'] .'</span>' : '';
+					
+					$subMenu = '';
+					
+					if (!empty($menu['sub_menu'])) {
+						$GLOBALS['sub_level'] = 0;
+						$subMenu .= '<ul class="sub-menu">';
+						$subMenu .= renderHeaderSubMenu($menu['sub_menu'], $currentUrl);
+						$subMenu .= '</ul>';
+					}
+					$active = ($currentUrl == $menu['url']) ? 'active' : '';
+					$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
+					echo '
+						<li class="'. $hasSub .' '. $active .'">
+							<a href="'. $menu['url'] .'">
+								'. $hasImg .'
+								'. $hasIcon .'
+								'. $hasTitle .'
+								'. $hasBadge .'
+								'. $hasCaret .'
+							</a>
+							'. $subMenu .'
+						</li>
+					';
+				}
+			}
+
 		@endphp
 		<li class="menu-control menu-control-left">
 			<a href="javascript:;" data-click="prev-menu"><i class="fa fa-angle-left"></i></a>

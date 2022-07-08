@@ -5,12 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // require base_path('vendor/laravel/fortify/routes/routes.php');
 
-    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|manager']], function () {
-        Route::get('/', function () {
-            return redirect(route('admin.dashboard'));
-        });
-
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin']], function () {
 
         Route::group(['prefix' => 'cek-barang', 'as' => 'cek-barang.'], function () {
             Route::get('/', 'CekController@index')->name('index');

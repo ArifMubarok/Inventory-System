@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group">
                         <label>Peran</label>
-                        <x-form.dropdown name="user_roles[]" :options="$roles" :selected="old('user_roles') ?? (isset($data->roles) ? $data->roles->pluck('id')->toArray() : null)" placeholder="Roles" multiple />
+                        <x-form.dropdown name="user_roles[]" :options="$roles" :selected="old('user_roles') ?? (isset($data->roles) ? $data->roles->pluck('id')->toArray() : null)" placeholder="Roles" />
                     </div>
                     <div class="form-group">
                         <label for="name">Kata Sandi</label>

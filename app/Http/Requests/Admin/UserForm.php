@@ -27,17 +27,6 @@ class UserForm extends FormRequest
      */
     public function rules()
     {
-
-        $rules = [
-            'user_roles' => 'required'
-        ];
-
-        $rules = [
-            $rules,
-            collect(RequestRuleConstant::userTable()),
-            collect(RequestRuleConstant::userProfileTable())
-        ];
-
-        return Arr::collapse($rules);
+        return RequestRuleConstant::userTable();
     }
 }

@@ -17,6 +17,8 @@
 
 @section('content')
 
+{{-- @dd(auth()->user()) --}}
+
 @include('includes.isi_dashboard.header')
 
 @include('includes.isi_dashboard.kotak')
@@ -36,26 +38,11 @@
 @endsection
 
 @push('scripts')
-<script src="/assets/plugins/d3/d3.min.js"></script>
-<script src="/assets/plugins/nvd3/build/nv.d3.js"></script>
-<script src="/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-<script src="/assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-<script src="/assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
-<script src="/assets/plugins/moment/moment.js"></script>
-<script src="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="/assets/js/demo/dashboard-v3.js"></script>
 
 <!-- datatables -->
 <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
 {{ $dataTable->scripts() }}
 <!-- end datatables -->
-
-{{-- table --}}
-<script src="/assets/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="/assets/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-<script src="/assets/js/demo/table-manage-default.demo.js"></script>
 
 {{-- chart --}}
 {{-- <script src="/assets/js/demo/chart-d3.demo.js"></script>
