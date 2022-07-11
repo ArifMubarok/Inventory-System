@@ -16,9 +16,9 @@ Dalam Pengembangan Projek kami membagi pekerjaan setiap anggota, dimana secara g
 ## User && Role
 
 username/password
-1. arif/123 (admin)
-2. sarpras/123 (sarpras)
-3. user/123 (user)
+1. admin@admin.com/password (admin)
+2. sarpras@sarpras.com/password (sarpras)
+3. user@user.com/password (user)
 
 
 ### Link production
