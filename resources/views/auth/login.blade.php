@@ -7,7 +7,7 @@
 <div class="login login-with-news-feed">
 	<!-- begin news-feed -->
 	<div class="news-feed">
-		<div class="news-image" style="background-image: url(/assets/img/login-bg/front.png)"></div>
+		<div class="news-image" style="background-image: url(/assets/img/login-bg/Inkedfront.jpg)"></div>
 		<div class="news-caption">
 			<h4 class="caption-title"><b>ms</b>Inventaris</h4>
 			<p>

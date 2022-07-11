@@ -1,5 +1,6 @@
 <meta charset="utf-8" />
 <title>SIM Inventaris | @yield('title')</title>
+<link rel="icon" href="{!! asset('assets/img/login-bg/icon.png') !!}"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta content="" name="description" />
