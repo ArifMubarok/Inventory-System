@@ -189,7 +189,7 @@ trait Converter
      */
     public function toDateTimeString($unitPrecision = 'second')
     {
-        return $this->rawFormat('Y-m-d '.static::getTimeFormatByPrecision($unitPrecision));
+        return $this->rawFormat('Y-m-d'.static::getTimeFormatByPrecision($unitPrecision));
     }
 
     /**
@@ -203,7 +203,7 @@ trait Converter
     {
         switch (static::singularUnit($unitPrecision)) {
             case 'minute':
-                return 'H:i';
+                return '[Hi]';
             case 'second':
                 return 'H:i:s';
             case 'm':
